@@ -224,7 +224,7 @@ function OpenCreatorMenu()
                                 sIdentityEnd = false;
                                 RageUI.GoBack()
                                 TriggerServerEvent('core:CreateIdentity', sDataIdentity)
-                                ESX.ShowNotification("~b~Sneaky~s~Life~n~Identité créer avec succès.")
+                                ESX.ShowNotification("~b~One~s~Life~n~Identité créer avec succès.")
                             end
                         end)
                     end
@@ -970,7 +970,7 @@ function StartCreatorEndCinematic()
     DoScreenFadeOut(1000)
     local Q = true;
     DisplayRadar(false)
-    PlayUrl("cin_music", "https://www.youtube.com/watch?v=gMotH6XH2tQ", 0.1, false)
+    PlayUrl("cin_music", "https://www.youtube.com/watch?v=L9pDvLzCJgo", 0.1, false)
     Citizen.CreateThread(function()
         while Q do
             DisableControlAction(1, 1, true)

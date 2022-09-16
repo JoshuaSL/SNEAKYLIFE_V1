@@ -39,11 +39,12 @@ end)
 
 RegisterNetEvent('core:CreateIdentity')
 AddEventHandler('core:CreateIdentity', function(data)
-    local identifier = GetPlayerIdentifiers(source)[1]
+    local playerSrc = source
 
-    print("identifiant du joueur ", identifier)
+    if (not playerSrc) then return end
 
-    print("debug identity 1")
+    local playerSelected = ESX.GetPlayerFromId(playerSrc)
+    if (not playerSelected) then return end
 
     MySQL.Async.execute('UPDATE users SET `firstname` = @firstname, `lastname` = @lastname, `birthday` = @birthday, `height` = @height, `sex` = @sex WHERE identifier = @identifier', {
       ['@firstname'] = data.firstname,
@@ -51,9 +52,8 @@ AddEventHandler('core:CreateIdentity', function(data)
       ['@birthday'] = data.birthday,
       ['@height'] = data.height,
       ['@sex'] = data.sex,
-      ['@identifier'] = identifier
+      ['@identifier'] = playerSelected.identifier
     }, function(success)
-        print("debug identity 2")
         local newIdentity = {
             firstname = data.firstname,
             lastname = data.lastname,
@@ -61,7 +61,6 @@ AddEventHandler('core:CreateIdentity', function(data)
             sex = data.sex,
             height = data.height
         }
-        UpdateIdentity(identifier, newIdentity)
-        print("Updated identity")
+        UpdateIdentity(playerSelected.identifier, newIdentity)
     end)
 end)
