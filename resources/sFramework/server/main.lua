@@ -9,6 +9,9 @@ function LoadUser(source, identifier)
 		inventory = {},
 		loadout = {}
 	}
+	if ESX.GetPlayerFromIdentifier(identifier) then
+		DropPlayer(source, ('there was an error loading your character!\nError code: identifier-active-ingame\n\nThis error is caused by a player on this server who has the same identifier as you have. Make sure you are not playing on the same Rockstar account.\n\nYour Rockstar identifier: %s'):format(identifier))
+	end
 
 	table.insert(tasks, function(cb)
 		MySQL.Async.fetchAll('SELECT character_id, permission_group, permission_level, accounts, job, job_grade, job2, job2_grade, inventory, loadout, position FROM users WHERE identifier = @identifier', {
