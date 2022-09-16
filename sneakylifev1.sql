@@ -1629,6 +1629,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastname` varchar(20) COLLATE utf8mb4_bin DEFAULT 'None',
   `birthday` varchar(10) COLLATE utf8mb4_bin DEFAULT 'None',
   `height` int(3) DEFAULT NULL,
+  `sex` varchar(20) COLLATE utf8mb4_bin DEFAULT 'None',
   `accounts` longtext COLLATE utf8mb4_bin DEFAULT NULL,
   `inventory` longtext COLLATE utf8mb4_bin DEFAULT NULL,
   `loadout` longtext COLLATE utf8mb4_bin DEFAULT NULL,
