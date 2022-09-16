@@ -13,11 +13,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Listage de la structure de la base pour california_dev
-CREATE DATABASE IF NOT EXISTS `california_dev` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `california_dev`;
+-- Listage de la structure de la base pour sneakylife_v1
+CREATE DATABASE IF NOT EXISTS `sneakylife_v1` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `sneakylife_v1`;
 
--- Listage de la structure de la table california_dev. account_info
+-- Listage de la structure de la table sneakylife_v1. account_info
 CREATE TABLE IF NOT EXISTS `account_info` (
   `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `license` varchar(50) COLLATE utf8mb4_bin NOT NULL,
@@ -35,11 +35,11 @@ CREATE TABLE IF NOT EXISTS `account_info` (
   UNIQUE KEY `license` (`license`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.account_info : 0 rows
+-- Listage des données de la table sneakylife_v1.account_info : 0 rows
 /*!40000 ALTER TABLE `account_info` DISABLE KEYS */;
 /*!40000 ALTER TABLE `account_info` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. addon_account
+-- Listage de la structure de la table sneakylife_v1. addon_account
 CREATE TABLE IF NOT EXISTS `addon_account` (
   `name` varchar(60) COLLATE utf8mb4_bin NOT NULL,
   `label` varchar(100) COLLATE utf8mb4_bin NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `addon_account` (
   PRIMARY KEY (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.addon_account : ~64 rows (environ)
+-- Listage des données de la table sneakylife_v1.addon_account : ~64 rows (environ)
 /*!40000 ALTER TABLE `addon_account` DISABLE KEYS */;
 INSERT INTO `addon_account` (`name`, `label`, `shared`) VALUES
 	('property_dirtycash', 'Argent Sale Propriété', 0),
@@ -116,7 +116,7 @@ INSERT INTO `addon_account` (`name`, `label`, `shared`) VALUES
 	('trunk_dirtycash', 'Argent Sale Coffre Véhicule', 0);
 /*!40000 ALTER TABLE `addon_account` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. addon_account_data
+-- Listage de la structure de la table sneakylife_v1. addon_account_data
 CREATE TABLE IF NOT EXISTS `addon_account_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `addon_account_data` (
   KEY `index_addon_account_data_account_name_owner` (`account_name`(191),`owner`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=47266 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.addon_account_data : ~62 rows (environ)
+-- Listage des données de la table sneakylife_v1.addon_account_data : ~62 rows (environ)
 /*!40000 ALTER TABLE `addon_account_data` DISABLE KEYS */;
 INSERT INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
 	(113, 'society_ambulance', 0, NULL),
@@ -194,7 +194,7 @@ INSERT INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
 	(47265, 'society_zetas', 0, NULL);
 /*!40000 ALTER TABLE `addon_account_data` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. addon_inventory
+-- Listage de la structure de la table sneakylife_v1. addon_inventory
 CREATE TABLE IF NOT EXISTS `addon_inventory` (
   `name` varchar(60) COLLATE utf8mb4_bin NOT NULL,
   `label` varchar(100) COLLATE utf8mb4_bin NOT NULL,
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `addon_inventory` (
   PRIMARY KEY (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.addon_inventory : ~64 rows (environ)
+-- Listage des données de la table sneakylife_v1.addon_inventory : ~64 rows (environ)
 /*!40000 ALTER TABLE `addon_inventory` DISABLE KEYS */;
 INSERT INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
 	('property', 'Propriété', 0),
@@ -271,7 +271,7 @@ INSERT INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
 	('trunk', 'Coffre Véhicule', 0);
 /*!40000 ALTER TABLE `addon_inventory` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. addon_inventory_items
+-- Listage de la structure de la table sneakylife_v1. addon_inventory_items
 CREATE TABLE IF NOT EXISTS `addon_inventory_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `inventory_name` varchar(100) COLLATE utf8mb4_bin NOT NULL,
@@ -284,11 +284,11 @@ CREATE TABLE IF NOT EXISTS `addon_inventory_items` (
   KEY `index_addon_inventory_inventory_name` (`inventory_name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.addon_inventory_items : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.addon_inventory_items : ~0 rows (environ)
 /*!40000 ALTER TABLE `addon_inventory_items` DISABLE KEYS */;
 /*!40000 ALTER TABLE `addon_inventory_items` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. billing
+-- Listage de la structure de la table sneakylife_v1. billing
 CREATE TABLE IF NOT EXISTS `billing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(55) NOT NULL,
@@ -300,11 +300,11 @@ CREATE TABLE IF NOT EXISTS `billing` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.billing : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.billing : ~0 rows (environ)
 /*!40000 ALTER TABLE `billing` DISABLE KEYS */;
 /*!40000 ALTER TABLE `billing` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. cardealer_vehicles
+-- Listage de la structure de la table sneakylife_v1. cardealer_vehicles
 CREATE TABLE IF NOT EXISTS `cardealer_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -313,11 +313,11 @@ CREATE TABLE IF NOT EXISTS `cardealer_vehicles` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.cardealer_vehicles : 0 rows
+-- Listage des données de la table sneakylife_v1.cardealer_vehicles : 0 rows
 /*!40000 ALTER TABLE `cardealer_vehicles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cardealer_vehicles` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. datastore
+-- Listage de la structure de la table sneakylife_v1. datastore
 CREATE TABLE IF NOT EXISTS `datastore` (
   `name` varchar(60) COLLATE utf8mb4_bin NOT NULL,
   `label` varchar(100) COLLATE utf8mb4_bin NOT NULL,
@@ -325,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `datastore` (
   PRIMARY KEY (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.datastore : ~68 rows (environ)
+-- Listage des données de la table sneakylife_v1.datastore : ~68 rows (environ)
 /*!40000 ALTER TABLE `datastore` DISABLE KEYS */;
 INSERT INTO `datastore` (`name`, `label`, `shared`) VALUES
 	('property', 'Propriété', 0),
@@ -398,7 +398,7 @@ INSERT INTO `datastore` (`name`, `label`, `shared`) VALUES
 	('user_mask', 'Mask', 0);
 /*!40000 ALTER TABLE `datastore` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. datastore_data
+-- Listage de la structure de la table sneakylife_v1. datastore_data
 CREATE TABLE IF NOT EXISTS `datastore_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) COLLATE utf8mb4_bin NOT NULL,
@@ -409,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `datastore_data` (
   KEY `index_datastore_data_name_owner` (`name`,`owner`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=14152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.datastore_data : ~63 rows (environ)
+-- Listage des données de la table sneakylife_v1.datastore_data : ~63 rows (environ)
 /*!40000 ALTER TABLE `datastore_data` DISABLE KEYS */;
 INSERT INTO `datastore_data` (`id`, `name`, `data`, `owner`) VALUES
 	(2953, 'society_madrazo', '{"dirtycash":0,"weapons":[]}', NULL),
@@ -477,7 +477,7 @@ INSERT INTO `datastore_data` (`id`, `name`, `data`, `owner`) VALUES
 	(14151, 'society_taxi', '{}', NULL);
 /*!40000 ALTER TABLE `datastore_data` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. fine_types
+-- Listage de la structure de la table sneakylife_v1. fine_types
 CREATE TABLE IF NOT EXISTS `fine_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) DEFAULT NULL,
@@ -486,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `fine_types` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.fine_types : ~114 rows (environ)
+-- Listage des données de la table sneakylife_v1.fine_types : ~114 rows (environ)
 /*!40000 ALTER TABLE `fine_types` DISABLE KEYS */;
 INSERT INTO `fine_types` (`id`, `label`, `amount`, `category`) VALUES
 	(1, 'Refus de présenter ses papiers', 150, 0),
@@ -605,7 +605,7 @@ INSERT INTO `fine_types` (`id`, `label`, `amount`, `category`) VALUES
 	(114, 'Meurtre d\'un agent de l\'état/services publiques', 400000, 3);
 /*!40000 ALTER TABLE `fine_types` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. garage
+-- Listage de la structure de la table sneakylife_v1. garage
 CREATE TABLE IF NOT EXISTS `garage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` varchar(80) NOT NULL,
@@ -618,11 +618,11 @@ CREATE TABLE IF NOT EXISTS `garage` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.garage : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.garage : ~0 rows (environ)
 /*!40000 ALTER TABLE `garage` DISABLE KEYS */;
 /*!40000 ALTER TABLE `garage` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. items
+-- Listage de la structure de la table sneakylife_v1. items
 CREATE TABLE IF NOT EXISTS `items` (
   `name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `label` varchar(50) COLLATE utf8mb4_bin NOT NULL,
@@ -632,7 +632,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   PRIMARY KEY (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.items : ~113 rows (environ)
+-- Listage des données de la table sneakylife_v1.items : ~113 rows (environ)
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
 INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('armor', 'Kevlar', 5, 0, 1),
@@ -750,14 +750,14 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('whitefish', 'Poisson blanc', 3, 0, 1);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. jobs
+-- Listage de la structure de la table sneakylife_v1. jobs
 CREATE TABLE IF NOT EXISTS `jobs` (
   `name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `label` varchar(255) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.jobs : ~65 rows (environ)
+-- Listage des données de la table sneakylife_v1.jobs : ~65 rows (environ)
 /*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
 INSERT INTO `jobs` (`name`, `label`) VALUES
 	('410', '410'),
@@ -827,7 +827,7 @@ INSERT INTO `jobs` (`name`, `label`) VALUES
 	('zetas', 'Zetas');
 /*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. job_grades
+-- Listage de la structure de la table sneakylife_v1. job_grades
 CREATE TABLE IF NOT EXISTS `job_grades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `job_name` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
@@ -840,7 +840,7 @@ CREATE TABLE IF NOT EXISTS `job_grades` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1068 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.job_grades : ~320 rows (environ)
+-- Listage des données de la table sneakylife_v1.job_grades : ~320 rows (environ)
 /*!40000 ALTER TABLE `job_grades` DISABLE KEYS */;
 INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
 	(43, 'mecano', 0, 'recrue', 'Recrue', 70, '{}', '{}'),
@@ -1165,7 +1165,7 @@ INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, 
 	(1067, 'castillo', 7, 'boss', 'El Commandante', 95, '{}', '{}');
 /*!40000 ALTER TABLE `job_grades` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. lab_list
+-- Listage de la structure de la table sneakylife_v1. lab_list
 CREATE TABLE IF NOT EXISTS `lab_list` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(150) DEFAULT NULL,
@@ -1178,7 +1178,7 @@ CREATE TABLE IF NOT EXISTS `lab_list` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.lab_list : ~9 rows (environ)
+-- Listage des données de la table sneakylife_v1.lab_list : ~9 rows (environ)
 /*!40000 ALTER TABLE `lab_list` DISABLE KEYS */;
 INSERT INTO `lab_list` (`id`, `type`, `name`, `price`, `pos`, `owner`, `ownerName`, `time`) VALUES
 	(61, 'lab_weed', 'Laboratoire de Weed', 35000, '{"x":-1104.1396484375,"y":-2248.319580078125,"z":13.19552612304687}', 'families', 'Families', 1633116606),
@@ -1192,14 +1192,14 @@ INSERT INTO `lab_list` (`id`, `type`, `name`, `price`, `pos`, `owner`, `ownerNam
 	(91, 'lab_coke', 'Laboratoire de Coke', 35000, '{"z":195.36134338378907,"x":-38.63895797729492,"y":1908.240478515625}', NULL, NULL, 1639771333);
 /*!40000 ALTER TABLE `lab_list` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. licenses
+-- Listage de la structure de la table sneakylife_v1. licenses
 CREATE TABLE IF NOT EXISTS `licenses` (
   `type` varchar(60) COLLATE utf8mb4_bin NOT NULL,
   `label` varchar(60) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`type`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.licenses : ~5 rows (environ)
+-- Listage des données de la table sneakylife_v1.licenses : ~5 rows (environ)
 /*!40000 ALTER TABLE `licenses` DISABLE KEYS */;
 INSERT INTO `licenses` (`type`, `label`) VALUES
 	('dmv', 'Code de la route'),
@@ -1209,7 +1209,7 @@ INSERT INTO `licenses` (`type`, `label`) VALUES
 	('weapon', 'Permis de port d\'arme');
 /*!40000 ALTER TABLE `licenses` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. mdt_reports
+-- Listage de la structure de la table sneakylife_v1. mdt_reports
 CREATE TABLE IF NOT EXISTS `mdt_reports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) DEFAULT NULL,
@@ -1222,11 +1222,11 @@ CREATE TABLE IF NOT EXISTS `mdt_reports` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.mdt_reports : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.mdt_reports : ~0 rows (environ)
 /*!40000 ALTER TABLE `mdt_reports` DISABLE KEYS */;
 /*!40000 ALTER TABLE `mdt_reports` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. mdt_warrants
+-- Listage de la structure de la table sneakylife_v1. mdt_warrants
 CREATE TABLE IF NOT EXISTS `mdt_warrants` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -1241,11 +1241,11 @@ CREATE TABLE IF NOT EXISTS `mdt_warrants` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.mdt_warrants : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.mdt_warrants : ~0 rows (environ)
 /*!40000 ALTER TABLE `mdt_warrants` DISABLE KEYS */;
 /*!40000 ALTER TABLE `mdt_warrants` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. motodealer_vehicles
+-- Listage de la structure de la table sneakylife_v1. motodealer_vehicles
 CREATE TABLE IF NOT EXISTS `motodealer_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -1254,11 +1254,11 @@ CREATE TABLE IF NOT EXISTS `motodealer_vehicles` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.motodealer_vehicles : 0 rows
+-- Listage des données de la table sneakylife_v1.motodealer_vehicles : 0 rows
 /*!40000 ALTER TABLE `motodealer_vehicles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `motodealer_vehicles` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. open_car
+-- Listage de la structure de la table sneakylife_v1. open_car
 CREATE TABLE IF NOT EXISTS `open_car` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
@@ -1270,11 +1270,11 @@ CREATE TABLE IF NOT EXISTS `open_car` (
   KEY `index_open_car_owner_plate` (`owner`,`plate`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.open_car : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.open_car : ~0 rows (environ)
 /*!40000 ALTER TABLE `open_car` DISABLE KEYS */;
 /*!40000 ALTER TABLE `open_car` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. owned_vehicles
+-- Listage de la structure de la table sneakylife_v1. owned_vehicles
 CREATE TABLE IF NOT EXISTS `owned_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` longtext NOT NULL,
@@ -1288,11 +1288,11 @@ CREATE TABLE IF NOT EXISTS `owned_vehicles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.owned_vehicles : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.owned_vehicles : ~0 rows (environ)
 /*!40000 ALTER TABLE `owned_vehicles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `owned_vehicles` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. phone_app_chat
+-- Listage de la structure de la table sneakylife_v1. phone_app_chat
 CREATE TABLE IF NOT EXISTS `phone_app_chat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `channel` varchar(20) CHARACTER SET utf8 NOT NULL,
@@ -1302,11 +1302,11 @@ CREATE TABLE IF NOT EXISTS `phone_app_chat` (
   KEY `index_phone_app_chat_channel` (`channel`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.phone_app_chat : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.phone_app_chat : ~0 rows (environ)
 /*!40000 ALTER TABLE `phone_app_chat` DISABLE KEYS */;
 /*!40000 ALTER TABLE `phone_app_chat` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. phone_calls
+-- Listage de la structure de la table sneakylife_v1. phone_calls
 CREATE TABLE IF NOT EXISTS `phone_calls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` varchar(10) COLLATE utf8mb4_bin NOT NULL COMMENT 'Num tel proprio',
@@ -1319,11 +1319,11 @@ CREATE TABLE IF NOT EXISTS `phone_calls` (
   KEY `index_phone_calls_owner_num` (`owner`,`num`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.phone_calls : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.phone_calls : ~0 rows (environ)
 /*!40000 ALTER TABLE `phone_calls` DISABLE KEYS */;
 /*!40000 ALTER TABLE `phone_calls` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. phone_messages
+-- Listage de la structure de la table sneakylife_v1. phone_messages
 CREATE TABLE IF NOT EXISTS `phone_messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `transmitter` varchar(10) COLLATE utf8mb4_bin NOT NULL,
@@ -1337,11 +1337,11 @@ CREATE TABLE IF NOT EXISTS `phone_messages` (
   KEY `index_phone_messages_receiver_transmitter` (`receiver`,`transmitter`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.phone_messages : 0 rows
+-- Listage des données de la table sneakylife_v1.phone_messages : 0 rows
 /*!40000 ALTER TABLE `phone_messages` DISABLE KEYS */;
 /*!40000 ALTER TABLE `phone_messages` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. phone_users_contacts
+-- Listage de la structure de la table sneakylife_v1. phone_users_contacts
 CREATE TABLE IF NOT EXISTS `phone_users_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
@@ -1351,22 +1351,22 @@ CREATE TABLE IF NOT EXISTS `phone_users_contacts` (
   KEY `index_phone_users_contacts_identifier` (`identifier`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.phone_users_contacts : 0 rows
+-- Listage des données de la table sneakylife_v1.phone_users_contacts : 0 rows
 /*!40000 ALTER TABLE `phone_users_contacts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `phone_users_contacts` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. playerstattoos
+-- Listage de la structure de la table sneakylife_v1. playerstattoos
 CREATE TABLE IF NOT EXISTS `playerstattoos` (
   `identifier` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `tattoos` longtext COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`identifier`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.playerstattoos : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.playerstattoos : ~0 rows (environ)
 /*!40000 ALTER TABLE `playerstattoos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `playerstattoos` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. players_ban
+-- Listage de la structure de la table sneakylife_v1. players_ban
 CREATE TABLE IF NOT EXISTS `players_ban` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `License` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -1383,11 +1383,11 @@ CREATE TABLE IF NOT EXISTS `players_ban` (
   KEY `ID` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.players_ban : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.players_ban : ~0 rows (environ)
 /*!40000 ALTER TABLE `players_ban` DISABLE KEYS */;
 /*!40000 ALTER TABLE `players_ban` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. players_banhistory
+-- Listage de la structure de la table sneakylife_v1. players_banhistory
 CREATE TABLE IF NOT EXISTS `players_banhistory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) DEFAULT NULL,
@@ -1398,11 +1398,11 @@ CREATE TABLE IF NOT EXISTS `players_banhistory` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.players_banhistory : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.players_banhistory : ~0 rows (environ)
 /*!40000 ALTER TABLE `players_banhistory` DISABLE KEYS */;
 /*!40000 ALTER TABLE `players_banhistory` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. players_clothesitem
+-- Listage de la structure de la table sneakylife_v1. players_clothesitem
 CREATE TABLE IF NOT EXISTS `players_clothesitem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(60) NOT NULL,
@@ -1412,11 +1412,11 @@ CREATE TABLE IF NOT EXISTS `players_clothesitem` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.players_clothesitem : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.players_clothesitem : ~0 rows (environ)
 /*!40000 ALTER TABLE `players_clothesitem` DISABLE KEYS */;
 /*!40000 ALTER TABLE `players_clothesitem` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. players_warns
+-- Listage de la structure de la table sneakylife_v1. players_warns
 CREATE TABLE IF NOT EXISTS `players_warns` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) DEFAULT NULL,
@@ -1426,11 +1426,11 @@ CREATE TABLE IF NOT EXISTS `players_warns` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.players_warns : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.players_warns : ~0 rows (environ)
 /*!40000 ALTER TABLE `players_warns` DISABLE KEYS */;
 /*!40000 ALTER TABLE `players_warns` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. property
+-- Listage de la structure de la table sneakylife_v1. property
 CREATE TABLE IF NOT EXISTS `property` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` varchar(80) NOT NULL,
@@ -1444,11 +1444,11 @@ CREATE TABLE IF NOT EXISTS `property` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.property : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.property : ~0 rows (environ)
 /*!40000 ALTER TABLE `property` DISABLE KEYS */;
 /*!40000 ALTER TABLE `property` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. property_inventory
+-- Listage de la structure de la table sneakylife_v1. property_inventory
 CREATE TABLE IF NOT EXISTS `property_inventory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `propertyId` int(11) DEFAULT NULL,
@@ -1460,11 +1460,11 @@ CREATE TABLE IF NOT EXISTS `property_inventory` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.property_inventory : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.property_inventory : ~0 rows (environ)
 /*!40000 ALTER TABLE `property_inventory` DISABLE KEYS */;
 /*!40000 ALTER TABLE `property_inventory` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. tebex_accounts
+-- Listage de la structure de la table sneakylife_v1. tebex_accounts
 CREATE TABLE IF NOT EXISTS `tebex_accounts` (
   `steam` varchar(50) NOT NULL DEFAULT '0',
   `fivem` varchar(50) NOT NULL DEFAULT '0',
@@ -1473,11 +1473,11 @@ CREATE TABLE IF NOT EXISTS `tebex_accounts` (
   PRIMARY KEY (`steam`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.tebex_accounts : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.tebex_accounts : ~0 rows (environ)
 /*!40000 ALTER TABLE `tebex_accounts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tebex_accounts` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. tebex_boutique
+-- Listage de la structure de la table sneakylife_v1. tebex_boutique
 CREATE TABLE IF NOT EXISTS `tebex_boutique` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category` int(11) NOT NULL,
@@ -1491,7 +1491,7 @@ CREATE TABLE IF NOT EXISTS `tebex_boutique` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.tebex_boutique : ~42 rows (environ)
+-- Listage des données de la table sneakylife_v1.tebex_boutique : ~42 rows (environ)
 /*!40000 ALTER TABLE `tebex_boutique` DISABLE KEYS */;
 INSERT INTO `tebex_boutique` (`id`, `category`, `name`, `descriptions`, `price`, `is_enabled`, `action`, `created_at`, `updated_at`) VALUES
 	(3, 3, 'Caisse ~y~Gold', 'Contient : ', 300, 1, ' {"case":[{"type":"case_1","name":"global_1"}]}\r\n\r\n', '2021-04-21 11:38:05', '2021-04-21 11:38:05'),
@@ -1538,7 +1538,7 @@ INSERT INTO `tebex_boutique` (`id`, `category`, `name`, `descriptions`, `price`,
 	(45, 2, 'Pagani Huayra', 'zondacinque', 4200, 1, ' {"vehicles":[{"type":"zondacinque","name":"zondacinque"}]}', '2021-05-23 21:58:19', '2021-05-23 21:58:19');
 /*!40000 ALTER TABLE `tebex_boutique` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. tebex_boutique_category
+-- Listage de la structure de la table sneakylife_v1. tebex_boutique_category
 CREATE TABLE IF NOT EXISTS `tebex_boutique_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
@@ -1549,7 +1549,7 @@ CREATE TABLE IF NOT EXISTS `tebex_boutique_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.tebex_boutique_category : ~4 rows (environ)
+-- Listage des données de la table sneakylife_v1.tebex_boutique_category : ~4 rows (environ)
 /*!40000 ALTER TABLE `tebex_boutique_category` DISABLE KEYS */;
 INSERT INTO `tebex_boutique_category` (`id`, `name`, `descriptions`, `is_enabled`, `created_at`, `updated_at`) VALUES
 	(1, 'VIP', 'Vip', 0, '2020-10-31 21:28:00', '2020-10-31 21:28:00'),
@@ -1558,7 +1558,7 @@ INSERT INTO `tebex_boutique_category` (`id`, `name`, `descriptions`, `is_enabled
 	(4, 'Roue de la fortune', 'Cette catégorie consiste à acheter des tickets pour ~b~la roue de la fortune~s~ au Casino', 0, '2020-10-31 21:28:00', '2020-10-31 21:28:00');
 /*!40000 ALTER TABLE `tebex_boutique_category` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. tebex_commands
+-- Listage de la structure de la table sneakylife_v1. tebex_commands
 CREATE TABLE IF NOT EXISTS `tebex_commands` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `fivem` varchar(50) NOT NULL DEFAULT '0',
@@ -1568,11 +1568,11 @@ CREATE TABLE IF NOT EXISTS `tebex_commands` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.tebex_commands : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.tebex_commands : ~0 rows (environ)
 /*!40000 ALTER TABLE `tebex_commands` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tebex_commands` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. tebex_logs_commands
+-- Listage de la structure de la table sneakylife_v1. tebex_logs_commands
 CREATE TABLE IF NOT EXISTS `tebex_logs_commands` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `fivem` varchar(50) NOT NULL DEFAULT '0',
@@ -1582,11 +1582,11 @@ CREATE TABLE IF NOT EXISTS `tebex_logs_commands` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.tebex_logs_commands : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.tebex_logs_commands : ~0 rows (environ)
 /*!40000 ALTER TABLE `tebex_logs_commands` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tebex_logs_commands` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. tebex_players_wallet
+-- Listage de la structure de la table sneakylife_v1. tebex_players_wallet
 CREATE TABLE IF NOT EXISTS `tebex_players_wallet` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifiers` text NOT NULL,
@@ -1599,11 +1599,11 @@ CREATE TABLE IF NOT EXISTS `tebex_players_wallet` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Listage des données de la table california_dev.tebex_players_wallet : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.tebex_players_wallet : ~0 rows (environ)
 /*!40000 ALTER TABLE `tebex_players_wallet` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tebex_players_wallet` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. truck_inventory2
+-- Listage de la structure de la table sneakylife_v1. truck_inventory2
 CREATE TABLE IF NOT EXISTS `truck_inventory2` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `plate` varchar(8) NOT NULL,
@@ -1613,11 +1613,11 @@ CREATE TABLE IF NOT EXISTS `truck_inventory2` (
   UNIQUE KEY `plate` (`plate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Listage des données de la table california_dev.truck_inventory2 : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.truck_inventory2 : ~0 rows (environ)
 /*!40000 ALTER TABLE `truck_inventory2` DISABLE KEYS */;
 /*!40000 ALTER TABLE `truck_inventory2` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. users
+-- Listage de la structure de la table sneakylife_v1. users
 CREATE TABLE IF NOT EXISTS `users` (
   `character_id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) COLLATE utf8mb4_bin NOT NULL,
@@ -1644,11 +1644,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.users : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.users : ~0 rows (environ)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. user_convictions
+-- Listage de la structure de la table sneakylife_v1. user_convictions
 CREATE TABLE IF NOT EXISTS `user_convictions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) DEFAULT NULL,
@@ -1657,11 +1657,11 @@ CREATE TABLE IF NOT EXISTS `user_convictions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.user_convictions : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.user_convictions : ~0 rows (environ)
 /*!40000 ALTER TABLE `user_convictions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_convictions` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. user_licenses
+-- Listage de la structure de la table sneakylife_v1. user_licenses
 CREATE TABLE IF NOT EXISTS `user_licenses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(60) COLLATE utf8mb4_bin NOT NULL,
@@ -1669,11 +1669,11 @@ CREATE TABLE IF NOT EXISTS `user_licenses` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.user_licenses : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.user_licenses : ~0 rows (environ)
 /*!40000 ALTER TABLE `user_licenses` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_licenses` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. user_mdt
+-- Listage de la structure de la table sneakylife_v1. user_mdt
 CREATE TABLE IF NOT EXISTS `user_mdt` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) DEFAULT NULL,
@@ -1683,11 +1683,11 @@ CREATE TABLE IF NOT EXISTS `user_mdt` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.user_mdt : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.user_mdt : ~0 rows (environ)
 /*!40000 ALTER TABLE `user_mdt` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_mdt` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. vehicles
+-- Listage de la structure de la table sneakylife_v1. vehicles
 CREATE TABLE IF NOT EXISTS `vehicles` (
   `model` varchar(60) COLLATE utf8mb4_bin NOT NULL,
   `name` varchar(60) COLLATE utf8mb4_bin NOT NULL,
@@ -1696,7 +1696,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   PRIMARY KEY (`model`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.vehicles : ~402 rows (environ)
+-- Listage des données de la table sneakylife_v1.vehicles : ~402 rows (environ)
 /*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
 INSERT INTO `vehicles` (`model`, `name`, `price`, `category`) VALUES
 	('adder', 'adder', 95000, 'super'),
@@ -2103,7 +2103,7 @@ INSERT INTO `vehicles` (`model`, `name`, `price`, `category`) VALUES
 	('ztype', 'ztype', 57000, 'sportsclassics');
 /*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. vehicle_categories
+-- Listage de la structure de la table sneakylife_v1. vehicle_categories
 CREATE TABLE IF NOT EXISTS `vehicle_categories` (
   `name` varchar(60) COLLATE utf8mb4_bin NOT NULL,
   `label` varchar(60) COLLATE utf8mb4_bin NOT NULL,
@@ -2111,7 +2111,7 @@ CREATE TABLE IF NOT EXISTS `vehicle_categories` (
   PRIMARY KEY (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table california_dev.vehicle_categories : ~14 rows (environ)
+-- Listage des données de la table sneakylife_v1.vehicle_categories : ~14 rows (environ)
 /*!40000 ALTER TABLE `vehicle_categories` DISABLE KEYS */;
 INSERT INTO `vehicle_categories` (`name`, `label`, `society`) VALUES
 	('avionfdp', 'Avion - Hélico', 'planeshop'),
@@ -2130,7 +2130,7 @@ INSERT INTO `vehicle_categories` (`name`, `label`, `society`) VALUES
 	('vans', 'Vans', 'carshop');
 /*!40000 ALTER TABLE `vehicle_categories` ENABLE KEYS */;
 
--- Listage de la structure de la table california_dev. vehicle_mdt
+-- Listage de la structure de la table sneakylife_v1. vehicle_mdt
 CREATE TABLE IF NOT EXISTS `vehicle_mdt` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `plate` varchar(255) DEFAULT NULL,
@@ -2139,7 +2139,7 @@ CREATE TABLE IF NOT EXISTS `vehicle_mdt` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table california_dev.vehicle_mdt : ~0 rows (environ)
+-- Listage des données de la table sneakylife_v1.vehicle_mdt : ~0 rows (environ)
 /*!40000 ALTER TABLE `vehicle_mdt` DISABLE KEYS */;
 /*!40000 ALTER TABLE `vehicle_mdt` ENABLE KEYS */;
 
