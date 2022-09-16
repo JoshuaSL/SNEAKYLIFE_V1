@@ -26,7 +26,7 @@ $(document).ready(function() {
                     allInputs[data.id] = $("#" + data.id).val() || "";
                 }
 
-                $.post('http://cTV/onEntry', JSON.stringify({
+                $.post('http://tv/onEntry', JSON.stringify({
                     id: 1,
                     inputs: allInputs
                 }));
@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     $(document).keydown(function(event) {
         if (event.which == 27 && $(".formInput").is(":visible")) {
-            $.post('http://cTV/onEntry', JSON.stringify({}));
+            $.post('http://tv/onEntry', JSON.stringify({}));
             formFunction();
         }
     });
