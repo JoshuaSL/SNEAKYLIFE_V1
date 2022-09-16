@@ -1,0 +1,94 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+.formInput {
+    position: relative;
+    background: #FFFFFF;
+    width: 750px;
+    border-radius: 12px;
+    box-shadow: 0 0 185px rgba(0, 0, 0, 0.755);
+    box-sizing: border-box;
+    margin: 200px auto 20px;
+}
+
+.form-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 0 20px;
+}
+
+.form-group:last-child {
+    margin: 0;
+}
+
+.form-group label {
+    display: block;
+    margin: 0 0 10px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 2;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+
+.form-group input {
+    outline: none;
+    display: block;
+    margin: 0 0 50px;
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.624);
+    box-sizing: border-box;
+    padding: 12px 20px;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    line-height: inherit;
+    transition: 0.3s ease;
+}
+
+.form-group input:focus {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.form-group button {
+    outline: none;
+    background: #00a6d0;
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 20px;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    line-height: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.form-panel {
+    padding: 30px 60px 30px 60px;
+    box-sizing: border-box;
+}
+
+.form-header {
+    margin: 0 0 40px;
+}
+
+.form-header h1 {
+    padding: 4px 0;
+    color: #000000;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
