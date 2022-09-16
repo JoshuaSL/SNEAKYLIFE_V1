@@ -6,7 +6,6 @@ local tshirtIndex = 1
 local pantalonIndex = 1
 local chaussuresIndex = 1
 
-
 local compactionIndexes = {
 	["peelotorse"] = 1,
 	["peelotshirt"] = 1,
