@@ -261,7 +261,7 @@ function Subtitle(text, time)
 end
 
 Keys.Register('F1','OpenBoutiqueMenuRageUIMenu', 'Boutique ~b~Sneaky~s~Life', function()
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then 
+    if not exports.inventaire:GetStateInventory() and not GetStateFishing() then 
         if sBoutique.Menu then 
             return 
         end

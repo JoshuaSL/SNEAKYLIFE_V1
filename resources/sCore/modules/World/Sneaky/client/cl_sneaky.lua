@@ -311,7 +311,7 @@ TriggerEvent('chat:addSuggestion', '/' .. 'me', 'Affiche une action au dessus de
 local handsup = false
 local dict = "missminuteman_1ig_2"
 RegisterCommand('+handsup', function()
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then 
+    if not exports.inventaire:GetStateInventory() and not GetStateFishing() then 
         if not handsup then
             TaskPlayAnim(PlayerPedId(), dict, "handsup_enter", 8.0, 8.0, -1, 50, 0, false, false, false)
             handsup = true
@@ -341,7 +341,7 @@ end
 
 Ragdoll = false
 RegisterCommand('+ragdoll', function()
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then
+    if not exports.inventaire:GetStateInventory() and not GetStateFishing() then
         Ragdoll = not Ragdoll
     end
 end)
@@ -758,7 +758,7 @@ end
 
 Crouch = false
 RegisterCommand('+crouch', function()
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then
+    if not exports.inventaire:GetStateInventory() and not GetStateFishing() then
         if Crouch then
             ClearPedTasks(PlayerPedId())
             RemoveAnimSet("move_ped_crouched")

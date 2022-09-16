@@ -1801,7 +1801,7 @@ function OpenPersonalMenuRageUIMenu()
 end
 
 Keys.Register('F5','F5', 'Menu Personnel ', function()
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then 
+    if not exports.inventaire:GetStateInventory() and not GetStateFishing() then 
         vip = GetVIP()
         OpenPersonalMenuRageUIMenu()
     end

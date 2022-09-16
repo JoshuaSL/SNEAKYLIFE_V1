@@ -299,7 +299,7 @@ local function ad()
         end
         RegisterKeyMapping(string.format('animBind%s', ae),string.format("Jouer l'animation n°%s", ae),"keyboard", string.format("NUMPAD%s", ae))
         RegisterCommand(string.format('animBind%s', ae), function()
-            if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() and not exports.radio:GetDisplayRadio() then
+            if not exports.inventaire:GetStateInventory() and not GetStateFishing() then
                 if l[ae].Assign then
                     if l[ae].Anim.Dict == "Demarches" then
                         Y(l[ae].Anim)
@@ -520,7 +520,7 @@ end
 
 RegisterKeyMapping("animmenu", "Ouvrir le menu des animations (Bind)","keyboard", "K")
 RegisterCommand("animmenu", function() 
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then
+    if not exports.inventaire:GetStateInventory() and not GetStateFishing() then
         agggg() 
     end
 end)

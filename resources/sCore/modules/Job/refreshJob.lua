@@ -20,7 +20,7 @@ AddEventHandler('Sneakyesx:setJob', function(job)
 end)
 
 Keys.Register('F6','InteractionsJob', 'Menu job', function()
-    if not bloquertouchejojo and not toucheBloqueKadir and not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() then
+    if not bloquertouchejojo and not toucheBloqueKadir and not exports.inventaire:GetStateInventory() then
         if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "police" or ESX.PlayerData.job.name == "lssd" then
             if PoliceJob[ESX.PlayerData.job.name] == nil then return end
             if CheckServiceLspdLssd() then
@@ -30,7 +30,7 @@ Keys.Register('F6','InteractionsJob', 'Menu job', function()
             end
         end
     end
-    if not toucheBloqueKadir and not bloquertouchejojo and not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() then
+    if not toucheBloqueKadir and not bloquertouchejojo and not exports.inventaire:GetStateInventory() then
         if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == 'ambulance' then
             if CheckServiceAmbulance() then
                 OpenAmbulanceActionMenuRageUIMenu()

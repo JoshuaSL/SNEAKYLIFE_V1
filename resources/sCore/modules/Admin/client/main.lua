@@ -1050,7 +1050,7 @@ Citizen.CreateThread(function()
 end)
 
 Keys.Register('F10','F10', 'Menu Administrateur ', function()
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then
+    if not exports.inventaire:GetStateInventory() and not GetStateFishing() then
         if (ESX.GetPlayerData()['group'] == "_dev") or (ESX.GetPlayerData()['group']) == "gs" or (ESX.GetPlayerData()['group'] == "superadmin") or (ESX.GetPlayerData()['group'] == "admin") then
             TriggerServerEvent("sAdmin:CheckGroup",ESX.GetPlayerData()['group']) 
             OpenTestRageUIMenu()
@@ -1581,7 +1581,7 @@ end
 
 RegisterKeyMapping("spectate", "Mode Spectate", "keyboard", "O")
 RegisterCommand("spectate", function()
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then 
+    if not exports.inventaire:GetStateInventory() and not GetStateFishing() then 
         if (ESX.GetPlayerData()['group'] == "_dev") or (ESX.GetPlayerData()["group"] == "gs") or (ESX.GetPlayerData()['group'] == "superadmin") or (ESX.GetPlayerData()['group'] == "admin") then
             Admin:Spectate()
         end

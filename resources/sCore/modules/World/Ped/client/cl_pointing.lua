@@ -39,7 +39,7 @@ Citizen.CreateThread(function()
         end
 
         if not keyPressed then
-            if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() then
+            if not exports.inventaire:GetStateInventory() then
                 if IsControlPressed(1, 29) and not mp_pointing and IsPedOnFoot(PlayerPedId()) then
                     Citizen.Wait(200)
                     if not IsControlPressed(1, 29) then

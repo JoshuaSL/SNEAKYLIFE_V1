@@ -119,24 +119,22 @@ Citizen.CreateThread(function()
 
   while true do
     Wait(50)
-    if not exports.phone:GetStatePhone() then
-      if not chatInputActive then
-        if IsControlPressed(0, 245) then
-          chatInputActive = true
-          chatInputActivating = true
+    if not chatInputActive then
+      if IsControlPressed(0, 245) then
+        chatInputActive = true
+        chatInputActivating = true
 
-          SendNUIMessage({
-            type = 'ON_OPEN'
-          })
-        end
+        SendNUIMessage({
+          type = 'ON_OPEN'
+        })
       end
+    end
 
-      if chatInputActivating then
-        if not IsControlPressed(0, 245) then
-          SetNuiFocus(true)
+    if chatInputActivating then
+      if not IsControlPressed(0, 245) then
+        SetNuiFocus(true)
 
-          chatInputActivating = false
-        end
+        chatInputActivating = false
       end
     end
   end

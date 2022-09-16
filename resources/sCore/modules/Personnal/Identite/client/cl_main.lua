@@ -73,7 +73,7 @@ function OpenCloseVehicle()
 end
 
 Keys.Register('U','U', 'Ouvrir votre véhicule', function()
-	if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not GetStateFishing() then
+	if not exports.inventaire:GetStateInventory() and not GetStateFishing() then
      	OpenCloseVehicle()
 	end
  end)

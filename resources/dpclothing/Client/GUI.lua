@@ -262,7 +262,7 @@ Citizen.CreateThread(function()
 	while true do 
 		if openedGUI then 
 			Wait(0)
-			if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() and not exports.sCore:GetStateFishing() then
+			if not exports.inventaire:GetStateInventory() and not exports.sCore:GetStateFishing() then
 				local Ped = PlayerPedId() 
 				if Check(Ped) then 
 					DrawGUI() 

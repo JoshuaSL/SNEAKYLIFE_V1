@@ -77,7 +77,7 @@ end
 local count = 0
 
 RegisterCommand("trunk",function()
-    if not exports.phone:GetStatePhone() and not exports.inventaire:GetStateInventory() then
+    if not exports.inventaire:GetStateInventory() then
         if not IsPedInAnyVehicle(PlayerPedId(), true) then
             openmenuvehicle()
         end
