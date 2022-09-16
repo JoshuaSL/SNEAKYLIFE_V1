@@ -5,4 +5,4 @@ Dans le fichier patch.lua, il y a certains patchs que des gens m'ont fait remont
 
 La prochaine fois tu réfléchiras à tes actes **!AzoKi#9282**.
 
-Aucun support ne sera fourni pour cette base.
+Aucun support ne sera fourni pour cette base en MP ( https://discord.gg/SjJ4eABSb4) pour tout renseignement.
