@@ -193,7 +193,7 @@ AddEventHandler("kEntrepot:enterStock", function(table)
     end
 
     if not table or table == nil then return end
-    exports.pmavoice:updateRoutingBucket(source,table.Bucket)
+    exports["pma-voice"]:updateRoutingBucket(source,table.Bucket)
     exports.sFramework:onSavedPlayer(false, xPlayer.identifier)
     TriggerClientEvent("kEntrepot:returnEnterStock", source, table)
 end)
@@ -211,7 +211,7 @@ AddEventHandler("kEntrepot:exitStock", function(table)
     end
 
     if not table or table == nil then return end
-    exports.pmavoice:updateRoutingBucket(source,0)
+    exports["pma-voice"]:updateRoutingBucket(source,0)
     exports.sFramework:onSavedPlayer(true, xPlayer.identifier)
     TriggerClientEvent("kEntrepot:returnExitStock", source, table)
 end)

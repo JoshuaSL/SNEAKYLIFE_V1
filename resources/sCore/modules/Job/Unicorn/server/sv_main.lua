@@ -34,5 +34,5 @@ AddEventHandler("instanceunicorn:reset", function(set)
     local _src = source
 	TriggerEvent("ratelimit", _src, "instanceunicorn:reset")
     local src = source
-    exports.pmavoice:updateRoutingBucket(src,set)
+    exports["pma-voice"]:updateRoutingBucket(src,set)
 end)

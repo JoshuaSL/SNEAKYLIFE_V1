@@ -24,7 +24,7 @@ RegisterServerEvent("instancecreator:set")
 AddEventHandler("instancecreator:set", function(set)
     local _src = source
 	TriggerEvent("ratelimit", _src, "instancecreator:set")
-    exports.pmavoice:updateRoutingBucket(source,source)
+    exports["pma-voice"]:updateRoutingBucket(source,source)
 end)
 
 local instances2 = {}
@@ -33,7 +33,7 @@ AddEventHandler("instancecreator:reset", function(set)
     local _src = source
 	TriggerEvent("ratelimit", _src, "instancecreator:reset")
     local src = source
-    exports.pmavoice:updateRoutingBucket(source,set)
+    exports["pma-voice"]:updateRoutingBucket(source,set)
 end)
 
 

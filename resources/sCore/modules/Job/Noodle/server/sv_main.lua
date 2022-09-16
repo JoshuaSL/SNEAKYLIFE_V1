@@ -34,5 +34,5 @@ AddEventHandler("instancenoodle:reset", function(set)
     local _src = source
 	TriggerEvent("ratelimit", _src, "instancenoodle:reset")
     local src = source
-    exports.pmavoice:updateRoutingBucket(src,set)
+    exports["pma-voice"]:updateRoutingBucket(src,set)
 end)

@@ -188,7 +188,7 @@ AddEventHandler("sLaboratoire:Enter", function(pos, table)
         playerEnterLab[xPlayer.identifier].state = true
         playerEnterLab[xPlayer.identifier].lastLab = table
         playerEnterLab[xPlayer.identifier].lastLab.lastPos = pos
-        exports.pmavoice:updateRoutingBucket(source,table.id)
+        exports["pma-voice"]:updateRoutingBucket(source,table.id)
         exports.sFramework:onSavedPlayer(false, xPlayer.identifier)
         TriggerClientEvent("sLaboratoire:returnEnter", source, table)
    end
@@ -203,7 +203,7 @@ AddEventHandler("sLaboratoire:Visite", function(pos, table)
         playerEnterLab[xPlayer.identifier].state = true
         playerEnterLab[xPlayer.identifier].lastLab = table
         playerEnterLab[xPlayer.identifier].lastLab.lastPos = pos
-        exports.pmavoice:updateRoutingBucket(source,table.id)
+        exports["pma-voice"]:updateRoutingBucket(source,table.id)
         exports.sFramework:onSavedPlayer(false, xPlayer.identifier)
         TriggerClientEvent("sLaboratoire:returnVisite", source, table)
    end
@@ -223,7 +223,7 @@ AddEventHandler("sLaboratoire:Exit", function()
             })
             return
         end
-        exports.pmavoice:updateRoutingBucket(source,0)
+        exports["pma-voice"]:updateRoutingBucket(source,0)
         exports.sFramework:onSavedPlayer(true, xPlayer.identifier)
         TriggerClientEvent("sLaboratoire:returnExit", source)
      end
