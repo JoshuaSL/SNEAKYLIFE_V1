@@ -1,11 +1,4 @@
-"https://mega.nz/folder/Z6ogjSya#kEDInUTcGj8UaslQpJ5cfA" -- magasin de vêtement
-
-"https://mega.nz/folder/8uhTmSzC#kNI6nt5IIkgYAfT0SG3pMw" -- inventaire debug
-
 --Patchs : 
-
--- Drugs sell remplacer client et server
-
 
 -- Identity remplacer client et server 
 
