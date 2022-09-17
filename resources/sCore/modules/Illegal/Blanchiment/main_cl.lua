@@ -2,7 +2,7 @@ ESX = nil
 Citizen.CreateThread(function()
     while ESX == nil do
         Wait(10)
-        TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+        TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
     end
     while ESX.GetPlayerData().job2 == nil do
         Citizen.Wait(10)
@@ -111,7 +111,7 @@ Citizen.CreateThread(function()
 
     while ESX == nil do
         Wait(10)
-        TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+        TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
     end
 
     while ESX.GetPlayerData().job2 == nil do

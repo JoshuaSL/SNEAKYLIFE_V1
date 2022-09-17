@@ -50,8 +50,8 @@ function CreatePlayer(source, identifier, userData)
 		if type(level) == "number" then
 			self.permission_level = level
 			print("a")
-			TriggerEvent('Sneakyesx:setLevel', self.source, self.permission_level, lastLevel)
-			self.triggerEvent('Sneakyesx:setLevel', self.permission_level, lastLevel)
+			TriggerEvent('esx:setLevel', self.source, self.permission_level, lastLevel)
+			self.triggerEvent('esx:setLevel', self.permission_level, lastLevel)
 		end
 	end
 
@@ -71,8 +71,8 @@ function CreatePlayer(source, identifier, userData)
 
 			ExecuteCommand(('add_principal identifier.%s group.%s'):format(self.identifier, group))
 
-			TriggerEvent('Sneakyesx:setGroup', self.source, self.permission_group, lastGroup)
-			self.triggerEvent('Sneakyesx:setGroup', self.permission_group, lastGroup)
+			TriggerEvent('esx:setGroup', self.source, self.permission_group, lastGroup)
+			self.triggerEvent('esx:setGroup', self.permission_group, lastGroup)
 		else
 			print(('[^3WARNING^7] Ignoring invalid .setGroup() usage for "%s"'):format(self.identifier))
 		end
@@ -167,7 +167,7 @@ function CreatePlayer(source, identifier, userData)
 
 			if account then
 				account.money = money
-				self.triggerEvent('Sneakyesx:setAccountMoney', account)
+				self.triggerEvent('esx:setAccountMoney', account)
 			end
 		end
 	end
@@ -181,7 +181,7 @@ function CreatePlayer(source, identifier, userData)
 			if account then
 				local newMoney = ESX.Math.Check(account.money + money)
 				account.money = newMoney
-				self.triggerEvent('Sneakyesx:setAccountMoney', account)
+				self.triggerEvent('esx:setAccountMoney', account)
 			end
 		end
 	end
@@ -195,7 +195,7 @@ function CreatePlayer(source, identifier, userData)
 			if account then
 				local newMoney = ESX.Math.Check(account.money - money)
 				account.money = newMoney
-				self.triggerEvent('Sneakyesx:setAccountMoney', account)
+				self.triggerEvent('esx:setAccountMoney', account)
 			end
 		end
 	end
@@ -249,16 +249,16 @@ function CreatePlayer(source, identifier, userData)
 			}
 
 			table.insert(self.inventory, item)
-			TriggerEvent('Sneakyesx:onAddInventoryItem', self.source, item)
-			self.triggerEvent('Sneakyesx:addInventoryItem', item)
+			TriggerEvent('esx:onAddInventoryItem', self.source, item)
+			self.triggerEvent('esx:addInventoryItem', item)
 		else
 			if item and itemIndex then
 				local newCount = item.count + count
 
 				if newCount > 0 then
 					item.count = newCount
-					TriggerEvent('Sneakyesx:onUpdateItemCount', self.source, true, item.name, newCount)
-					self.triggerEvent('Sneakyesx:updateItemCount', true, item.name, newCount)
+					TriggerEvent('esx:onUpdateItemCount', self.source, true, item.name, newCount)
+					self.triggerEvent('esx:updateItemCount', true, item.name, newCount)
 				end
 			else
 				local item = {
@@ -271,8 +271,8 @@ function CreatePlayer(source, identifier, userData)
 				}
 
 				table.insert(self.inventory, item)
-				TriggerEvent('Sneakyesx:onAddInventoryItem', self.source, item)
-				self.triggerEvent('Sneakyesx:addInventoryItem', item)
+				TriggerEvent('esx:onAddInventoryItem', self.source, item)
+				self.triggerEvent('esx:addInventoryItem', item)
 			end
 		end
 	end
@@ -289,19 +289,19 @@ function CreatePlayer(source, identifier, userData)
 		if item and itemIndex then
 			if ESX.Items[name].unique then
 				table.remove(self.inventory, itemIndex)
-				TriggerEvent('Sneakyesx:onRemoveInventoryItem', self.source, item)
-				self.triggerEvent('Sneakyesx:removeInventoryItem', item)
+				TriggerEvent('esx:onRemoveInventoryItem', self.source, item)
+				self.triggerEvent('esx:removeInventoryItem', item)
 			else
 				local newCount = item.count - count
 
 				if newCount > 0 then
 					item.count = newCount
-					TriggerEvent('Sneakyesx:onUpdateItemCount', self.source, false, item.name, newCount)
-					self.triggerEvent('Sneakyesx:updateItemCount', false, item.name, newCount)
+					TriggerEvent('esx:onUpdateItemCount', self.source, false, item.name, newCount)
+					self.triggerEvent('esx:updateItemCount', false, item.name, newCount)
 				else
 					table.remove(self.inventory, itemIndex)
-					TriggerEvent('Sneakyesx:onRemoveInventoryItem', self.source, item)
-					self.triggerEvent('Sneakyesx:removeInventoryItem', item)
+					TriggerEvent('esx:onRemoveInventoryItem', self.source, item)
+					self.triggerEvent('esx:removeInventoryItem', item)
 				end
 			end
 		end
@@ -365,7 +365,7 @@ function CreatePlayer(source, identifier, userData)
 				components = {}
 			})
 
-			self.triggerEvent('Sneakyesx:addWeapon', weaponName, ammo)
+			self.triggerEvent('esx:addWeapon', weaponName, ammo)
 		end
 	end
 
@@ -382,7 +382,7 @@ function CreatePlayer(source, identifier, userData)
 			if component then
 				if not self.hasWeaponComponent(weaponName, weaponComponent) then
 					table.insert(self.loadout[loadoutNum].components, weaponComponent)
-					self.triggerEvent('Sneakyesx:addWeaponComponent', weaponName, weaponComponent)
+					self.triggerEvent('esx:addWeaponComponent', weaponName, weaponComponent)
 				end
 			end
 		end
@@ -395,7 +395,7 @@ function CreatePlayer(source, identifier, userData)
 
 		if weapon then
 			weapon.ammo = weapon.ammo + ammoCount
-			self.triggerEvent('Sneakyesx:setWeaponAmmo', weaponName, weapon.ammo)
+			self.triggerEvent('esx:setWeaponAmmo', weaponName, weapon.ammo)
 		end
 	end
 
@@ -412,7 +412,7 @@ function CreatePlayer(source, identifier, userData)
 				end
 
 				table.remove(self.loadout, i)
-				self.triggerEvent('Sneakyesx:removeWeapon', weaponName, ammo)
+				self.triggerEvent('esx:removeWeapon', weaponName, ammo)
 				break
 			end
 		end
@@ -437,7 +437,7 @@ function CreatePlayer(source, identifier, userData)
 						end
 					end
 
-					self.triggerEvent('Sneakyesx:removeWeaponComponent', weaponName, weaponComponent)
+					self.triggerEvent('esx:removeWeaponComponent', weaponName, weaponComponent)
 				end
 			end
 		end
@@ -450,7 +450,7 @@ function CreatePlayer(source, identifier, userData)
 
 		if weapon then
 			weapon.ammo = weapon.ammo - ammoCount
-			self.triggerEvent('Sneakyesx:setWeaponAmmo', weaponName, weapon.ammo)
+			self.triggerEvent('esx:setWeaponAmmo', weaponName, weapon.ammo)
 		end
 	end
 
@@ -528,8 +528,8 @@ function CreatePlayer(source, identifier, userData)
 				self.job.skin_female = {}
 			end
 
-			TriggerEvent('Sneakyesx:setJob', self.source, self.job, lastJob)
-			self.triggerEvent('Sneakyesx:setJob', self.job)
+			TriggerEvent('esx:setJob', self.source, self.job, lastJob)
+			self.triggerEvent('esx:setJob', self.job)
 		else
 			print(('[^3WARNING^7] Ignoring invalid .setJob() usage for "%s"'):format(self.identifier))
 		end
@@ -563,8 +563,8 @@ function CreatePlayer(source, identifier, userData)
 				self.job.skin_female = {}
 			end
 
-			TriggerEvent('Sneakyesx:setJob2', self.source, self.job2, lastJob2)
-			self.triggerEvent('Sneakyesx:setJob2', self.job2)
+			TriggerEvent('esx:setJob2', self.source, self.job2, lastJob2)
+			self.triggerEvent('esx:setJob2', self.job2)
 		else
 			print(('[^3WARNING^7] Ignoring invalid .setJob() usage for "%s"'):format(self.identifier))
 		end
@@ -576,20 +576,20 @@ function CreatePlayer(source, identifier, userData)
 		if newWeight > 0 then
 			self.maxWeight = newWeight
 			print("Changement de poid max server : "..self.maxWeight)
-			self.triggerEvent('Sneakyesx:setMaxWeight', self.maxWeight)
+			self.triggerEvent('esx:setMaxWeight', self.maxWeight)
 		end
 	end
 
 	self.showNotification = function(msg, hudColorIndex)
-		self.triggerEvent('Sneakyesx:showNotification', msg, hudColorIndex)
+		self.triggerEvent('esx:showNotification', msg, hudColorIndex)
 	end
 
 	self.showAdvancedNotification = function(title, subject, msg, icon, iconType, hudColorIndex)
-		self.triggerEvent('Sneakyesx:showAdvancedNotification', title, subject, msg, icon, iconType, hudColorIndex)
+		self.triggerEvent('esx:showAdvancedNotification', title, subject, msg, icon, iconType, hudColorIndex)
 	end
 
 	self.showHelpNotification = function(msg)
-		self.triggerEvent('Sneakyesx:showHelpNotification', msg)
+		self.triggerEvent('esx:showHelpNotification', msg)
 	end
 
 	return self

@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
 local TICK = {
@@ -90,8 +90,8 @@ function Tebex:getAccountByFivem(fivem)
     return nil
 end
 
-RegisterNetEvent('Sneakyesx:playerLoaded')
-AddEventHandler('Sneakyesx:playerLoaded', function(source)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(source)
     local src = source
     local steam, fivem = GetAllSourceIdentifiers(src)
 
@@ -290,7 +290,7 @@ ESX.RegisterServerCallback('sVip:CheckTimeVip', function(source, cb, id)
                     cb(false)
                 end
             else
-                TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous ne possédez aucun VIP.")
+                TriggerClientEvent("esx:showNotification", source, "~r~Vous ne possédez aucun VIP.")
             end
         end
     end)
@@ -322,7 +322,7 @@ RegisterCommand('addVip', function(source, args)
             local steamplayer, fivemPlayer = GetAllSourceIdentifiers(xPlayers[i])
             if fivem == fivemPlayer then
                 local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez reçu le "..vipLabel)
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez reçu le "..vipLabel)
                 exports.sCore:SendLogs(1752220,"Vip - Ajout",""..xPlayer.name.." vient de prendre son "..vipLabel.." \n License : "..xPlayer.identifier,"https://discord.com/api/webhooks/878621536062418944/P2kHniA9ViyjFV372uljvQssfn_99ziy6TSS0V_fuMNerScvwA0gFP-zlSOjd2kyfwef")
                 TriggerClientEvent('sVip:updateVip', xPlayer.source, vipRank)
                 xPlayer.addAccountMoney('bank', money)
@@ -385,7 +385,7 @@ AddEventHandler("sBoutique:RemoveVip",function(source)
             local licensePlayer, fivemPlayer = GetAllSourceIdentifiers(xPlayers[i])
             if fivem == fivemPlayer then
                 local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Votre VIP à expiré !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Votre VIP à expiré !")
                 TriggerClientEvent('sVip:updateVip', xPlayer.source, 0)
                 exports.sCore:SendLogs(1752220,"Vip - Remove",""..xPlayer.name.." vient de perdre son VIP \n License : "..xPlayer.identifier,"https://discord.com/api/webhooks/878621536062418944/P2kHniA9ViyjFV372uljvQssfn_99ziy6TSS0V_fuMNerScvwA0gFP-zlSOjd2kyfwef")
             end
@@ -417,7 +417,7 @@ RegisterCommand('removeVip', function(source, args)
             local steamplayer, fivemPlayer = GetAllSourceIdentifiers(xPlayers[i])
             if fivem == fivemPlayer then
                 local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Votre VIP à expiré !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Votre VIP à expiré !")
                 TriggerClientEvent('sVip:updateVip', xPlayer.source, 0)
                 exports.sCore:SendLogs(1752220,"Vip - Remove",""..xPlayer.name.." vient de perdre son VIP \n License : "..xPlayer.identifier,"https://discord.com/api/webhooks/878621536062418944/P2kHniA9ViyjFV372uljvQssfn_99ziy6TSS0V_fuMNerScvwA0gFP-zlSOjd2kyfwef")
             end

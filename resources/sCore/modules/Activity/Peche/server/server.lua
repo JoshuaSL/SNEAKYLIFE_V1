@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
 
 local fishActivity = {
     onService = {}
@@ -26,44 +26,44 @@ AddEventHandler("Peche:givefish", function()
     if chance >= 0 and chance <= 18 then
         if xPlayer.canCarryItem("whitefish", 1) then
             xPlayer.addInventoryItem('whitefish', 1)
-            TriggerClientEvent('Sneakyesx:showNotification', source, 'Vous avez pêché un ~g~Poisson blanc.~b~ +1')
+            TriggerClientEvent('esx:showNotification', source, 'Vous avez pêché un ~g~Poisson blanc.~b~ +1')
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez de place.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez de place.")
         end
     elseif chance >= 18 and chance <= 37 then
         if xPlayer.canCarryItem("fish", 1) then
             xPlayer.addInventoryItem('fish', 1)
-            TriggerClientEvent('Sneakyesx:showNotification', source, 'Vous avez pêché un ~g~Poisson.~b~ +1')
+            TriggerClientEvent('esx:showNotification', source, 'Vous avez pêché un ~g~Poisson.~b~ +1')
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez de place.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez de place.")
         end
     elseif chance >= 37 and chance <= 53 then
         if xPlayer.canCarryItem("redfish", 1) then
             xPlayer.addInventoryItem('redfish', 1)
-            TriggerClientEvent('Sneakyesx:showNotification', source, 'Vous avez pêché un ~g~Poisson rouge.~b~ +1')
+            TriggerClientEvent('esx:showNotification', source, 'Vous avez pêché un ~g~Poisson rouge.~b~ +1')
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez de place.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez de place.")
         end
     elseif chance >= 53 and chance <= 68 then
         if xPlayer.canCarryItem("fishd", 1) then
             xPlayer.addInventoryItem('fishd', 1)
-            TriggerClientEvent('Sneakyesx:showNotification', source, 'Vous avez pêché un ~g~Poisson abattu.~b~ +1')
+            TriggerClientEvent('esx:showNotification', source, 'Vous avez pêché un ~g~Poisson abattu.~b~ +1')
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez de place.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez de place.")
         end
     elseif chance >= 68 and chance <= 85 then
         if xPlayer.canCarryItem("carpecuir", 1) then
             xPlayer.addInventoryItem('carpecuir', 1)
-            TriggerClientEvent('Sneakyesx:showNotification', source, 'Vous avez pêché une ~g~Carpe cuir.~b~ +1')
+            TriggerClientEvent('esx:showNotification', source, 'Vous avez pêché une ~g~Carpe cuir.~b~ +1')
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez de place.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez de place.")
         end
     elseif chance >= 85 and chance <= 99 then
         if xPlayer.canCarryItem("pompom", 1) then
             xPlayer.addInventoryItem('pompom', 1)
-            TriggerClientEvent('Sneakyesx:showNotification', source, 'Vous avez pêché un ~g~Poisson pompom.~b~ +1')
+            TriggerClientEvent('esx:showNotification', source, 'Vous avez pêché un ~g~Poisson pompom.~b~ +1')
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez de place.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez de place.")
         end
     end
 end)

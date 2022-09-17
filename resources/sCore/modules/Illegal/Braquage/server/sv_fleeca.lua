@@ -1,7 +1,7 @@
 Fleeca = Fleeca or {}
 
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 Fleeca.BanksRobbed = {}
 
@@ -37,7 +37,7 @@ AddEventHandler("cFleeca:GetCoolDown", function(id)
             xPlayer.removeInventoryItem("id_card_f", 1)
             TriggerClientEvent("cFleeca:BinginDrill", _source)
         else
-            TriggerClientEvent("Sneakyesx:showNotification", _source, "Cette banque a déjà été braqué.")
+            TriggerClientEvent("esx:showNotification", _source, "Cette banque a déjà été braqué.")
         end
     else
         xPlayer.removeInventoryItem("id_card_f", 1)
@@ -69,6 +69,6 @@ ESX.RegisterUsableItem("id_card_f", function(source)
     if copsOnDuty >= Fleeca.RequiredCops then 
         TriggerClientEvent("cFleeca:StartDrill", xPlayer.source)
     else
-        TriggerClientEvent("Sneakyesx:showNotification", _source, "La Brinks viens de passer, il n'y a plus d'argent.")
+        TriggerClientEvent("esx:showNotification", _source, "La Brinks viens de passer, il n'y a plus d'argent.")
     end
 end)

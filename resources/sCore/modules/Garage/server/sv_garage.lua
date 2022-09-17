@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 ESX.RegisterServerCallback("pGarage:GetOwnVehicle", function(source, callback)
     local xPlayer = ESX.GetPlayerFromId(source)
     local idd = xPlayer.identifier
@@ -114,7 +114,7 @@ AddEventHandler("pGarage:Givecar", function(trgt, label, veh, plt, prps, parked)
 
         })
 
-        TriggerClientEvent("Sneakyesx:showNotification", xPly.source, "Vous avez reçu un(e) ~b~"..veh.."~s~ ["..plt.."] !")
+        TriggerClientEvent("esx:showNotification", xPly.source, "Vous avez reçu un(e) ~b~"..veh.."~s~ ["..plt.."] !")
 
         RconPrint("^2["..GetCurrentResourceName().."] ^0: ^3New vehicle has registered^0 "..plt.."\n")
 
@@ -141,7 +141,7 @@ AddEventHandler("pGarage:Givecarhimself", function(label, veh, plt, prps, parked
 
         })
 
-        TriggerClientEvent("Sneakyesx:showNotification", xPly.source, "Vous avez reçu un(e) ~b~"..veh.."~s~ ["..plt.."] !")
+        TriggerClientEvent("esx:showNotification", xPly.source, "Vous avez reçu un(e) ~b~"..veh.."~s~ ["..plt.."] !")
 
         RconPrint("^2["..GetCurrentResourceName().."] ^0: ^3New vehicle has registered^0 "..plt.."\n")
 

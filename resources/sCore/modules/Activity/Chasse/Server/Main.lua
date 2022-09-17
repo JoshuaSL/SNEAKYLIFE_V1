@@ -3,7 +3,7 @@
 -- 
 
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(kadirESX) ESX = kadirESX end)
+TriggerEvent("esx:getSharedObject", function(kadirESX) ESX = kadirESX end)
 
 local playerChasse = {}
 
@@ -41,7 +41,7 @@ AddEventHandler("sChasse:start", function(lastPos, chasse)
         itemName = string.upper("WEAPON_MUSKET")
 
         if xPlayer.hasWeapon(itemName) then
-            TriggerClientEvent("Sneakyesx:showNotification",source,"Vous ne pouvez pas prendre deux fois la même ~r~arme~s~.")
+            TriggerClientEvent("esx:showNotification",source,"Vous ne pouvez pas prendre deux fois la même ~r~arme~s~.")
         else
             xPlayer.addWeapon("WEAPON_MUSKET", 150)
         end
@@ -80,11 +80,11 @@ AddEventHandler("sChasse:addItem", function(itemName, count)
     if xPlayer then
         if playerChasse[source] then
             if xPlayer.canCarryItem(itemName, tonumber(count)) then
-                TriggerClientEvent("Sneakyesx:showNotification", source, "Bien, vous avez gagné ~b~x"..count.." "..ESX.GetItemLabel(itemName).."~s~ !")
+                TriggerClientEvent("esx:showNotification", source, "Bien, vous avez gagné ~b~x"..count.." "..ESX.GetItemLabel(itemName).."~s~ !")
                 SendLogs(1752220,"Chasse - Ajout","**"..GetPlayerName(source).."** vient de gagner "..count.."x "..ESX.GetItemLabel(itemName).." \n **License** : "..xPlayer.identifier,"https://canary.discord.com/api/webhooks/851722676808843264/BnLeuj8XbFjHSAFtrYfeve9CQwyG92N3e4wKaqbgOetM4q5MvkefJUZXZKZ0pCS5V6ti")
                 xPlayer.addInventoryItem(itemName, tonumber(count))
             else
-                TriggerClientEvent("Sneakyesx:showNotification", source, "Vous n'avez pas assez de place sur vous pour récupérer la viande")
+                TriggerClientEvent("esx:showNotification", source, "Vous n'avez pas assez de place sur vous pour récupérer la viande")
             end
         else
             banPlayerAC(xPlayer.source, {

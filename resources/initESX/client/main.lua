@@ -280,8 +280,8 @@ AddEventHandler('playerSpawned', function()
 	end)
 end)
 
-RegisterNetEvent('Sneakyesx:playerLoaded')
-AddEventHandler('Sneakyesx:playerLoaded', function(xPlayer)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
 	PlayerLoaded = true
 end)
 

@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback('Faille:duBanquierLol',function(source, cb, price)
     local xPlayer = ESX.GetPlayerFromId(source)

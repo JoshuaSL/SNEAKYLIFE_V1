@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 local LTD = {
     Entreprise = false,
@@ -54,7 +54,7 @@ local function notifToEmployes(message, job)
         local xPlayer = ESX.GetPlayerFromId(id)
         if xPlayer.job.name == job then
             if LTD.onService[xPlayer.source] == nil then return end
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, message)
+            TriggerClientEvent("esx:showNotification", xPlayer.source, message)
         end
     end
 end
@@ -62,7 +62,7 @@ end
 local function ltdAnnounce(job, type)
     if LTD.allowJobs[job] == nil then return end
     local infosAnnounce = LTD.allowJobs[job].Announce[type]
-    TriggerClientEvent("Sneakyesx:showAdvancedNotification", -1, infosAnnounce.title, infosAnnounce.subtitle, infosAnnounce.message, infosAnnounce.banner, 1)
+    TriggerClientEvent("esx:showAdvancedNotification", -1, infosAnnounce.title, infosAnnounce.subtitle, infosAnnounce.message, infosAnnounce.banner, 1)
 end
 
 RegisterServerEvent("sLtd:sendAnnounce")
@@ -142,19 +142,19 @@ AddEventHandler("sLtd:buyItem", function(itemName)
 
     if (xPlayer.getWeight()+(xPlayer.getInventoryItem(itemName).weight*1)) > ESX.GetConfig().MaxWeight then 
         return 
-        TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez de place sur vous !") 
+        TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez de place sur vous !") 
     end        
 
     if xPlayer.getAccount('cash').money > infosItem.price then
         xPlayer.removeAccountMoney('cash', infosItem.price)
         xPlayer.addInventoryItem(itemName, 1)
-        TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez acheté ~b~x1 "..ESX.GetItemLabel(itemName).."~s~ pour "..infosItem.price.."~g~$~s~ !")
+        TriggerClientEvent("esx:showNotification", source, "Vous avez acheté ~b~x1 "..ESX.GetItemLabel(itemName).."~s~ pour "..infosItem.price.."~g~$~s~ !")
     elseif xPlayer.getAccount('bank').money > infosItem.price then
         xPlayer.removeAccountMoney('bank', infosItem.price)
         xPlayer.addInventoryItem(itemName, 1)
-        TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez acheté ~b~x1 "..ESX.GetItemLabel(itemName).."~s~ pour "..infosItem.price.."~g~$~s~ !")
+        TriggerClientEvent("esx:showNotification", source, "Vous avez acheté ~b~x1 "..ESX.GetItemLabel(itemName).."~s~ pour "..infosItem.price.."~g~$~s~ !")
     else
-        return TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez d'argent !")
+        return TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez d'argent !")
     end
 end)
 

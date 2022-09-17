@@ -13,7 +13,7 @@ ESX.CancelledTimeouts = {}
 ESX.Pickups = {}
 ESX.PickupId = 0
 
-AddEventHandler('Sneakyesx:getSharedObject', function(cb)
+AddEventHandler('esx:getSharedObject', function(cb)
 	cb(ESX)
 end)
 
@@ -62,12 +62,12 @@ MySQL.ready(function()
 	end)
 end)
 
-RegisterServerEvent('Sneakyesx:triggerServerCallback')
-AddEventHandler('Sneakyesx:triggerServerCallback', function(name, requestId, ...)
+RegisterServerEvent('esx:triggerServerCallback')
+AddEventHandler('esx:triggerServerCallback', function(name, requestId, ...)
 	--[[ local _src = source
-	TriggerEvent("ratelimit", _src, "Sneakyesx:triggerServerCallback") ]]
+	TriggerEvent("ratelimit", _src, "esx:triggerServerCallback") ]]
 	local _source = source
 	ESX.TriggerServerCallback(name, requestId, _source, function(...)
-		TriggerClientEvent('Sneakyesx:serverCallback', _source, requestId, ...)
+		TriggerClientEvent('esx:serverCallback', _source, requestId, ...)
 	end, ...)
 end)

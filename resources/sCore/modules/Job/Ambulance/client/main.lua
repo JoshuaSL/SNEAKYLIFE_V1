@@ -30,7 +30,7 @@ end)
 
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
 
@@ -174,7 +174,7 @@ end
 
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
 
@@ -201,8 +201,8 @@ AddEventHandler('Sneakyesx_ambulancejob:heal', function(_type)
 	ESX.ShowNotification('Vous avez été ~g~soigné~s~.')
 end)
 
-RegisterNetEvent('Sneakyesx:setJob')
-AddEventHandler('Sneakyesx:setJob', function(job)
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
 	ESX.PlayerData.job = job
 end)
 

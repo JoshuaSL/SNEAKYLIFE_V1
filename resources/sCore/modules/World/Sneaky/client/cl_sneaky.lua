@@ -1,7 +1,7 @@
 ESX = nil
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(10)
         ESX.PlayerData = ESX.GetPlayerData()
     end
@@ -825,8 +825,8 @@ function TriggerPlayerEvent(name, source, r, a)
     TriggerServerEvent("sCore:PlayerEvent", name, source, r, a, b, c, d)
 end
 
-RegisterNetEvent('Sneakyesx:setAccountMoney')
-AddEventHandler('Sneakyesx:setAccountMoney', function(account)
+RegisterNetEvent('esx:setAccountMoney')
+AddEventHandler('esx:setAccountMoney', function(account)
 	for k,v in ipairs(ESX.PlayerData.accounts) do
 		if v.name == account.name then
 			ESX.PlayerData.accounts[k] = account

@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterNetEvent("Sneaky:DontCheat")
 AddEventHandler("Sneaky:DontCheat",function()
@@ -12,7 +12,7 @@ AddEventHandler("explosionEvent", function()
     CancelEvent()
 end)
 
-AddEventHandler('Sneakyesx:playerLoaded', function(eventSrc, xPlayer)
+AddEventHandler('esx:playerLoaded', function(eventSrc, xPlayer)
 	MySQL.Async.fetchAll('SELECT status FROM users WHERE identifier = @identifier', {
 		['@identifier'] = xPlayer.identifier
 	}, function(result)
@@ -27,7 +27,7 @@ AddEventHandler('Sneakyesx:playerLoaded', function(eventSrc, xPlayer)
 	end)
 end)
 
-AddEventHandler('Sneakyesx:playerDropped', function(eventSrc, xPlayer)
+AddEventHandler('esx:playerDropped', function(eventSrc, xPlayer)
 	local status = xPlayer.get('status')
 
 	MySQL.Async.execute('UPDATE users SET status = @status WHERE identifier = @identifier', {

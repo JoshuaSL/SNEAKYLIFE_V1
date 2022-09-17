@@ -2,7 +2,7 @@ ESX = nil
 
 Citizen.CreateThread(function()
     while ESX == nil do
-        TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
         Citizen.Wait(0)
     end
     while ESX.GetPlayerData().job == nil do
@@ -3600,7 +3600,7 @@ end
 
 Citizen.CreateThread(function()
     while ESX == nil do
-        TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
         Citizen.Wait(0)
     end
 
@@ -3636,7 +3636,7 @@ AddEventHandler('playerSpawned', function()
 	hasAlreadyJoined = true
 end)
 
-AddEventHandler('Sneakyesx:onPlayerDeath', function(data)
+AddEventHandler('esx:onPlayerDeath', function(data)
 	isDead = true
 end)
 
@@ -4451,7 +4451,7 @@ end
 Citizen.CreateThread(function()
 
     while ESX == nil do
-        TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
         Citizen.Wait(0)
     end
 

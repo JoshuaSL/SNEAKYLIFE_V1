@@ -1,5 +1,5 @@
 local ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 function GetTime()
     local date = os.date('*t')
@@ -130,7 +130,7 @@ AddEventHandler('Job:DemandeRdv', function(job, ginfo)
 	for i = 1, #xPlayers, 1 do
 		local thePlayer = ESX.GetPlayerFromId(xPlayers[i])
 		if thePlayer.job.name == job then
-			TriggerClientEvent('Sneakyesx:showNotification', xPlayers[i], ginfo)
+			TriggerClientEvent('esx:showNotification', xPlayers[i], ginfo)
 		end
 	end
 end)

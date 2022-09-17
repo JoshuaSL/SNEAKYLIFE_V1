@@ -1,7 +1,7 @@
 ESX = nil
 Citizen.CreateThread(function()
     while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(10)
     end
     while ESX.GetPlayerData().job == nil do
@@ -13,12 +13,12 @@ Citizen.CreateThread(function()
 end)
 local onService = false
 SneakyEvent = TriggerServerEvent
-RegisterNetEvent('Sneakyesx:playerLoaded')
-AddEventHandler('Sneakyesx:playerLoaded', function(xPlayer)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
     ESX.PlayerData = xPlayer
 end)
-RegisterNetEvent('Sneakyesx:setJob')
-AddEventHandler('Sneakyesx:setJob', function(job)
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
     ESX.PlayerData.job = job
 end)
 
@@ -127,7 +127,7 @@ local Noodlepos = {
 
 Citizen.CreateThread(function()
     while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
 
@@ -278,7 +278,7 @@ end
 
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(10)
     end
     while true do

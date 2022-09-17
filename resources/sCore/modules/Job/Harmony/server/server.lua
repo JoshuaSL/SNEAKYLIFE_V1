@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 TriggerEvent('Sneakyesx_phone:registerNumber', 'harmony', "Harmony and Repair's", true, true)
 TriggerEvent('Sneakyesx_society:registerSociety', 'harmony', 'harmony', 'society_harmony', 'society_harmony', 'society_harmony', {type = 'public'})
@@ -22,12 +22,12 @@ AddEventHandler('Sneakyharmony:giveItem', function(itemName,price)
 		if xPlayer.canCarryItem(itemName, 1) then
 			xPlayer.addInventoryItem(itemName, 1)
 			xPlayer.removeAccountMoney('cash', price)
-			TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "+1 ~b~"..ESX.GetItemLabel(itemName))
+			TriggerClientEvent('esx:showNotification', xPlayer.source, "+1 ~b~"..ESX.GetItemLabel(itemName))
 		else
-			TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous avez déjà ~b~1x Kit de réparation~s~ !")
+			TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous avez déjà ~b~1x Kit de réparation~s~ !")
 		end
 	else
-		TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "~r~Vous n'avez pas assez d'argent !")
+		TriggerClientEvent('esx:showNotification', xPlayer.source, "~r~Vous n'avez pas assez d'argent !")
 	end
 end)
 

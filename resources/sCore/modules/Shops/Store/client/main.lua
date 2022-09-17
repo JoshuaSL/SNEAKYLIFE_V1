@@ -4,7 +4,7 @@ ESX = nil
 Citizen.CreateThread(function()
     while ESX == nil do
         Wait(250)
-        TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+        TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
     end
 end) 
 

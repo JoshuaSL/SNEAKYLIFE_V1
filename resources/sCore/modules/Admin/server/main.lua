@@ -1,6 +1,6 @@
 ESX, players, items = nil, {}, {}
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 inService = {}
 reportsTable = {}
 reportsCount = 0
@@ -214,7 +214,7 @@ local function wipePlayer(source, targetId)
 			local tPlayer = ESX.GetPlayerFromId(targetId)
 			if tPlayer then
 				SendLogs(3447003,"Administration - Wipe","**"..GetPlayerName(source).."** vient de wipe le joueur (Name : "..GetPlayerName(tPlayer.source)..") \n **License** : "..xPlayer.identifier,"https://canary.discord.com/api/webhooks/844391984617619520/3rPOLVl2ZyAEzJaN47Wg3aabibFaTMTEL85U5VYDPRoo6JSVXe6JF_wRMmZyrFKmlgLG")
-				TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez ~o~wipe~s~ le joueur ~b~"..GetPlayerName(tPlayer.source).."~s~ !")
+				TriggerClientEvent("esx:showNotification", source, "Vous avez ~o~wipe~s~ le joueur ~b~"..GetPlayerName(tPlayer.source).."~s~ !")
 				DropPlayer(tPlayer.source, "\n\nVous vous êtes fais wipe !\nFais par "..xPlayer.getName())
 				MySQL.Async.execute([[
 					DELETE FROM open_car WHERE owner = @identifier AND donated = @donated;
@@ -272,7 +272,7 @@ local function wipeOffline(license, source)
 			wipePlayer(source, tPlayer.source)
 		else
 			SendLogs(3447003,"Administration - Wipe","**"..GetPlayerName(source).."** vient de wipe la license "..license.." !","https://canary.discord.com/api/webhooks/844391984617619520/3rPOLVl2ZyAEzJaN47Wg3aabibFaTMTEL85U5VYDPRoo6JSVXe6JF_wRMmZyrFKmlgLG")
-			TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez ~o~wipe~s~ la license ~b~"..license.."~s~ !")
+			TriggerClientEvent("esx:showNotification", source, "Vous avez ~o~wipe~s~ la license ~b~"..license.."~s~ !")
 
 			MySQL.Async.execute([[
 				DELETE FROM open_car WHERE owner = @identifier AND donated = @donated;
@@ -386,7 +386,7 @@ AddEventHandler('SneakyAdmin:setjob', function(id, job, grade)
         return
     end
     xTarget.setJob(job, grade)
-    TriggerClientEvent('Sneakyesx:showNotification', xTarget.source, "Vous venez d'obtenir le métier : ~b~<C>"..job.."<C> ("..grade..")~s~")
+    TriggerClientEvent('esx:showNotification', xTarget.source, "Vous venez d'obtenir le métier : ~b~<C>"..job.."<C> ("..grade..")~s~")
 end)
 
 RegisterServerEvent('SneakyAdmin:setjob2')
@@ -404,7 +404,7 @@ AddEventHandler('SneakyAdmin:setjob2', function(id, job2, grade2)
         return
     end
     xTarget.setJob2(job2, grade2)
-    TriggerClientEvent('Sneakyesx:showNotification', xTarget.source, "Vous venez d'obtenir le groupe : ~b~<C>"..job2.."<C> ("..grade2..")~s~")
+    TriggerClientEvent('esx:showNotification', xTarget.source, "Vous venez d'obtenir le groupe : ~b~<C>"..job2.."<C> ("..grade2..")~s~")
 end)
 
 RegisterServerEvent('SneakysMenu:GiveMoney')
@@ -545,7 +545,7 @@ AddEventHandler('sAdmin:deleteWarnPlayer', function(warning)
     }, function(result)
         if result[1] then
             MySQL.Async.execute('DELETE FROM players_warns WHERE id = @id', {['@id'] = warning.id})
-            TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Le warn pour avec comme raison ~c~"..warning.reason.."~s~ à bien été supprimé !")
+            TriggerClientEvent('esx:showNotification', xPlayer.source, "Le warn pour avec comme raison ~c~"..warning.reason.."~s~ à bien été supprimé !")
         end
     end)
 end)
@@ -809,7 +809,7 @@ AddEventHandler('Sneakysetperms', function(target, command, param)
 end)
 
 RegisterCommand("setgroup", function(source, args)
-    if source ~= 0 then return TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas la permission d'effectuer cette commande !") end
+    if source ~= 0 then return TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas la permission d'effectuer cette commande !") end
     local id = args[1]
     if id then
         local target = ESX.GetPlayerFromId(id)
@@ -910,13 +910,13 @@ AddEventHandler("Sneaky:GiveItem", function(target, itemName, qty)
     if xTarget then
         xTarget.addInventoryItem(itemName, tonumber(qty))
     else
-        TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Ce joueur n'est plus connecté")
+        TriggerClientEvent("esx:showNotification", source, "~r~Ce joueur n'est plus connecté")
     end
 end)
 
 
-RegisterServerEvent('Sneakyesx:playerLoaded')
-AddEventHandler('Sneakyesx:playerLoaded', function(source, xPlayer)
+RegisterServerEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(source, xPlayer)
     local source = source
     if players[source] then
         return
@@ -953,7 +953,7 @@ AddEventHandler('Sneakyesx:playerLoaded', function(source, xPlayer)
 end)
 
 RegisterCommand("insert",function(source)
-    TriggerEvent("Sneakyesx:playerLoaded",source, ESX.GetPlayerFromId(source))
+    TriggerEvent("esx:playerLoaded",source, ESX.GetPlayerFromId(source))
 end)
 
 AddEventHandler("playerDropped", function(reason)
@@ -980,7 +980,7 @@ AddEventHandler("SneakyLife:StaffState", function(state, sneaky)
     if not sneaky then
         for k,player in pairs(players) do
             if player.rank ~= "user" and inService[k] ~= nil then
-                TriggerClientEvent("Sneakyesx:showNotification", k, byState[state]:format(GetPlayerName(source)))
+                TriggerClientEvent("esx:showNotification", k, byState[state]:format(GetPlayerName(source)))
             end
         end
     end
@@ -1023,13 +1023,13 @@ RegisterCommand("report", function(source, args)
         return
     end
     if reportsTable[source] ~= nil then
-        TriggerClientEvent("Sneakyesx:showNotification", source, "~b~[Report]~s~~n~Vous avez déjà un report actif.")
+        TriggerClientEvent("esx:showNotification", source, "~b~[Report]~s~~n~Vous avez déjà un report actif.")
         return
     end
     reportsCount = reportsCount + 1
     reportsTable[source] = { timeElapsed = {0,0}, uniqueId = reportsCount, id = source, name = GetPlayerName(source), reason = table.concat(args, " "), taken = false, createdAt = os.date('%c'), takenBy = nil }
     notifyActiveStaff("[~b~Report~s~]~n~Un nouveau report a été reçu. ID Unique: ~y~" .. reportsCount)
-    TriggerClientEvent("Sneakyesx:showNotification", source, "[~b~Report~s~]~n~Votre report a été envoyé ! Vous serez informé quand il sera pris en charge et / ou cloturé.")
+    TriggerClientEvent("esx:showNotification", source, "[~b~Report~s~]~n~Votre report a été envoyé ! Vous serez informé quand il sera pris en charge et / ou cloturé.")
     updateReportsForStaff()
 end, false)
 
@@ -1046,13 +1046,13 @@ AddEventHandler("SneakyLife:takeReport", function(reportId)
         return
     end
     if not reportsTable[reportId] then
-        TriggerClientEvent("Sneakyesx:showNotification", source, "[~b~Report~s~]~n~Ce report n'est plus en attente de prise en charge.")
+        TriggerClientEvent("esx:showNotification", source, "[~b~Report~s~]~n~Ce report n'est plus en attente de prise en charge.")
         return
     end
     reportsTable[reportId].takenBy = GetPlayerName(source)
     reportsTable[reportId].taken = true
     if players[reportId] ~= nil then
-        TriggerClientEvent("Sneakyesx:showNotification", reportId, "[~b~Report~s~]~n~Votre report à été pris en charge par le staff ~c~"..GetPlayerName(source).."~s~.")
+        TriggerClientEvent("esx:showNotification", reportId, "[~b~Report~s~]~n~Votre report à été pris en charge par le staff ~c~"..GetPlayerName(source).."~s~.")
     end
     notifyActiveStaff("[~b~Report~s~]~n~Le staff ~c~"..GetPlayerName(source).."~s~ a pris en charge le report ~y~n°"..reportsTable[reportId].uniqueId)
     exports.sCore:SendLogs(1752220,"Report pris",""..GetPlayerName(source).." vient de prendre le report : **"..reportsTable[reportId].uniqueId.."** \n License : "..xPlayer.identifier,"https://discord.com/api/webhooks/878621626596470814/N_C1jeKBBaUj250LSIEeQGnKXYlc5J5MCCLXyrlGX-wJqxf0NDczad25DDpPls-nW6GK")
@@ -1072,11 +1072,11 @@ AddEventHandler("SneakyLife:CloseReport", function(reportId)
         return
     end
     if not reportsTable[reportId] then
-        TriggerClientEvent("Sneakyesx:showNotification", source, "[~b~Report~s~]~n~Ce report n'est plus valide.")
+        TriggerClientEvent("esx:showNotification", source, "[~b~Report~s~]~n~Ce report n'est plus valide.")
         return
     end
     if players[reportId] ~= nil then
-        TriggerClientEvent("Sneakyesx:showNotification", reportId, "[~b~Report~s~]~n~Votre report à été cloturé. N'hésitez pas à nous recontacter en cas de besoin.")
+        TriggerClientEvent("esx:showNotification", reportId, "[~b~Report~s~]~n~Votre report à été cloturé. N'hésitez pas à nous recontacter en cas de besoin.")
     end
     notifyActiveStaff("[~b~Report~s~]~n~Le staff ~c~"..GetPlayerName(source).."~s~ à cloturé~s~ le report ~y~n°"..reportsTable[reportId].uniqueId)
     reportsTable[reportId] = nil
@@ -1095,7 +1095,7 @@ function notifyActiveStaff(message)
     for k, player in pairs(players) do
         if player.rank ~= "user" then
             if inService[k] ~= nil then
-                TriggerClientEvent("Sneakyesx:showNotification", k, message)
+                TriggerClientEvent("esx:showNotification", k, message)
             end
         end
     end

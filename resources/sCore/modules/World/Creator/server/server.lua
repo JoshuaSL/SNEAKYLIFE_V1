@@ -1,18 +1,18 @@
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterCommand("creator", function(source, args)
     local xPlayer = ESX.GetPlayerFromId(source)
     if xPlayer.getGroup() ~= "user" then
         local id = args[1]
         if not id then
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas saisie un ID !")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas saisie un ID !")
         else
             local tPlayer = ESX.GetPlayerFromId(id)
             if tPlayer then
                 TriggerClientEvent("OpenCreatorMenu", id) 
             else
-                TriggerClientEvent("Sneakyesx:showNotification", source, "~r~L'ID saisie est incorrecte !")
+                TriggerClientEvent("esx:showNotification", source, "~r~L'ID saisie est incorrecte !")
             end
         end
     end

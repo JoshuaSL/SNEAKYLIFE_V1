@@ -10,7 +10,7 @@ local blackListWeapon = {
 ESX = nil
 Citizen.CreateThread(function()
     while ESX == nil do
-        TriggerEvent('Sneakyesx:getSharedObject', function(obj)
+        TriggerEvent('esx:getSharedObject', function(obj)
             ESX = obj
         end)
         ESX.PlayerData = ESX.GetPlayerData()
@@ -370,7 +370,7 @@ function OpenPersonalMenuRageUIMenu()
         RageUI.Visible(RMenu:Get('personalmenu', 'main'), true)
         Citizen.CreateThread(function()
             while ESX == nil do
-                TriggerEvent('Sneakyesx:getSharedObject', function(obj)
+                TriggerEvent('esx:getSharedObject', function(obj)
                     ESX = obj
                 end)
                 ESX.PlayerData = ESX.GetPlayerData()
@@ -436,7 +436,7 @@ function OpenPersonalMenuRageUIMenu()
                                             local closestPed = GetPlayerPed(playerdst)
                                             if IsPedOnFoot(closestPed) then
                                                 local ammo = GetAmmoInPedWeapon(PlayerPedId(), WeaponData[i].hash)
-                                                SneakyEvent('Sneakyesx:giveInventoryItem', GetPlayerServerId(playerdst), "item_weapon", WeaponData[i].name, ammo)
+                                                SneakyEvent('esx:giveInventoryItem', GetPlayerServerId(playerdst), "item_weapon", WeaponData[i].name, ammo)
                                                 RageUI.CloseAll()
                                                 PersonalMenu.Menu = false
                                             else
@@ -1192,7 +1192,7 @@ function OpenPersonalMenuRageUIMenu()
                                     ESX.TriggerServerCallback('Sneakyesx_skin:getPlayerSkin', function(skin)
                                         local ped = PlayerPedId()
                                         TriggerEvent('Sneakyskinchanger:loadSkin', skin)
-                                        TriggerEvent('Sneakyesx:restoreLoadout')
+                                        TriggerEvent('esx:restoreLoadout')
                                         ESX.ShowNotification('~b~VIP\n~s~Vous avez bien repris votre personnage')
                                 end)
                                     end)
@@ -1218,7 +1218,7 @@ function OpenPersonalMenuRageUIMenu()
                                     SetPlayerModel(PlayerId(), modelHash)
                                     SetModelAsNoLongerNeeded(modelHash)
                                     SetPedDefaultComponentVariation(PlayerPedId())
-                                    TriggerEvent('Sneakyesx:restoreLoadout')
+                                    TriggerEvent('esx:restoreLoadout')
                                 end)
                             end
                         end)
@@ -1233,7 +1233,7 @@ function OpenPersonalMenuRageUIMenu()
                                     SetPlayerModel(PlayerId(), modelHash)
                                     SetModelAsNoLongerNeeded(modelHash)
                                     SetPedDefaultComponentVariation(PlayerPedId())
-                                    TriggerEvent('Sneakyesx:restoreLoadout')
+                                    TriggerEvent('esx:restoreLoadout')
                                 end)
                             end
                         end)
@@ -1248,7 +1248,7 @@ function OpenPersonalMenuRageUIMenu()
                                     SetPlayerModel(PlayerId(), modelHash)
                                     SetModelAsNoLongerNeeded(modelHash)
                                     SetPedDefaultComponentVariation(PlayerPedId())
-                                    TriggerEvent('Sneakyesx:restoreLoadout')
+                                    TriggerEvent('esx:restoreLoadout')
                                 end)
                             end
                         end)
@@ -1263,7 +1263,7 @@ function OpenPersonalMenuRageUIMenu()
                                     SetPlayerModel(PlayerId(), modelHash)
                                     SetModelAsNoLongerNeeded(modelHash)
                                     SetPedDefaultComponentVariation(PlayerPedId())
-                                    TriggerEvent('Sneakyesx:restoreLoadout')
+                                    TriggerEvent('esx:restoreLoadout')
                                 end)
                             end
                         end)
@@ -1524,7 +1524,7 @@ function OpenPersonalMenuRageUIMenu()
                     RageUI.Separator(ItemSelected.label.." ~b~("..ItemSelected.count..")")
                     RageUI.Button("Utiliser", nil, {}, true, function(h, a, s)
                         if s then
-                            SneakyEvent('Sneakyesx:useItem', ItemSelected.name)
+                            SneakyEvent('esx:useItem', ItemSelected.name)
                         end
                     end)
                     RageUI.Button("Donner", nil, {}, true, function(h, a, s)
@@ -1545,7 +1545,7 @@ function OpenPersonalMenuRageUIMenu()
                                     local closestPed = GetPlayerPed(closestPlayer)
 
                                     if IsPedOnFoot(closestPed) then
-                                        SneakyEvent('Sneakyesx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_standard', ItemSelected.name, quantity)
+                                        SneakyEvent('esx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_standard', ItemSelected.name, quantity)
                                     else
                                         ESX.ShowNotification("~b~Menu personnel~s~\nvous ne pouvez pas donner d'item en étant dans une voiture")
                                     end
@@ -1562,7 +1562,7 @@ function OpenPersonalMenuRageUIMenu()
                                 if IsPedInAnyVehicle(PlayerPedId(), true) then
                                     ESX.ShowNotification("~r~Erreur~s~\nvous ne pouvez pas jeter d'item en étant dans une voiture")
                                 else
-                                    SneakyEvent('Sneakyesx:dropInventoryItem', 'item_standard', ItemSelected.name, quantity)
+                                    SneakyEvent('esx:dropInventoryItem', 'item_standard', ItemSelected.name, quantity)
                                     RageUI.GoBack()
                                 end
                             else
@@ -1666,7 +1666,7 @@ function OpenPersonalMenuRageUIMenu()
                                                 if closestDistance ~= -1 and closestDistance <= 3 then
                                                     local closestPed = GetPlayerPed(closestPlayer)
                                                     if not IsPedSittingInAnyVehicle(closestPed) then
-                                                        SneakyEvent('Sneakyesx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_account', ESX.PlayerData.accounts[i].name, quantity)
+                                                        SneakyEvent('esx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_account', ESX.PlayerData.accounts[i].name, quantity)
                                                     else
                                                         ESX.ShowNotification('Vous ne pouvez pas donner ', 'de l\'argent dans un véhicles')
                                                     end
@@ -1683,7 +1683,7 @@ function OpenPersonalMenuRageUIMenu()
                                     local black, quantity = CheckQuantity(CustomAmount())
                                     if black then
                                         if not IsPedSittingInAnyVehicle(PlayerPed) then
-                                            SneakyEvent('Sneakyesx:dropInventoryItem', 'item_account', ESX.PlayerData.accounts[i].name, quantity)
+                                            SneakyEvent('esx:dropInventoryItem', 'item_account', ESX.PlayerData.accounts[i].name, quantity)
                                         else
                                             ESX.ShowNotification('Vous pouvez pas jeter', 'de l\'argent')
                                         end
@@ -1715,7 +1715,7 @@ function OpenPersonalMenuRageUIMenu()
                                             local closestPed = GetPlayerPed(closestPlayer)
             
                                             if not IsPedSittingInAnyVehicle(closestPed) then
-                                                SneakyEvent('Sneakyesx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_account', ESX.PlayerData.accounts[i].name, quantity)
+                                                SneakyEvent('esx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_account', ESX.PlayerData.accounts[i].name, quantity)
                                             else
                                                 ESX.ShowNotification('Vous ne pouvez pas donner ', 'de l\'argent dans un véhicles')
                                             end
@@ -1732,7 +1732,7 @@ function OpenPersonalMenuRageUIMenu()
                                     local black, quantity = CheckQuantity(CustomAmount())
                                     if black then
                                         if not IsPedSittingInAnyVehicle(PlayerPed) then
-                                            SneakyEvent('Sneakyesx:dropInventoryItem', 'item_account', ESX.PlayerData.accounts[i].name, quantity)
+                                            SneakyEvent('esx:dropInventoryItem', 'item_account', ESX.PlayerData.accounts[i].name, quantity)
                                         else
                                             ESX.ShowNotification('~r~Erreur\n~s~nVous ne pouvez pas jeter de l\'argent dans un véhicule')
                                         end
@@ -1764,7 +1764,7 @@ function OpenPersonalMenuRageUIMenu()
                                             local closestPed = GetPlayerPed(closestPlayer)
             
                                             if not IsPedSittingInAnyVehicle(closestPed) then
-                                                SneakyEvent('Sneakyesx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_account', ESX.PlayerData.accounts[i].name, quantity)
+                                                SneakyEvent('esx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_account', ESX.PlayerData.accounts[i].name, quantity)
                                             else
                                                 ESX.ShowNotification('Vous ne pouvez pas donner ', 'de l\'argent dans un véhicles')
                                             end
@@ -1781,7 +1781,7 @@ function OpenPersonalMenuRageUIMenu()
                                     local black, quantity = CheckQuantity(CustomAmount())
                                     if black then
                                         if not IsPedSittingInAnyVehicle(PlayerPed) then
-                                            SneakyEvent('Sneakyesx:dropInventoryItem', 'item_account', ESX.PlayerData.accounts[i].name, quantity)
+                                            SneakyEvent('esx:dropInventoryItem', 'item_account', ESX.PlayerData.accounts[i].name, quantity)
                                         else
                                             ESX.ShowNotification('~r~Erreur\n~s~nVous ne pouvez pas jeter de l\'argent dans un véhicule')
                                         end

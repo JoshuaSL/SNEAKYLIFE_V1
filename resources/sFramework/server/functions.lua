@@ -251,7 +251,7 @@ function ESX.CreatePickup(type, name, count, label, playerId, components)
 		ESX.Pickups[pickupId].components = components
 	end
 
-	TriggerClientEvent('Sneakyesx:createPickup', -1, pickupId, label, coords, type, name, components)
+	TriggerClientEvent('esx:createPickup', -1, pickupId, label, coords, type, name, components)
 	ESX.PickupId = pickupId
 end
 

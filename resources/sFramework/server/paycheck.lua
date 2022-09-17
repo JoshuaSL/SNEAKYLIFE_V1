@@ -42,7 +42,7 @@ local function testSalary()
 
                 if xPlayer.job.grade_name == 'unemployed' then
                     xPlayer.addAccountMoney('bank', salary*multiplicator)
-                    TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
+                    TriggerClientEvent("esx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
                 elseif Config.EnableSocietyPayouts then
                     local society = "society_"..xPlayer.job.name
                     if society ~= nil then
@@ -50,18 +50,18 @@ local function testSalary()
                             if account.money >= salary then
                                 xPlayer.addAccountMoney('bank', salary*multiplicator)
                                 account.removeMoney(salary)
-                                TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
+                                TriggerClientEvent("esx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
                             else
-                                TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"~r~L'entreprise ne peut pas vous payer !")
+                                TriggerClientEvent("esx:showNotification",xPlayer.source,"~r~L'entreprise ne peut pas vous payer !")
                             end
                         end)
                     else
                         xPlayer.addAccountMoney('bank', salary*multiplicator)
-                        TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
+                        TriggerClientEvent("esx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
                     end
                 else
                     xPlayer.addAccountMoney('bank', salary*multiplicator)
-                    TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
+                    TriggerClientEvent("esx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
                 end
             end
         end
@@ -121,7 +121,7 @@ ESX.StartPayCheck = function()
 
 					if xPlayer.job.grade_name == 'unemployed' then
 						xPlayer.addAccountMoney('bank', salary*multiplicator)
-						TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
+						TriggerClientEvent("esx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
 					elseif Config.EnableSocietyPayouts then
 						local society = "society_"..xPlayer.job.name
 						if society ~= nil then
@@ -129,18 +129,18 @@ ESX.StartPayCheck = function()
 								if account.money >= salary then
 									xPlayer.addAccountMoney('bank', salary*multiplicator)
 									account.removeMoney(salary)
-									TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
+									TriggerClientEvent("esx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
 								else
-									TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"~r~L'entreprise ne peut pas vous payer !")
+									TriggerClientEvent("esx:showNotification",xPlayer.source,"~r~L'entreprise ne peut pas vous payer !")
 								end
 							end)
 						else
 							xPlayer.addAccountMoney('bank', salary*multiplicator)
-							TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
+							TriggerClientEvent("esx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
 						end
 					else
 						xPlayer.addAccountMoney('bank', salary*multiplicator)
-						TriggerClientEvent("Sneakyesx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
+						TriggerClientEvent("esx:showNotification",xPlayer.source,"Jour de paye : ~g~+$"..salary*multiplicator.." ~s~"..returnText)
 					end
 				end
 			end

@@ -2,7 +2,7 @@ ESX = nil
 
 getESX = function()
     while ESX == nil do
-        TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+        TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
         Wait(500)
    end
    while ESX.GetPlayerData().job == nil do
@@ -17,11 +17,11 @@ Citizen.CreateThread(function()
     getESX()
 end)
 
-RegisterNetEvent('Sneakyesx:playerLoaded')
-AddEventHandler('Sneakyesx:playerLoaded', function(xPlayer)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
     ESX.PlayerData = xPlayer
 end)
-RegisterNetEvent('Sneakyesx:setJob')
-AddEventHandler('Sneakyesx:setJob', function(job)
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
     ESX.PlayerData.job = job
 end)

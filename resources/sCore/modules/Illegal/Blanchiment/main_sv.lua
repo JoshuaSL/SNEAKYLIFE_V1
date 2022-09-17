@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
 
 RegisterServerEvent("kBlanch:transformMoney")
 AddEventHandler("kBlanch:transformMoney", function(token, money)
@@ -19,9 +19,9 @@ AddEventHandler("kBlanch:transformMoney", function(token, money)
             local niceMoney = ESX.Math.Round(moneyTransform)
             xPlayer.removeAccountMoney("dirtycash", money)
             xPlayer.addAccountMoney("cash", niceMoney)
-            TriggerClientEvent("Sneakyesx:showNotification", _source, "Vous avez transformé "..money.."~r~$~s~ en "..niceMoney.."~g~$~s~ .")
+            TriggerClientEvent("esx:showNotification", _source, "Vous avez transformé "..money.."~r~$~s~ en "..niceMoney.."~g~$~s~ .")
         else
-            TriggerClientEvent("Sneakyesx:showNotification", _source, "~r~Vous n'avez pas assez d'argent sale !")
+            TriggerClientEvent("esx:showNotification", _source, "~r~Vous n'avez pas assez d'argent sale !")
         end
     end
 end)

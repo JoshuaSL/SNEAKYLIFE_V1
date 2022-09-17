@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(kadirESX) ESX = kadirESX end)
+TriggerEvent("esx:getSharedObject", function(kadirESX) ESX = kadirESX end)
 
 onServicePlayer = {}
 
@@ -22,9 +22,9 @@ AddEventHandler("Pizza:Removeitem",function(itemRemove,countRemove,itemName,coun
     if xPlayer.canCarryItem(itemName, count) then
         xPlayer.removeInventoryItem(itemRemove, countRemove)
         xPlayer.addInventoryItem(itemName, count)
-        TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous avez transformer "..countRemove.." de "..ESX.GetItemLabel(itemRemove))
+        TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous avez transformer "..countRemove.." de "..ESX.GetItemLabel(itemRemove))
     else
-        TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "~r~Erreur~s~\nVous n'avez pas assez de place")
+        TriggerClientEvent('esx:showNotification', xPlayer.source, "~r~Erreur~s~\nVous n'avez pas assez de place")
     end
 end)
 

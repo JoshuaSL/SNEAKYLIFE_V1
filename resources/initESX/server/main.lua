@@ -1,6 +1,6 @@
 local Accounts, SharedAccounts = {}, {}
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 MySQL.ready(function()
 	MySQL.Async.fetchAll('SELECT * FROM addon_account', {}, function(result)
@@ -187,7 +187,7 @@ AddEventHandler('Sneakyesx_phone:registerNumber', function(number, type, sharePo
 	}
 end)
 
-AddEventHandler('Sneakyesx:setJob', function(source, job, lastJob)
+AddEventHandler('esx:setJob', function(source, job, lastJob)
 	if PhoneNumbers[lastJob.name] ~= nil then
 		TriggerEvent('Sneakyesx_addons_gcphone:removeSource', lastJob.name, source)
 	end
@@ -237,7 +237,7 @@ AddEventHandler('Sneakyesx_addons_gcphone:startCall', function(number, message, 
 	end
 end)
 
-AddEventHandler('Sneakyesx:playerLoaded', function(source)
+AddEventHandler('esx:playerLoaded', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier',{
@@ -252,7 +252,7 @@ AddEventHandler('Sneakyesx:playerLoaded', function(source)
 	end)
 end)
 
-AddEventHandler('Sneakyesx:playerDropped', function(source)
+AddEventHandler('esx:playerDropped', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	if PhoneNumbers[xPlayer.job.name] ~= nil then
 		TriggerEvent('Sneakyesx_addons_gcphone:removeSource', xPlayer.job.name, source)
@@ -366,7 +366,7 @@ ESX.RegisterUsableItem('bread', function(source)
 	xPlayer.removeInventoryItem('bread', 1)
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 150000)
 	TriggerClientEvent('Sneaky:addStatus', source, 132, 74, 17, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ du pain.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ du pain.")
 end)
 
 
@@ -395,7 +395,7 @@ ESX.RegisterUsableItem('perfusion', function(source)
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 50000)
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 50000)
 	TriggerClientEvent('Sneaky:addStatus', source, 209, 209, 209, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une perfusion.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une perfusion.")
 end)
 
 
@@ -406,7 +406,7 @@ ESX.RegisterUsableItem('water', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 150000)
 	TriggerClientEvent('Sneaky:addStatus', source, 0, 240, 255, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une bouteille d'eau.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une bouteille d'eau.")
 end)
 
 ESX.RegisterUsableItem('redbull', function(source)
@@ -415,7 +415,7 @@ ESX.RegisterUsableItem('redbull', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 100000)
 	TriggerClientEvent('Sneaky:addStatus', source, 248, 255, 169, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un redbull.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un redbull.")
 end)
 
 ESX.RegisterUsableItem('limonade', function(source)
@@ -424,7 +424,7 @@ ESX.RegisterUsableItem('limonade', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 100000)
 	TriggerClientEvent('Sneaky:addStatus', source, 248, 255, 169, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une limonade.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une limonade.")
 end)
 
 ESX.RegisterUsableItem('coca', function(source)
@@ -433,7 +433,7 @@ ESX.RegisterUsableItem('coca', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 750000)
 	TriggerClientEvent('Sneaky:addStatus', source, 72, 43, 1, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un coca.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un coca.")
 end)
 
 ESX.RegisterUsableItem('cola', function(source)
@@ -442,7 +442,7 @@ ESX.RegisterUsableItem('cola', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 750000)
 	TriggerClientEvent('Sneaky:addStatus', source, 72, 43, 1, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un cola.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un cola.")
 end)
 
 
@@ -452,7 +452,7 @@ ESX.RegisterUsableItem('burger', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 72, 43, 1, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un burger.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un burger.")
 end)
 
 ESX.RegisterUsableItem('sake', function(source)
@@ -461,7 +461,7 @@ ESX.RegisterUsableItem('sake', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 72, 43, 1, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une bouteille de saké.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une bouteille de saké.")
 end)
 
 ESX.RegisterUsableItem('pizza', function(source)
@@ -470,7 +470,7 @@ ESX.RegisterUsableItem('pizza', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 73, 0, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une pizza.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une pizza.")
 end)
 
 -- Noodle
@@ -480,7 +480,7 @@ ESX.RegisterUsableItem('the_vert', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 205, 255, 127, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un thé vert.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un thé vert.")
 end)
 
 ESX.RegisterUsableItem('jus_leechi', function(source)
@@ -489,7 +489,7 @@ ESX.RegisterUsableItem('jus_leechi', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 205, 255, 127, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un jus de leechi.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un jus de leechi.")
 end)
 
 ESX.RegisterUsableItem('maki', function(source)
@@ -498,7 +498,7 @@ ESX.RegisterUsableItem('maki', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 205, 255, 127, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un maki.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un maki.")
 end)
 
 ESX.RegisterUsableItem('bol_de_nouilles', function(source)
@@ -507,7 +507,7 @@ ESX.RegisterUsableItem('bol_de_nouilles', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 158, 127, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un bol de nouilles.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un bol de nouilles.")
 end)
 
 ESX.RegisterUsableItem('assiette_de_sushis', function(source)
@@ -516,7 +516,7 @@ ESX.RegisterUsableItem('assiette_de_sushis', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 158, 127, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une assiette de sushi.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une assiette de sushi.")
 end)
 
 ESX.RegisterUsableItem('rouleau_de_printemps', function(source)
@@ -525,7 +525,7 @@ ESX.RegisterUsableItem('rouleau_de_printemps', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 158, 127, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un rouleau de printemps.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un rouleau de printemps.")
 end)
 
 ESX.RegisterUsableItem('soupe_de_nouille', function(source)
@@ -534,7 +534,7 @@ ESX.RegisterUsableItem('soupe_de_nouille', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 158, 127, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une soupe de nouille.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une soupe de nouille.")
 end)
 
 -- Ltd
@@ -545,7 +545,7 @@ ESX.RegisterUsableItem('sandwich', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 121, 68, 0, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un sandwich.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un sandwich.")
 end)
 
 ESX.RegisterUsableItem('chips', function(source)
@@ -554,7 +554,7 @@ ESX.RegisterUsableItem('chips', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 210, 152, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un paquet de chips.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un paquet de chips.")
 end)
 
 ESX.RegisterUsableItem('hotdog', function(source)
@@ -563,7 +563,7 @@ ESX.RegisterUsableItem('hotdog', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 160, 152, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un hotdog.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un hotdog.")
 end)
 
 ESX.RegisterUsableItem('jus_orange', function(source)
@@ -572,7 +572,7 @@ ESX.RegisterUsableItem('jus_orange', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 166, 0, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un jus d'orange.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un jus d'orange.")
 end)
 
 ESX.RegisterUsableItem('beer_2', function(source)
@@ -581,7 +581,7 @@ ESX.RegisterUsableItem('beer_2', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 221, 158, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une bière sans alcool.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une bière sans alcool.")
 end)
 
 ESX.RegisterUsableItem('chocolate', function(source)
@@ -590,7 +590,7 @@ ESX.RegisterUsableItem('chocolate', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 150000)
 	TriggerClientEvent('Sneaky:addStatus', source, 69, 45, 0, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une tablette de chocolat.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une tablette de chocolat.")
 end)
 
 ESX.RegisterUsableItem('donut', function(source)
@@ -599,7 +599,7 @@ ESX.RegisterUsableItem('donut', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 69, 45, 0, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un donut.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un donut.")
 end)
 
 
@@ -609,7 +609,7 @@ ESX.RegisterUsableItem('spaghetti_bolognaise', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 800000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 84, 84, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ des spaghettis bolognaise.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ des spaghettis bolognaise.")
 end)
 
 
@@ -619,7 +619,7 @@ ESX.RegisterUsableItem('frites', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 250000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 252, 84, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ des frites.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ des frites.")
 end)
 
 ESX.RegisterUsableItem('frites_chauffe', function(source)
@@ -628,7 +628,7 @@ ESX.RegisterUsableItem('frites_chauffe', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'hunger', 250000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 252, 84, "eat")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ des frites chauffées.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ des frites chauffées.")
 end)
 
 ESX.RegisterUsableItem('soda', function(source)
@@ -637,7 +637,7 @@ ESX.RegisterUsableItem('soda', function(source)
 
 	TriggerClientEvent('Sneakyesx_status:add', source, 'thirst', 750000)
 	TriggerClientEvent('Sneaky:addStatus', source, 96, 44, 0, "drink")
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un soda.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un soda.")
 end)
 
 -- Items Alcohol --
@@ -648,7 +648,7 @@ ESX.RegisterUsableItem('beer', function(source)
 	TriggerClientEvent('Sneakyesx_status:add', source, 'drunk', 250000)
 	TriggerClientEvent('Sneaky:addStatus', source, 255, 221, 158, "drink")
 	TriggerClientEvent('Sneakyesx_status:onDrinkAlcohol', source)
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une bière.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une bière.")
 end)
 
 ESX.RegisterUsableItem('tequila', function(source)
@@ -658,7 +658,7 @@ ESX.RegisterUsableItem('tequila', function(source)
 	TriggerClientEvent('Sneakyesx_status:add', source, 'drunk', 250000)
 	TriggerClientEvent('Sneaky:addStatus', source, 218, 218, 218, "drink")
 	TriggerClientEvent('Sneakyesx_status:onDrinkAlcohol', source)
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une tequila.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une tequila.")
 end)
 
 ESX.RegisterUsableItem('vodka', function(source)
@@ -668,7 +668,7 @@ ESX.RegisterUsableItem('vodka', function(source)
 	TriggerClientEvent('Sneakyesx_status:add', source, 'drunk', 250000)
 	TriggerClientEvent('Sneaky:addStatus', source, 218, 218, 218, "drink")
 	TriggerClientEvent('Sneakyesx_status:onDrinkAlcohol', source)
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une vodka.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ une vodka.")
 end)
 
 ESX.RegisterUsableItem('whisky', function(source)
@@ -678,7 +678,7 @@ ESX.RegisterUsableItem('whisky', function(source)
 	TriggerClientEvent('Sneakyesx_status:add', source, 'drunk', 250000)
 	TriggerClientEvent('Sneaky:addStatus', source, 151, 103, 0, "drink")
 	TriggerClientEvent('Sneakyesx_status:onDrinkAlcohol', source)
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un whisky.")
+	TriggerClientEvent('esx:showNotification', source, "Vous avez ~b~consommé(e)~s~ un whisky.")
 end)
 
 -- Items Drug --

@@ -5,7 +5,7 @@ else
 end
 
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 webhooksAC = {
 	["startresource"] = "https://canary.discord.com/api/webhooks/846057466554613780/hEAeh1CHKQ06tYucZo2qngRcxVvQazFw9MjTbTjRB6VKYa6GH_-H_9B5ZinoqXsh5Jbl",

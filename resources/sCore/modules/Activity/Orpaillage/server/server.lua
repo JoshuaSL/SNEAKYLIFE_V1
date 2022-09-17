@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
 
 local terreActivity = {
     onService = {}
@@ -26,9 +26,9 @@ AddEventHandler('sTerreActivity:HarvestTerre', function(item_name)
     else
         if xPlayer.canCarryItem("terre", count) then
             xPlayer.addInventoryItem('terre', count)
-            TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez récupéré ~b~"..count.." Terre~s~.")
+            TriggerClientEvent('esx:showNotification', source, "Vous avez récupéré ~b~"..count.." Terre~s~.")
         else
-            TriggerClientEvent('Sneakyesx:showNotification', source, "~r~Vous ne pouvez pas prendre ça sur vous.")
+            TriggerClientEvent('esx:showNotification', source, "~r~Vous ne pouvez pas prendre ça sur vous.")
         end
     end
 end)
@@ -58,22 +58,22 @@ AddEventHandler('sterreActivity:useCasserole', function()
     if Terre >= 1 then
         if total >= 0 and total <= 40 then
             if xPlayer.canCarryItem("ors", 1) then
-                TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez trouvé ~y~1 pépite d'or~s~ dans la terre.")
+                TriggerClientEvent('esx:showNotification', source, "Vous avez trouvé ~y~1 pépite d'or~s~ dans la terre.")
                 xPlayer.removeInventoryItem('terre', 1)
                 xPlayer.addInventoryItem('ors', 1)
             else
-                TriggerClientEvent('Sneakyesx:showNotification', source, "~r~Vous ne pouvez pas prendre ça sur vous.")
+                TriggerClientEvent('esx:showNotification', source, "~r~Vous ne pouvez pas prendre ça sur vous.")
             end
         elseif total >= 40 and total <= 80 then
-            TriggerClientEvent('Sneakyesx:showNotification', source, "~r~Vous n'avez rien trouvé dans la terre.")
+            TriggerClientEvent('esx:showNotification', source, "~r~Vous n'avez rien trouvé dans la terre.")
             xPlayer.removeInventoryItem('terre', 1)
         elseif total >= 80 and total <= 99 then
             if xPlayer.canCarryItem("ors", 2) then
-                TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez trouvé ~y~2 pépites d'or~s~ dans la terre.")
+                TriggerClientEvent('esx:showNotification', source, "Vous avez trouvé ~y~2 pépites d'or~s~ dans la terre.")
                 xPlayer.addInventoryItem('ors', 2)
                 xPlayer.removeInventoryItem('terre', 1)
             else
-                TriggerClientEvent('Sneakyesx:showNotification', source, "~r~Vous ne pouvez pas prendre ça sur vous.")
+                TriggerClientEvent('esx:showNotification', source, "~r~Vous ne pouvez pas prendre ça sur vous.")
             end
         end
     end
@@ -94,7 +94,7 @@ ESX.RegisterUsableItem('casserole', function(source)
     if Terre > 0 then
 	    TriggerClientEvent('sTerreActivity:addCasserole', _source)
     else
-        TriggerClientEvent('Sneakyesx:showNotification', source, "~r~Vous n'avez pas de terre sur vous.")
+        TriggerClientEvent('esx:showNotification', source, "~r~Vous n'avez pas de terre sur vous.")
     end
 end)
 

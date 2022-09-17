@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback('Dmv:buy', function(source, cb, price)
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -25,6 +25,6 @@ AddEventHandler('Sneakyesx_dmvschool:addLicense', function(kakakdakkfakdafkjiajd
 		return
 	end
 	TriggerEvent('Sneakyesx_license:addLicense', xPlayer.source, license, function()
-		TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "+1 ~b~"..license.."~s~ !")
+		TriggerClientEvent("esx:showNotification", xPlayer.source, "+1 ~b~"..license.."~s~ !")
 	end)
 end)

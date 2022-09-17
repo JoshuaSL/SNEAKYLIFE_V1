@@ -2,7 +2,7 @@ ESX = nil
 opened = nil
 Citizen.CreateThread(function()
     while ESX == nil do
-        TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
         Citizen.Wait(0)
     end
     while ESX.GetPlayerData().job2 == nil or ESX.GetPlayerData().job == nil do Citizen.Wait(10) end
@@ -233,13 +233,13 @@ local Coffreorga = {
 }
 
 
-RegisterNetEvent('Sneakyesx:setJob')
-AddEventHandler('Sneakyesx:setJob', function(job)
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
     ESX.PlayerData.job = job
 end)
 
-RegisterNetEvent('Sneakyesx:setJob2')
-AddEventHandler('Sneakyesx:setJob2', function(job2)
+RegisterNetEvent('esx:setJob2')
+AddEventHandler('esx:setJob2', function(job2)
     ESX.PlayerData.job2 = job2
 end)
 

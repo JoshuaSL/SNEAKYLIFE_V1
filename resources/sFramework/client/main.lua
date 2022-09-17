@@ -1,14 +1,14 @@
 local isLoadoutLoaded, isPaused, isPlayerSpawned, isDead, pickups = false, false, false, false, {}
 SneakyEvent = TriggerServerEvent
 
-RegisterNetEvent('Sneakyesx:playerLoaded')
-AddEventHandler('Sneakyesx:playerLoaded', function(xPlayer)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerLoaded = true
 	ESX.PlayerData = xPlayer
 end)
 
-RegisterNetEvent('Sneakyesx:setMaxWeight')
-AddEventHandler('Sneakyesx:setMaxWeight', function(newMaxWeight)
+RegisterNetEvent('esx:setMaxWeight')
+AddEventHandler('esx:setMaxWeight', function(newMaxWeight)
 	ESX.PlayerData.maxWeight = newMaxWeight
 end)
 
@@ -17,10 +17,10 @@ AddEventHandler('playerSpawned', function(spawn, isFirstSpawn)
 		Citizen.Wait(10)
 	end
 
-	TriggerEvent('Sneakyesx:restoreLoadout')
+	TriggerEvent('esx:restoreLoadout')
 
 	if isFirstSpawn then
-		SneakyEvent('Sneakyesx:positionSaveReady')
+		SneakyEvent('esx:positionSaveReady')
 	end
 
 	isLoadoutLoaded, isPlayerSpawned, isDead = true, true, false
@@ -28,7 +28,7 @@ AddEventHandler('playerSpawned', function(spawn, isFirstSpawn)
 	NetworkSetFriendlyFireOption(true)
 end)
 
-AddEventHandler('Sneakyesx:onPlayerDeath', function() isDead = true end)
+AddEventHandler('esx:onPlayerDeath', function() isDead = true end)
 AddEventHandler('Sneakyskinchanger:loadDefaultModel', function() isLoadoutLoaded = false end)
 
 AddEventHandler('Sneakyskinchanger:modelLoaded', function()
@@ -36,10 +36,10 @@ AddEventHandler('Sneakyskinchanger:modelLoaded', function()
 		Citizen.Wait(1)
 	end
 
-	TriggerEvent('Sneakyesx:restoreLoadout')
+	TriggerEvent('esx:restoreLoadout')
 end)
 
-AddEventHandler('Sneakyesx:restoreLoadout', function()
+AddEventHandler('esx:restoreLoadout', function()
 	local playerPed = PlayerPedId()
 	local ammoTypes = {}
 
@@ -67,8 +67,8 @@ AddEventHandler('Sneakyesx:restoreLoadout', function()
 	isLoadoutLoaded = true
 end)
 
-RegisterNetEvent('Sneakyesx:setAccountMoney')
-AddEventHandler('Sneakyesx:setAccountMoney', function(account)
+RegisterNetEvent('esx:setAccountMoney')
+AddEventHandler('esx:setAccountMoney', function(account)
 	for i = 1, #ESX.PlayerData.accounts, 1 do
 		if ESX.PlayerData.accounts[i].name == account.name then
 			ESX.PlayerData.accounts[i] = account
@@ -77,13 +77,13 @@ AddEventHandler('Sneakyesx:setAccountMoney', function(account)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:addInventoryItem')
-AddEventHandler('Sneakyesx:addInventoryItem', function(item)
+RegisterNetEvent('esx:addInventoryItem')
+AddEventHandler('esx:addInventoryItem', function(item)
 	table.insert(ESX.PlayerData.inventory, item)
 end)
 
-RegisterNetEvent('Sneakyesx:removeInventoryItem')
-AddEventHandler('Sneakyesx:removeInventoryItem', function(item, identifier)
+RegisterNetEvent('esx:removeInventoryItem')
+AddEventHandler('esx:removeInventoryItem', function(item, identifier)
 	for i = 1, #ESX.PlayerData.inventory, 1 do
 		if ESX.PlayerData.inventory[i].name == item.name and (not identifier or (item.unique and ESX.PlayerData.inventory[i].extra.identifier and ESX.PlayerData.inventory[i].extra.identifier == identifier)) then
 			table.remove(ESX.PlayerData.inventory, i)
@@ -92,8 +92,8 @@ AddEventHandler('Sneakyesx:removeInventoryItem', function(item, identifier)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:updateItemCount')
-AddEventHandler('Sneakyesx:updateItemCount', function(add, itemName, count)
+RegisterNetEvent('esx:updateItemCount')
+AddEventHandler('esx:updateItemCount', function(add, itemName, count)
 	for i = 1, #ESX.PlayerData.inventory, 1 do
 		if ESX.PlayerData.inventory[i].name == itemName then
 			ESX.PlayerData.inventory[i].count = count
@@ -102,23 +102,23 @@ AddEventHandler('Sneakyesx:updateItemCount', function(add, itemName, count)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:setJob')
-AddEventHandler('Sneakyesx:setJob', function(job)
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
 	ESX.PlayerData.job = job
 end)
 
-RegisterNetEvent('Sneakyesx:setJob2')
-AddEventHandler('Sneakyesx:setJob2', function(job2)
+RegisterNetEvent('esx:setJob2')
+AddEventHandler('esx:setJob2', function(job2)
 	ESX.PlayerData.job2 = job2
 end)
 
-RegisterNetEvent('Sneakyesx:setGroup')
-AddEventHandler('Sneakyesx:setGroup', function(group, lastGroup)
+RegisterNetEvent('esx:setGroup')
+AddEventHandler('esx:setGroup', function(group, lastGroup)
 	ESX.PlayerData.group = group
 end)
 
-RegisterNetEvent('Sneakyesx:addWeapon')
-AddEventHandler('Sneakyesx:addWeapon', function(weaponName, weaponAmmo)
+RegisterNetEvent('esx:addWeapon')
+AddEventHandler('esx:addWeapon', function(weaponName, weaponAmmo)
 	local found = false
 
 	for i = 1, #ESX.PlayerData.loadout, 1 do
@@ -144,8 +144,8 @@ AddEventHandler('Sneakyesx:addWeapon', function(weaponName, weaponAmmo)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:addWeaponComponent')
-AddEventHandler('Sneakyesx:addWeaponComponent', function(weaponName, weaponComponent)
+RegisterNetEvent('esx:addWeaponComponent')
+AddEventHandler('esx:addWeaponComponent', function(weaponName, weaponComponent)
 	for i = 1, #ESX.PlayerData.loadout, 1 do
 		if ESX.PlayerData.loadout[i].name == weaponName then
 			local component = ESX.GetWeaponComponent(weaponName, weaponComponent)
@@ -171,8 +171,8 @@ AddEventHandler('Sneakyesx:addWeaponComponent', function(weaponName, weaponCompo
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:setWeaponAmmo')
-AddEventHandler('Sneakyesx:setWeaponAmmo', function(weaponName, weaponAmmo)
+RegisterNetEvent('esx:setWeaponAmmo')
+AddEventHandler('esx:setWeaponAmmo', function(weaponName, weaponAmmo)
 	for i = 1, #ESX.PlayerData.loadout, 1 do
 		if ESX.PlayerData.loadout[i].name == weaponName then
 			local playerPed = PlayerPedId()
@@ -185,8 +185,8 @@ AddEventHandler('Sneakyesx:setWeaponAmmo', function(weaponName, weaponAmmo)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:removeWeapon')
-AddEventHandler('Sneakyesx:removeWeapon', function(weaponName, ammo)
+RegisterNetEvent('esx:removeWeapon')
+AddEventHandler('esx:removeWeapon', function(weaponName, ammo)
 	for i = 1, #ESX.PlayerData.loadout, 1 do
 		if ESX.PlayerData.loadout[i].name == weaponName then
 			local playerPed = PlayerPedId()
@@ -208,8 +208,8 @@ AddEventHandler('Sneakyesx:removeWeapon', function(weaponName, ammo)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:removeWeaponComponent')
-AddEventHandler('Sneakyesx:removeWeaponComponent', function(weaponName, weaponComponent)
+RegisterNetEvent('esx:removeWeaponComponent')
+AddEventHandler('esx:removeWeaponComponent', function(weaponName, weaponComponent)
 	for i = 1, #ESX.PlayerData.loadout, 1 do
 		if ESX.PlayerData.loadout[i].name == weaponName then
 			local component = ESX.GetWeaponComponent(weaponName, weaponComponent)
@@ -230,13 +230,13 @@ AddEventHandler('Sneakyesx:removeWeaponComponent', function(weaponName, weaponCo
 end)
 
 -- Commands
-RegisterNetEvent('Sneakyesx:teleport')
-AddEventHandler('Sneakyesx:teleport', function(coords)
+RegisterNetEvent('esx:teleport')
+AddEventHandler('esx:teleport', function(coords)
 	ESX.Game.Teleport(PlayerPedId(), coords)
 end)
 
-RegisterNetEvent('Sneakyesx:spawnVehicle')
-AddEventHandler('Sneakyesx:spawnVehicle', function(model)
+RegisterNetEvent('esx:spawnVehicle')
+AddEventHandler('esx:spawnVehicle', function(model)
 	model = (type(model) == 'number' and model or GetHashKey(model))
 
 	if IsModelInCdimage(model) then
@@ -252,8 +252,8 @@ AddEventHandler('Sneakyesx:spawnVehicle', function(model)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:createPickup')
-AddEventHandler('Sneakyesx:createPickup', function(pickupId, label, coords, type, name, components)
+RegisterNetEvent('esx:createPickup')
+AddEventHandler('esx:createPickup', function(pickupId, label, coords, type, name, components)
 	local pickupObject
 
 	ESX.Game.SpawnLocalObject('prop_cs_package_01', coords, function(obj)
@@ -277,8 +277,8 @@ AddEventHandler('Sneakyesx:createPickup', function(pickupId, label, coords, type
 	}
 end)
 
-RegisterNetEvent('Sneakyesx:createMissingPickups')
-AddEventHandler('Sneakyesx:createMissingPickups', function(missingPickups)
+RegisterNetEvent('esx:createMissingPickups')
+AddEventHandler('esx:createMissingPickups', function(missingPickups)
 	for pickupId, pickup in pairs(missingPickups) do
 		local pickupObject = nil
 
@@ -304,14 +304,14 @@ AddEventHandler('Sneakyesx:createMissingPickups', function(missingPickups)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:removePickup')
-AddEventHandler('Sneakyesx:removePickup', function(id)
+RegisterNetEvent('esx:removePickup')
+AddEventHandler('esx:removePickup', function(id)
 	ESX.Game.DeleteObject(pickups[id].obj)
 	pickups[id] = nil
 end)
 
-RegisterNetEvent('Sneakyesx:deleteVehicle')
-AddEventHandler('Sneakyesx:deleteVehicle', function(radius)
+RegisterNetEvent('esx:deleteVehicle')
+AddEventHandler('esx:deleteVehicle', function(radius)
 	local playerPed = PlayerPedId()
 
 	if radius and tonumber(radius) then
@@ -394,7 +394,7 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 
 		if NetworkIsSessionStarted() then
-			SneakyEvent('Sneakyesx:firstJoinProper')
+			SneakyEvent('esx:firstJoinProper')
 			return
 		end
 	end

@@ -14,8 +14,8 @@ function PlayerKilledByPlayer(killerServerId, killerClientId, deathCause)
 		killerClientId = killerClientId
 	}
 
-	TriggerEvent('Sneakyesx:onPlayerDeath', data)
-	SneakyEvent('Sneakyesx:onPlayerDeath', data)
+	TriggerEvent('esx:onPlayerDeath', data)
+	SneakyEvent('esx:onPlayerDeath', data)
 end
 
 function PlayerKilled(deathCause)
@@ -28,6 +28,6 @@ function PlayerKilled(deathCause)
 		deathCause = deathCause
 	}
 
-	TriggerEvent('Sneakyesx:onPlayerDeath', data)
-	SneakyEvent('Sneakyesx:onPlayerDeath', data)
+	TriggerEvent('esx:onPlayerDeath', data)
+	SneakyEvent('esx:onPlayerDeath', data)
 end

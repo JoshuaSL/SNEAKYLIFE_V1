@@ -15,7 +15,7 @@ AddEventHandler('chatMessage', function(source, author, message)
 		if command.group ~= nil then
 			if ESX.Groups[xPlayer.getGroup()]:canTarget(ESX.Groups[command.group]) then
 				if (command.arguments > -1) and (command.arguments ~= #commandArgs) then
-					TriggerEvent("Sneakyesx:incorrectAmountOfArguments", source, command.arguments, #commandArgs)
+					TriggerEvent("esx:incorrectAmountOfArguments", source, command.arguments, #commandArgs)
 				else
 					command.callback(source, commandArgs, xPlayer)
 				end
@@ -24,7 +24,7 @@ AddEventHandler('chatMessage', function(source, author, message)
 			end
 		else
 			if (command.arguments > -1) and (command.arguments ~= #commandArgs) then
-				TriggerEvent("Sneakyesx:incorrectAmountOfArguments", source, command.arguments, #commandArgs)
+				TriggerEvent("esx:incorrectAmountOfArguments", source, command.arguments, #commandArgs)
 			else
 				command.callback(source, commandArgs, xPlayer)
 			end
@@ -80,7 +80,7 @@ ESX.AddGroupCommand('pos', '_dev', function(source, args, user)
 	local x, y, z = tonumber(args[1]), tonumber(args[2]), tonumber(args[3])
 	
 	if x and y and z then
-		TriggerClientEvent('Sneakyesx:teleport', source, vector3(x, y, z))
+		TriggerClientEvent('esx:teleport', source, vector3(x, y, z))
 	else
 		ESX.ChatMessage(source, "Invalid coordinates!")
 	end
@@ -135,13 +135,13 @@ end, {help = 'Assigner un job', params = {
 }})
 
 ESX.AddGroupCommand('car', 'superadmin', function(source, args, user)
-	TriggerClientEvent('Sneakyesx:spawnVehicle', source, args[1])
+	TriggerClientEvent('esx:spawnVehicle', source, args[1])
 end, {help = 'Spawn un véhicule', params = {
 	{name = "car", help = 'Nom de la voiture'}
 }})
 
 ESX.AddGroupCommand('dv', 'admin', function(source, args, user)
-	TriggerClientEvent('Sneakyesx:deleteVehicle', source, args[1])
+	TriggerClientEvent('esx:deleteVehicle', source, args[1])
 end, {help = 'supprimer le véhicule', params = {
 	{name = 'radius', help = 'Optional, delete every vehicle within the specified radius'}
 }})

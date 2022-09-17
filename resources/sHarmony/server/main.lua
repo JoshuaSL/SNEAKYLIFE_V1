@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 local Vehicles = nil
 local societylabel = ""
 RegisterServerEvent('sCustom:buyModHarmony')
@@ -23,12 +23,12 @@ AddEventHandler('sCustom:buyModHarmony', function(price)
 	end)
 	if price < societyAccount.money then
 		TriggerClientEvent('sCustom:installMod', _source)
-		TriggerClientEvent('Sneakyesx:showNotification', _source, 'Vous venez de payer '..price.."~g~$ pour customiser ce véhicule")
+		TriggerClientEvent('esx:showNotification', _source, 'Vous venez de payer '..price.."~g~$ pour customiser ce véhicule")
 		societyAccount.removeMoney(price)
 		exports.sCore:SendLogs(1752220,"Harmony Customisation",""..GetPlayerName(source).." vient de payer "..price.." \n License : "..xPlayer.identifier,"https://discord.com/api/webhooks/878557266800943144/t2PlYltKcY20EP8X97z0WLAUIwSjkknEhVA4OSh1-DugR6pU1XcoKMhIJqQEuePri7cT")
 	else
 		TriggerClientEvent('sCustom:cancelInstallMod', _source)
-		TriggerClientEvent('Sneakyesx:showNotification', _source, '~r~Vous n\'avez pas assez d\'argent!')
+		TriggerClientEvent('esx:showNotification', _source, '~r~Vous n\'avez pas assez d\'argent!')
 	end
 end)
 

@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 sGarageManager = {}
 sGarageManager.instanceRange = 1000
@@ -31,7 +31,7 @@ local function createGarage(data, author, street)
         }, function()
             local insertId = MySQL.Sync.fetchScalar("SELECT MAX(id) FROM garage")
             addGarage({ id = insertId, owner = "none", infos = data, ownerInfo = "none", vehicles = {}, street = street}, false)
-            TriggerClientEvent("Sneakyesx:showNotification", author, "~g~Création du garage effectuée !")
+            TriggerClientEvent("esx:showNotification", author, "~g~Création du garage effectuée !")
             
             local xPlayers = ESX.GetPlayers()
             for i = 1, #xPlayers, 1 do
@@ -173,7 +173,7 @@ AddEventHandler("sGarage:backVehicle", function(plate, props, garageId)
     }, function(result)
         if result[1] ~= nil then
             if result[1].owner ~= xPlayer.identifier then
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Erreur~s~~n~Vous ne pouvez pas stocker ce vehicle !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Erreur~s~~n~Vous ne pouvez pas stocker ce vehicle !")
                 loaded = false
             else
                 MySQL.Async.execute("UPDATE owned_vehicles SET garage_private = @garage_private, parked = @parked WHERE plate = @plate", {
@@ -207,7 +207,7 @@ AddEventHandler("sGarage:backVehicle", function(plate, props, garageId)
                 for k,v in pairs(sGarageManager.list[garageId].vehicles) do
                     if v.plate == plate then
                         table.remove(sGarageManager.list[garageId].vehicles, k)
-                        return TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Erreur~s~~n~Il n'y a plus assez de ~b~places~s~ dans le garage !")
+                        return TriggerClientEvent("esx:showNotification", source, "~r~Erreur~s~~n~Il n'y a plus assez de ~b~places~s~ dans le garage !")
                     end
                 end
             end
@@ -215,7 +215,7 @@ AddEventHandler("sGarage:backVehicle", function(plate, props, garageId)
     end
 
     TriggerClientEvent("sGarage:backVeh", source)
-    TriggerClientEvent("Sneakyesx:showNotification", source, "Votre ~b~véhicule~s~ a été rangé avec ~g~succès~s~ !")
+    TriggerClientEvent("esx:showNotification", source, "Votre ~b~véhicule~s~ a été rangé avec ~g~succès~s~ !")
 
 end)
 

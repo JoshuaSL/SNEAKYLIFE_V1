@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent("Sneakyesx:getSharedObject", function(obj) ESX = obj end)
+TriggerEvent("esx:getSharedObject", function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback("esx_inventoryhud:getPlayerInventory", function(source, cb, target)
 	local targetXPlayer = ESX.GetPlayerFromId(target)
@@ -45,8 +45,8 @@ AddEventHandler("esx_inventoryhud:tradePlayerItem",	function(from, target, type,
 				targetXPlayer.addInventoryItem(itemName, itemCount)
 				exports.sCore:SendLogs(1752220,"Fouiller item","**"..GetPlayerName(_source).."** vient de confisquer/prendre ***"..type.."*** de ***"..itemName.."*** : ***"..itemCount.."*** \n **License de la source** : "..sourceXPlayer.identifier.."\n **License du joueur** : "..targetXPlayer.identifier,"https://discord.com/api/webhooks/878545182230990889/Vrdk2P2rno0Joqjj7CgvQxJ5DVk_CO5FKI2k5RsrLPxBWLJYSLp8s2XuTfaDapfGZMy6")
 			else
-				TriggerClientEvent('Sneakyesx:showNotification', targetXPlayer.source, "~r~Vous n'avez pas assez de place sur vous.")
-				TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, "~r~La personne n'a pas assez de place.")
+				TriggerClientEvent('esx:showNotification', targetXPlayer.source, "~r~Vous n'avez pas assez de place sur vous.")
+				TriggerClientEvent('esx:showNotification', sourceXPlayer.source, "~r~La personne n'a pas assez de place.")
 			end
 		end
 	elseif type == "item_money" then
@@ -122,12 +122,12 @@ AddEventHandler('Sneaky:putStockItems', function(type,itemName, count, job, ammo
 					xPlayer.removeInventoryItem(itemName, count)
 					inventory.addItem(itemName, count)
 					exports.sCore:SendLogs(1752220,"Déposer coffre item (entreprise/orga)","**"..GetPlayerName(source).."** vient de déposer ***"..type.."*** de ***"..itemName.."*** : ***"..count.."*** dans le coffre : ***"..job.."*** \n **License de la source** : "..xPlayer.identifier,"https://discord.com/api/webhooks/878549377893953567/vN2waHOHcjJDr7_2v0o1Q494wh4aLMYbEreqDp5yYeUW35PQa5LwOhYA4aZ--GZUOvaI")
-					TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, 'Vous avez ajouter [~b~x' .. count .. '~s~] ~b~' .. item.label)
+					TriggerClientEvent('esx:showNotification', xPlayer.source, 'Vous avez ajouter [~b~x' .. count .. '~s~] ~b~' .. item.label)
 				else
-					TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, '~r~La quantité et invalide.')
+					TriggerClientEvent('esx:showNotification', xPlayer.source, '~r~La quantité et invalide.')
 				end
 			else
-				TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, '~r~La quantité et invalide.')
+				TriggerClientEvent('esx:showNotification', xPlayer.source, '~r~La quantité et invalide.')
 			end
 		end)
 	elseif type == "weapon" then
@@ -184,13 +184,13 @@ AddEventHandler('Sneaky:getStockItem', function(type, itemName, count, job, ammo
 	if xPlayer.job.name == "police" then
 		if xPlayer.job.grade_name ~= "sergent" or xPlayer.job.grade_name ~= "lieutenant" or xPlayer.job.grade_name ~= "capitaine" or xPlayer.job.grade_name ~= "boss" or xPlayer.job.grade_name ~= "chefadj" or xPlayer.job.grade_name ~= "chef" then
 			return
-			TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas la permission de faire ça.")
+			TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas la permission de faire ça.")
 		end
 	end
 	if xPlayer.job.name == "lssd" then
 		if xPlayer.job.grade_name ~= "sergent" or xPlayer.job.grade_name ~= "lieutenantsheriff" or xPlayer.job.grade_name ~= "ssheriff" or xPlayer.job.grade_name ~= "boss" then
 			return
-			TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas la permission de faire ça.")
+			TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas la permission de faire ça.")
 		end
 	end
 	if type == "item" then
@@ -200,15 +200,15 @@ AddEventHandler('Sneaky:getStockItem', function(type, itemName, count, job, ammo
 				inventory.removeItem(itemName, count)
 				xPlayer.addInventoryItem(itemName, count)
 				exports.sCore:SendLogs(1752220,"Retirer coffre item (entreprise/orga)","**"..GetPlayerName(source).."** vient de retirer ***"..type.."*** de ***"..itemName.."*** : ***"..count.."*** dans le coffre : ***"..job.."*** \n **License de la source** : "..xPlayer.identifier,"https://discord.com/api/webhooks/878549377893953567/vN2waHOHcjJDr7_2v0o1Q494wh4aLMYbEreqDp5yYeUW35PQa5LwOhYA4aZ--GZUOvaI")
-				TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, 'Vous avez retirer [~b~x' .. count .. '~s~] ~b~' .. item.label)
+				TriggerClientEvent('esx:showNotification', xPlayer.source, 'Vous avez retirer [~b~x' .. count .. '~s~] ~b~' .. item.label)
 			else
-				TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, '~r~La quantité et invalid')
+				TriggerClientEvent('esx:showNotification', xPlayer.source, '~r~La quantité et invalid')
 			end
 		end)
 	elseif type == "weapon" then
 		itemName = string.upper(itemName)
 		if xPlayer.hasWeapon(itemName) then
-			TriggerClientEvent("Sneakyesx:showNotification",source,"Vous ne pouvez pas prendre deux fois la même ~r~arme~s~.")
+			TriggerClientEvent("esx:showNotification",source,"Vous ne pouvez pas prendre deux fois la même ~r~arme~s~.")
 		else
 			xPlayer.addWeapon(itemName, ammo)
 			TriggerEvent('Sneakyesx_datastore:getSharedDataStore', 'society_'..job, function(store)

@@ -698,7 +698,7 @@ end
 
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
 	Wait(1000)
@@ -750,11 +750,11 @@ end)
 
 -- Register events and handlers
 
-RegisterNetEvent('Sneakyesx:setJob')
+RegisterNetEvent('esx:setJob')
 RegisterNetEvent('esx_deliveries:setPlayerJob:client')
 RegisterNetEvent('esx_deliveries:startJob:client')
 
-AddEventHandler('Sneakyesx:setJob', function(job)
+AddEventHandler('esx:setJob', function(job)
 	PlayerJob = job.name
 end)
 

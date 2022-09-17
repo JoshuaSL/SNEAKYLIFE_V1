@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback('Sneakyreceleur:getItemAmount', function(source, cb, item)
 	local xPlayer = ESX.GetPlayerFromId(source)
@@ -33,7 +33,7 @@ AddEventHandler("Receleur:SellItem",function(itemRemove,countRemove,itemRemoveLa
     end
     xPlayer.removeInventoryItem(itemRemove, countRemove)
     xPlayer.addAccountMoney('dirtycash',money)
-    TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous avez vendu "..countRemove.." de "..itemRemoveLabel)
+    TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous avez vendu "..countRemove.." de "..itemRemoveLabel)
 end)
 
 RegisterServerEvent('Sneakyreceleur:buyItem')
@@ -70,11 +70,11 @@ AddEventHandler('Sneakyreceleur:buyItem', function(itemName, amount,zone)
 		if xPlayer.canCarryItem(itemName, amount) then
 			xPlayer.removeAccountMoney('cash', money)
 			xPlayer.addInventoryItem(itemName, amount)
-			TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez acheté ~b~<C>"..ESX.GetItemLabel(itemName).."<C> ~s~ pour <C>"..money.."~s~~g~$~s~<C>.")
+			TriggerClientEvent('esx:showNotification', source, "Vous avez acheté ~b~<C>"..ESX.GetItemLabel(itemName).."<C> ~s~ pour <C>"..money.."~s~~g~$~s~<C>.")
 		else
-			TriggerClientEvent('Sneakyesx:showNotification', source, "Vous n'avez plus de place sur vous")
+			TriggerClientEvent('esx:showNotification', source, "Vous n'avez plus de place sur vous")
 		end
 	else
-		TriggerClientEvent('Sneakyesx:showNotification', source, "Vous n'avez pas assez d'argent")
+		TriggerClientEvent('esx:showNotification', source, "Vous n'avez pas assez d'argent")
 	end
 end)

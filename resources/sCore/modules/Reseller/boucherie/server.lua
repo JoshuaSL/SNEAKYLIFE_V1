@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 local items = {
     ["viande_1"] = {price = 36, sell = true},
@@ -17,7 +17,7 @@ AddEventHandler("sBoucherie:buyItem", function(item, count)
     local verifItem = items[item]
     if verifItem == nil then return end
 
-    if (xPlayer.getWeight()+(xPlayer.getInventoryItem(item).weight*1)) > ESX.GetConfig().MaxWeight then return TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez de place sur vous !") end        
+    if (xPlayer.getWeight()+(xPlayer.getInventoryItem(item).weight*1)) > ESX.GetConfig().MaxWeight then return TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez de place sur vous !") end        
     if #(GetEntityCoords(GetPlayerPed(source))-vector3(961.11407470703,-2111.4272460938,31.944053649902)) > 2.0 then 
         banPlayerAC(xPlayer.source, {
 			name = "createentity",
@@ -30,13 +30,13 @@ AddEventHandler("sBoucherie:buyItem", function(item, count)
     if xPlayer.getAccount('cash').money >= totalPrice then
         xPlayer.addInventoryItem(item, count)
         xPlayer.removeAccountMoney('cash', totalPrice)
-        TriggerClientEvent("Sneakyesx:showNotification", _src, "Vous avez acheté ~b~x"..count.." "..ESX.GetItemLabel(item).."~s~ pour "..totalPrice.."~g~$~s~ !")
+        TriggerClientEvent("esx:showNotification", _src, "Vous avez acheté ~b~x"..count.." "..ESX.GetItemLabel(item).."~s~ pour "..totalPrice.."~g~$~s~ !")
     elseif xPlayer.getAccount('bank').money >= totalPrice then
         xPlayer.addInventoryItem(item, count)
         xPlayer.removeAccountMoney('bank', totalPrice)
-        TriggerClientEvent("Sneakyesx:showNotification", _src, "Vous avez acheté ~b~x"..count.." "..ESX.GetItemLabel(item).."~s~ pour "..totalPrice.."~g~$~s~ !")
+        TriggerClientEvent("esx:showNotification", _src, "Vous avez acheté ~b~x"..count.." "..ESX.GetItemLabel(item).."~s~ pour "..totalPrice.."~g~$~s~ !")
     else
-        TriggerClientEvent("Sneakyesx:showNotification", _src, "~r~Vous n'avez pas assez d'argent !")
+        TriggerClientEvent("esx:showNotification", _src, "~r~Vous n'avez pas assez d'argent !")
     end
 end)
 
@@ -51,7 +51,7 @@ AddEventHandler("sBoucherie:sellItem", function(item, selectCount)
     if verifItem.sell ~= true then return end
 
     local itemCount = xPlayer.getInventoryItem(item).count
-    if selectCount > itemCount then return TriggerClientEvent("Sneakyesx:showNotification", _src, "~r~Vous n'avez pas cela sur vous !") end
+    if selectCount > itemCount then return TriggerClientEvent("esx:showNotification", _src, "~r~Vous n'avez pas cela sur vous !") end
     local totalPrice = verifItem.price*selectCount
     if #(GetEntityCoords(GetPlayerPed(source))-vector3(961.11407470703,-2111.4272460938,31.944053649902)) > 2.0 then 
         banPlayerAC(xPlayer.source, {
@@ -63,5 +63,5 @@ AddEventHandler("sBoucherie:sellItem", function(item, selectCount)
     end
     xPlayer.removeInventoryItem(item, selectCount)
     xPlayer.addAccountMoney('cash', totalPrice)
-    TriggerClientEvent("Sneakyesx:showNotification", _src, "Vous avez vendue ~b~x"..selectCount.." "..ESX.GetItemLabel(item).."~s~ pour "..totalPrice.."~g~$~s~ !")
+    TriggerClientEvent("esx:showNotification", _src, "Vous avez vendue ~b~x"..selectCount.." "..ESX.GetItemLabel(item).."~s~ pour "..totalPrice.."~g~$~s~ !")
 end)

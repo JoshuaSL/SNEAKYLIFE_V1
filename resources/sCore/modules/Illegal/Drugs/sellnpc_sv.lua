@@ -1,6 +1,6 @@
 local ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 local drugsList = {
     ["weed_pooch"] = true,

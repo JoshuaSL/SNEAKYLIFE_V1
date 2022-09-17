@@ -1,4 +1,4 @@
-AddEventHandler('Sneakyesx:getSharedObject', function(cb)
+AddEventHandler('esx:getSharedObject', function(cb)
 	cb(ESX)
 end)
 

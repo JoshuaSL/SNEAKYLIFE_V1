@@ -1,7 +1,7 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
-AddEventHandler('Sneakyesx:playerLoaded', function(source)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+AddEventHandler('esx:playerLoaded', function(source)
 	TriggerEvent('Sneakyesx_license:getLicenses', source, function(licenses)
 		TriggerClientEvent('jWeaponshop:loadLicenses', source, licenses)
 	end)
@@ -54,15 +54,15 @@ AddEventHandler('sAmmunation:buyWeapon', function(weaponName)
 	end
 
 	local hasWeapon = xPlayer.hasWeapon(weaponName)
-	if hasWeapon then return TriggerClientEvent('Sneakyesx:showNotification', source, '~r~Vous avez déjà cette arme !') end
+	if hasWeapon then return TriggerClientEvent('esx:showNotification', source, '~r~Vous avez déjà cette arme !') end
 	if xPlayer.getAccount('cash').money >= verifWeapon[weaponName].price then
 		xPlayer.removeAccountMoney('cash', verifWeapon[weaponName].price)
         xPlayer.addWeapon(weaponName, 80)
-		TriggerClientEvent("Sneakyesx:showNotification", _source, "Vous avez acheté ~b~x1 "..ESX.GetWeaponLabel(weaponName).."~s~ pour "..verifWeapon[weaponName].price.."~g~$~s~ !")
+		TriggerClientEvent("esx:showNotification", _source, "Vous avez acheté ~b~x1 "..ESX.GetWeaponLabel(weaponName).."~s~ pour "..verifWeapon[weaponName].price.."~g~$~s~ !")
     elseif xPlayer.getAccount('bank').money >= verifWeapon[weaponName].price then
 		xPlayer.removeAccountMoney('cash', verifWeapon[weaponName].price)
         xPlayer.addWeapon(weaponName, 80)
-		TriggerClientEvent("Sneakyesx:showNotification", _source, "Vous avez acheté ~b~x1 "..ESX.GetWeaponLabel(weaponName).."~s~ pour "..verifWeapon[weaponName].price.."~g~$~s~ !")
+		TriggerClientEvent("esx:showNotification", _source, "Vous avez acheté ~b~x1 "..ESX.GetWeaponLabel(weaponName).."~s~ pour "..verifWeapon[weaponName].price.."~g~$~s~ !")
 	end
 end)
 

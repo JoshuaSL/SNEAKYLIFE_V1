@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(SneakyESX) ESX = SneakyESX end)
+TriggerEvent("esx:getSharedObject", function(SneakyESX) ESX = SneakyESX end)
 
 Property = {}
 Property.__index = Property

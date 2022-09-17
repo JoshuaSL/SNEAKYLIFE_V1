@@ -688,13 +688,13 @@ local partsCart = {}
 
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
 end)
 
-RegisterNetEvent('Sneakyesx:playerLoaded')
-AddEventHandler('Sneakyesx:playerLoaded', function(xPlayer)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
 	PlayerData = xPlayer
 
 	resetMenu() --menu startup
@@ -704,8 +704,8 @@ AddEventHandler('Sneakyesx:playerLoaded', function(xPlayer)
 	end)
 end)
 
-RegisterNetEvent('Sneakyesx:setJob')
-AddEventHandler('Sneakyesx:setJob', function(job)
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job
 	resetMenu() --trigger menu restart on job change
 

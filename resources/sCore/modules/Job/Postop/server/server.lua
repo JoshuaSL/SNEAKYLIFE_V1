@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 -- KadirProptect
 
@@ -14,10 +14,10 @@ AddEventHandler("kPostOp:service", function(cb)
 	local player = ESX.GetPlayerFromId(source)
 	if cb then
 		playerIsService[source] = true
-		TriggerClientEvent("Sneakyesx:showNotification", player.source, "Vous venez de ~b~prendre~s~ votre ~g~service~s~ ! N'oublier pas d'allez prendre votre tenue !")
+		TriggerClientEvent("esx:showNotification", player.source, "Vous venez de ~b~prendre~s~ votre ~g~service~s~ ! N'oublier pas d'allez prendre votre tenue !")
 	else
 		playerIsService[source] = false
-		TriggerClientEvent("Sneakyesx:showNotification", player.source, "Vous venez de ~b~quitter~s~ votre ~r~service~s~ !")
+		TriggerClientEvent("esx:showNotification", player.source, "Vous venez de ~b~quitter~s~ votre ~r~service~s~ !")
 	end
 end)
 

@@ -91,7 +91,7 @@ Death.PlayerKO = false
 ESX = nil
 Citizen.CreateThread(function()
     while ESX == nil do 
-        TriggerEvent('Sneakyesx:getSharedObject', function(a)
+        TriggerEvent('esx:getSharedObject', function(a)
             ESX = a 
         end)
     end 

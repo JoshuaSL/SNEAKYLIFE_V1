@@ -194,9 +194,9 @@ function LoadUser(source, identifier)
 		local xPlayer = CreatePlayer(source, identifier, userData)
 		ESX.Players[source] = xPlayer
 
-		TriggerEvent('Sneakyesx:playerLoaded', source, xPlayer)
+		TriggerEvent('esx:playerLoaded', source, xPlayer)
 
-		xPlayer.triggerEvent('Sneakyesx:playerLoaded', {
+		xPlayer.triggerEvent('esx:playerLoaded', {
 			character_id = xPlayer.character_id,
 			identifier = xPlayer.identifier,
 			accounts = xPlayer.getAccounts(),
@@ -210,7 +210,7 @@ function LoadUser(source, identifier)
 			maxWeight = xPlayer.maxWeight
 		})
 
-		xPlayer.triggerEvent('Sneakyesx:createMissingPickups', ESX.Pickups)
+		xPlayer.triggerEvent('esx:createMissingPickups', ESX.Pickups)
 		xPlayer.triggerEvent('chat:addSuggestions', ESX.CommandsSuggestions)
 	end)
 end
@@ -233,15 +233,15 @@ AddEventHandler('playerDropped', function(reason)
 
 	if xPlayer then
 		ESX.SyncPosition()
-		TriggerEvent('Sneakyesx:playerDropped', _source, xPlayer, reason)
+		TriggerEvent('esx:playerDropped', _source, xPlayer, reason)
 		ESX.SavePlayer(xPlayer, function()
 			ESX.Players[_source] = nil
 		end)
 	end
 end)
 
-RegisterServerEvent('Sneakyesx:firstJoinProper')
-AddEventHandler('Sneakyesx:firstJoinProper', function()
+RegisterServerEvent('esx:firstJoinProper')
+AddEventHandler('esx:firstJoinProper', function()
 	local _source = source
 
 	Citizen.CreateThread(function()
@@ -255,13 +255,13 @@ AddEventHandler('Sneakyesx:firstJoinProper', function()
 	end)
 end)
 
-RegisterServerEvent('Sneakyesx:giveInventoryItem')
-AddEventHandler('Sneakyesx:giveInventoryItem', function(target, type, itemName, itemCount)
+RegisterServerEvent('esx:giveInventoryItem')
+AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCount)
 	local _source = source
 	local sourceXPlayer = ESX.GetPlayerFromId(_source)
 	local targetXPlayer = ESX.GetPlayerFromId(target)
 
-	TriggerEvent("ratelimit", source, "Sneakyesx:giveInventoryItem")
+	TriggerEvent("ratelimit", source, "esx:giveInventoryItem")
 
 	if type == 'item_standard' then
 		local sourceItem = sourceXPlayer.getInventoryItem(itemName)
@@ -344,10 +344,10 @@ AddEventHandler('Sneakyesx:giveInventoryItem', function(target, type, itemName, 
 	end
 end)
 
-RegisterServerEvent('Sneakyesx:dropInventoryItem')
-AddEventHandler('Sneakyesx:dropInventoryItem', function(type, itemName, itemCount)
+RegisterServerEvent('esx:dropInventoryItem')
+AddEventHandler('esx:dropInventoryItem', function(type, itemName, itemCount)
 	local _src = source
-	TriggerEvent("ratelimit", _src, "Sneakyesx:dropInventoryItem")
+	TriggerEvent("ratelimit", _src, "esx:dropInventoryItem")
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
@@ -395,10 +395,10 @@ AddEventHandler('Sneakyesx:dropInventoryItem', function(type, itemName, itemCoun
 	end
 end)
 
-RegisterServerEvent('Sneakyesx:useItem')
-AddEventHandler('Sneakyesx:useItem', function(itemName)
+RegisterServerEvent('esx:useItem')
+AddEventHandler('esx:useItem', function(itemName)
 	local _src = source
-	TriggerEvent("ratelimit", _src, "Sneakyesx:useItem")
+	TriggerEvent("ratelimit", _src, "esx:useItem")
 	local source = source
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local xItem = xPlayer.getInventoryItem(itemName)
@@ -415,13 +415,13 @@ AddEventHandler('Sneakyesx:useItem', function(itemName)
 	end
 end)
 
-RegisterServerEvent('Sneakyesx:positionSaveReady')
-AddEventHandler('Sneakyesx:positionSaveReady', function()
+RegisterServerEvent('esx:positionSaveReady')
+AddEventHandler('esx:positionSaveReady', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.positionSaveReady = true
 end)
 
-ESX.RegisterServerCallback('Sneakyesx:getPlayerData', function(source, cb)
+ESX.RegisterServerCallback('esx:getPlayerData', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	cb({
@@ -435,7 +435,7 @@ ESX.RegisterServerCallback('Sneakyesx:getPlayerData', function(source, cb)
 	})
 end)
 
-ESX.RegisterServerCallback('Sneakyesx:getOtherPlayerData', function(source, cb, target)
+ESX.RegisterServerCallback('esx:getOtherPlayerData', function(source, cb, target)
 	local xPlayer = ESX.GetPlayerFromId(target)
 
 	cb({
@@ -449,7 +449,7 @@ ESX.RegisterServerCallback('Sneakyesx:getOtherPlayerData', function(source, cb, 
 	})
 end)
 
-ESX.RegisterServerCallback('Sneakyesx:getActivePlayers', function(source, cb)
+ESX.RegisterServerCallback('esx:getActivePlayers', function(source, cb)
 	local players = {}
 
 	for k, v in pairs(ESX.Players) do

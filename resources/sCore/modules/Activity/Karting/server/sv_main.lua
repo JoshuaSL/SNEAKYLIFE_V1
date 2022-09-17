@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 -- KadirProptect
 
@@ -14,10 +14,10 @@ AddEventHandler("Kart:service", function(cb)
 	local player = ESX.GetPlayerFromId(source)
 	if cb then
 		playerIsKart[source] = true
-		TriggerClientEvent("Sneakyesx:showNotification", player.source, "Vous venez de ~b~prendre~s~ votre ~g~kart~s~ ! N'oubliez pas de le rendre à la fin !")
+		TriggerClientEvent("esx:showNotification", player.source, "Vous venez de ~b~prendre~s~ votre ~g~kart~s~ ! N'oubliez pas de le rendre à la fin !")
 	else
 		playerIsKart[source] = false
-		TriggerClientEvent("Sneakyesx:showNotification", player.source, "Vous venez de ~r~rendre~s~ votre ~r~kart~s~ !")
+		TriggerClientEvent("esx:showNotification", player.source, "Vous venez de ~r~rendre~s~ votre ~r~kart~s~ !")
 		SendLogs(15158332,"Karting - Arrêt","**"..GetPlayerName(source).."** vient de rendre son kart \n **License** : "..player.identifier,"https://canary.discord.com/api/webhooks/851638643043074069/XZAIH_OhQOhAq_iPRivfqU2VQ11p3bz_t1y9fdPJyISSjQQu4TobWw6uaCBx5Deygb2i")
 	end
 end)

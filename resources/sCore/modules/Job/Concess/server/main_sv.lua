@@ -1,6 +1,6 @@
 ESX               = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 local listJob = {
     "carshop",
@@ -28,7 +28,7 @@ AddEventHandler("sCardealer:announce", function(Job, Title, Subtitle, Banner, Ty
         if xPlayer.job.name ~= Job or xPlayer.job.name == "unemployed" then return print("Detect player "..GetPlayerName(_src).." announce !") end
         if Type == "open" then
             TriggerClientEvent(
-                "Sneakyesx:showAdvancedNotification",
+                "esx:showAdvancedNotification",
                 -1,
                 Title,
                 Subtitle,
@@ -37,7 +37,7 @@ AddEventHandler("sCardealer:announce", function(Job, Title, Subtitle, Banner, Ty
             )
         elseif Type == "close" then
             TriggerClientEvent(
-                "Sneakyesx:showAdvancedNotification",
+                "esx:showAdvancedNotification",
                 -1,
                 Title,
                 Subtitle,
@@ -46,7 +46,7 @@ AddEventHandler("sCardealer:announce", function(Job, Title, Subtitle, Banner, Ty
             )
         elseif Type == "reduc" then
             TriggerClientEvent(
-                "Sneakyesx:showAdvancedNotification",
+                "esx:showAdvancedNotification",
                 -1,
                 Title,
                 Subtitle,
@@ -73,9 +73,9 @@ AddEventHandler('sCardealer:addVehicule', function(Job, label, vehicle, price)
             end)
             Society.removeMoney(price)
             exports.sCore:SendLogs(1752220,"Achat de véhicule",""..GetPlayerName(source).." vient d'acheter le véhicule : **"..label.."** ***"..vehicle.."*** au prix de (**"..price.."**) avec le métier : ***"..Job.."*** \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878557086487838731/clngHrSKSOmHK-7oMpBKq40LWDUx0BNdEW67bL4F4q91rxK3P3wJ88PP1C6RYf4eJAI1")
-            TriggerClientEvent('Sneakyesx:showNotification', source, "Vous avez acheter un(e) ~b~"..label.."~s~ pour ~g~"..price.."$ ~s~!")    
+            TriggerClientEvent('esx:showNotification', source, "Vous avez acheter un(e) ~b~"..label.."~s~ pour ~g~"..price.."$ ~s~!")    
         else
-            TriggerClientEvent('Sneakyesx:showNotification', source, "~r~L'entreprise n'a pas assez d'argent")
+            TriggerClientEvent('esx:showNotification', source, "~r~L'entreprise n'a pas assez d'argent")
         end
     end)
 end)

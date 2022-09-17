@@ -35,5 +35,5 @@ ESX.RegisterUsableItem('spike', function(source)
     end
 	xPlayer.removeInventoryItem('spike', 1)
 	TriggerClientEvent("SneakyLife:useSpikes", source)
-	TriggerClientEvent('Sneakyesx:showNotification', source, "Vous venez d'utiliser une ~b~herse~s~.")
+	TriggerClientEvent('esx:showNotification', source, "Vous venez d'utiliser une ~b~herse~s~.")
 end)

@@ -5,7 +5,7 @@ local tomate, steak, pate, pizza  = false, false, false, false
 SneakyEvent = TriggerServerEvent
 Citizen.CreateThread(function()
     while ESX == nil do
-        TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+        TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
         Wait(500)
     end
     while ESX.GetPlayerData().job == nil do
@@ -55,7 +55,7 @@ end
 
 Citizen.CreateThread(function()
     while ESX == nil do
-        TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+        TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
         Wait(500)
     end
     while ESX.GetPlayerData().job == nil do
@@ -345,7 +345,7 @@ end
 
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(10)
     end
     while true do

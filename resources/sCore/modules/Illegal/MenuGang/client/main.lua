@@ -5,7 +5,7 @@ local StatusDeplacement = false
 ESX = nil
 CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
 
@@ -17,7 +17,7 @@ CreateThread(function()
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 SneakyEvent = TriggerServerEvent
-RegisterNetEvent('Sneakyesx:setJob2') AddEventHandler('Sneakyesx:setJob2', function(job2) ESX.PlayerData.job2 = job2 end)
+RegisterNetEvent('esx:setJob2') AddEventHandler('esx:setJob2', function(job2) ESX.PlayerData.job2 = job2 end)
 
 function KeyboardInput(TextEntry, ExampleText, MaxStringLength)
     AddTextEntry('f7', TextEntry .. ' :')

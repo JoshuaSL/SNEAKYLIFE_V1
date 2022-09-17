@@ -3,7 +3,7 @@ local PlayerData = {}
 
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
 
@@ -259,7 +259,7 @@ AddEventHandler("sBill:GetBill", function(bill)
             if Bill.OnThread and IsControlJustPressed(1, 73) then 
                 Bill.OnThread = false
                 ShowAboveRadarMessage("~r~Vous avez refusé de payé la facture.")
-                TriggerPlayerEvent("Sneakyesx:showNotification", bill.source, "~r~La personne a refusé de payé la facture.")
+                TriggerPlayerEvent("esx:showNotification", bill.source, "~r~La personne a refusé de payé la facture.")
                 Bill.HavePayed = true
                 break
             end
@@ -273,7 +273,7 @@ AddEventHandler("sBill:GetBill", function(bill)
     if not Bill.HavePayed then
         BillStopThread = true
         ShowAboveRadarMessage("~r~Vous avez refusé de payé la facture.")
-        TriggerPlayerEvent("Sneakyesx:showNotification", bill.source, "~r~La personne n'a pas payé.")
+        TriggerPlayerEvent("esx:showNotification", bill.source, "~r~La personne n'a pas payé.")
         return
     end
     Bill.OnThread = false

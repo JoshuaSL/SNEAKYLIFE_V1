@@ -1,4 +1,4 @@
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 MySQL.ready(function()
 	MySQL.Async.execute('DELETE FROM open_car WHERE NB = @NB', {
@@ -93,7 +93,7 @@ AddEventHandler('Sneakyesx_vehiclelock:deletekeyjobs', function(target, plate)
 		['@plate'] = plate
 	}, function(rowsChanged)
 		if rowsChanged > 0 then
-			TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous avez rendu les clés du véhicule de fonction")
+			TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous avez rendu les clés du véhicule de fonction")
 		end
 	end)
 end)
@@ -116,7 +116,7 @@ AddEventHandler('Sneakyesx_vehiclelock:givekey', function(target, plate)
 		['@plate'] = plate,
 		['@NB'] = 2
 	}, function()
-		TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous avez reçu un double de clés")
+		TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous avez reçu un double de clés")
 	end)
 end)
 
@@ -139,7 +139,7 @@ AddEventHandler('Sneakyesx_vehiclelock:registerkey', function(plate, donated, ta
 		['@NB'] = 1,
 		['@donated'] = donated
 	}, function()
-		TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "~g~Vous venez d'obtenir une nouvelle paire de clé.")
+		TriggerClientEvent('esx:showNotification', xPlayer.source, "~g~Vous venez d'obtenir une nouvelle paire de clé.")
 		
 	end)
 end)
@@ -172,15 +172,15 @@ AddEventHandler('Sneakyesx_vehiclelock:changeowner', function(target, plate, veh
 								['@plate'] = plate,
 								['@NB'] = 1
 							}, function()
-								TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous avez donné votre paire de clé")
-								TriggerClientEvent('Sneakyesx:showNotification', xPlayerTarget.source, "Vous avez reçu une nouvelle paire de clé")
+								TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous avez donné votre paire de clé")
+								TriggerClientEvent('esx:showNotification', xPlayerTarget.source, "Vous avez reçu une nouvelle paire de clé")
 							end)
 						end)
 					end)
 				end
 			end
 		else
-			TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Le véhicule le plus proche ne vous appartient pas !")
+			TriggerClientEvent('esx:showNotification', xPlayer.source, "Le véhicule le plus proche ne vous appartient pas !")
 		end
 	end)
 end)

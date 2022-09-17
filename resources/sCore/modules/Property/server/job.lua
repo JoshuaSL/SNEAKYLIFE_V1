@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 local cbAttribute = nil
 local lastRequest = nil
@@ -30,7 +30,7 @@ AddEventHandler("sProperty:sendAnnounce", function(type)
         if xPlayer.job.name ~= ConfigImmo.job then return end
         local annonceInfo = annonceList[type]
         if annonceInfo == nil then return end
-        TriggerClientEvent("Sneakyesx:showAdvancedNotification", -1, annonceInfo.title, annonceInfo.subtitle, annonceInfo.message, annonceInfo.banner, 1)
+        TriggerClientEvent("esx:showAdvancedNotification", -1, annonceInfo.title, annonceInfo.subtitle, annonceInfo.message, annonceInfo.banner, 1)
     end
 end)
 
@@ -77,15 +77,15 @@ AddEventHandler("sProperty:attributeProperty", function(target, propertyId)
                     TriggerClientEvent("sProperty:propertyNoLongerAvailable", -1, propertyId)
                     TriggerClientEvent("sProperty:addOwnedProperty", tPlayer.source, {id = propertyId, coords = property.info.pos})
                     TriggerClientEvent("sProperty:returnProperty", -1, sPropertyManager.list)
-                    TriggerClientEvent("Sneakyesx:showNotification", tPlayer.source, "Vous avez payer la propriété pour "..price.."~b~$~s~ !")
-                    TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "La personne à payer la propriété pour "..price.."~b~$~s~ !")
+                    TriggerClientEvent("esx:showNotification", tPlayer.source, "Vous avez payer la propriété pour "..price.."~b~$~s~ !")
+                    TriggerClientEvent("esx:showNotification", xPlayer.source, "La personne à payer la propriété pour "..price.."~b~$~s~ !")
                     exports.sCore:SendLogs(1752220,"Attribution de propriété",""..GetPlayerName(source).." vient d'attribuer la propriété : **"..propertyId.."** d'une valeur de : **"..price.."** à "..tPlayer.name.."\n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878556554138365973/y0tWXNxWMx1hCZb25rSJewXnyWtqoaAElPBaVdnol3hNdFSINf9FzAVG5RP_YB53ECr_")
                 end)
             else
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~La personne n'a pas assez d'argent !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~La personne n'a pas assez d'argent !")
             end
         else
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~La personne n'a pas poursuivie le paiement !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~La personne n'a pas poursuivie le paiement !")
         end
 
     end
@@ -141,7 +141,7 @@ AddEventHandler("sProperty:deleteProperty", function(propertyId)
             end
         end
         exports.sCore:SendLogs(1752220,"Suppression de propriété",""..GetPlayerName(source).." vient de supprimer : **"..propertyId.."\n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878556554138365973/y0tWXNxWMx1hCZb25rSJewXnyWtqoaAElPBaVdnol3hNdFSINf9FzAVG5RP_YB53ECr_")
-        TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~b~Information~s~~n~Le ~o~"..property.info.Selected.label.."~s~ a été supprimé avec succès !")
+        TriggerClientEvent("esx:showNotification", xPlayer.source, "~b~Information~s~~n~Le ~o~"..property.info.Selected.label.."~s~ a été supprimé avec succès !")
         TriggerClientEvent("sProperty:returnProperty", -1, sPropertyManager.list) 
     end)
 end)
@@ -182,15 +182,15 @@ AddEventHandler("sGarage:attributeGarage", function(target, garageId)
                     TriggerClientEvent("sGarage:garageNoLongerAvailable", -1, garageId)
                     TriggerClientEvent("sGarage:addOwnedGarage", tPlayer.source, {id = garageId, coords = garage.info.pos})
                     TriggerClientEvent("sGarage:returnGarage", -1, sGarageManager.list)
-                    TriggerClientEvent("Sneakyesx:showNotification", tPlayer.source, "Vous avez payer le garage pour "..price.."~b~$~s~ !")
-                    TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "La personne à payer le garage pour "..price.."~b~$~s~ !")
+                    TriggerClientEvent("esx:showNotification", tPlayer.source, "Vous avez payer le garage pour "..price.."~b~$~s~ !")
+                    TriggerClientEvent("esx:showNotification", xPlayer.source, "La personne à payer le garage pour "..price.."~b~$~s~ !")
                     exports.sCore:SendLogs(1752220,"Attribution de propriété",""..GetPlayerName(source).." vient d'attribuer le garage : **"..garageId.."** d'une valeur de : **"..price.."** à "..tPlayer.name.."\n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878556554138365973/y0tWXNxWMx1hCZb25rSJewXnyWtqoaAElPBaVdnol3hNdFSINf9FzAVG5RP_YB53ECr_")
                 end)
             else
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~La personne n'a pas assez d'argent !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~La personne n'a pas assez d'argent !")
             end
         else
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~La personne n'a pas poursuivie le paiement !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~La personne n'a pas poursuivie le paiement !")
         end
 
     end
@@ -246,7 +246,7 @@ AddEventHandler("sGarage:deleteGarage", function(garageId)
             end
         end
         exports.sCore:SendLogs(1752220,"Suppression de propriété",""..GetPlayerName(source).." vient de supprimer : **"..garageId.."\n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878556554138365973/y0tWXNxWMx1hCZb25rSJewXnyWtqoaAElPBaVdnol3hNdFSINf9FzAVG5RP_YB53ECr_")
-        TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~b~Information~s~~n~Le ~o~"..garage.info.Selected.label.."~s~ a été supprimé avec succès !")
+        TriggerClientEvent("esx:showNotification", xPlayer.source, "~b~Information~s~~n~Le ~o~"..garage.info.Selected.label.."~s~ a été supprimé avec succès !")
         TriggerClientEvent("sGarage:returnGarage", -1, sGarageManager.list) 
     end)
 end)

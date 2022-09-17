@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 local authorizeJob = {
     ["police"] = {label = "Police"},
@@ -30,8 +30,8 @@ AddEventHandler("sPolice:addLicense", function(target, license)
 			return 
 		end
 		TriggerEvent('Sneakyesx_license:addLicense', target, license, function()
-			TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez donné le ~y~permis port d'armes~s~ à ~b~"..tPlayer.getName())
-			TriggerClientEvent("Sneakyesx:showNotification", tPlayer.source, "~b~"..xPlayer.getName().."~s~ vous a attribué le ~y~permis port d'armes~s~ !")
+			TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez donné le ~y~permis port d'armes~s~ à ~b~"..tPlayer.getName())
+			TriggerClientEvent("esx:showNotification", tPlayer.source, "~b~"..xPlayer.getName().."~s~ vous a attribué le ~y~permis port d'armes~s~ !")
 		end)
 	end
 end)
@@ -72,7 +72,7 @@ AddEventHandler('sPolice:addWeapon', function(weaponName)
 	if weaponName == "WEAPON_COMBATPISTOL" or weaponName == "WEAPON_SHOTGUN" or weaponName == "WEAPON_COMBATPDW" or weaponName == "WEAPON_CARBINERIFLE" then
 		xPlayer.addWeaponComponent(weaponName, 'flashlight')
 	end
-	TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez emprunté une arme : ~b~"..ESX.GetWeaponLabel(weaponName))
+	TriggerClientEvent('esx:showNotification', _source, "Vous avez emprunté une arme : ~b~"..ESX.GetWeaponLabel(weaponName))
 end)
 
 RegisterServerEvent('sPolice:removeWeapons')
@@ -99,43 +99,43 @@ AddEventHandler('sPolice:removeWeapons', function()
 	local carabinerifle = xPlayer.getWeapon('WEAPON_CARBINERIFLE')
 	if lampweapon then
 		xPlayer.removeWeapon('WEAPON_FLASHLIGHT')
-		TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_FLASHLIGHT'))
+		TriggerClientEvent('esx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_FLASHLIGHT'))
 	end
 	if matraque then
 		xPlayer.removeWeapon('WEAPON_NIGHTSTICK')
-		TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_NIGHTSTICK'))
+		TriggerClientEvent('esx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_NIGHTSTICK'))
 	end
 	if tazer then
 		xPlayer.removeWeapon('WEAPON_STUNGUN')
-		TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_STUNGUN'))
+		TriggerClientEvent('esx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_STUNGUN'))
 	end
 	if combatpistol then
 		xPlayer.removeWeapon('WEAPON_COMBATPISTOL')
 		if xPlayer.hasWeaponComponent("WEAPON_COMBATPISTOL", lamp) then
 			xPlayer.removeWeaponComponent('WEAPON_COMBATPISTOL', lamp)
 		end
-		TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_COMBATPISTOL'))
+		TriggerClientEvent('esx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_COMBATPISTOL'))
 	end
 	if shotgun then
 		xPlayer.removeWeapon('WEAPON_PUMPSHOTGUN')
 		if xPlayer.hasWeaponComponent("WEAPON_PUMPSHOTGUN", lamp) then
 			xPlayer.removeWeaponComponent('WEAPON_PUMPSHOTGUN', lamp)
 		end
-		TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_PUMPSHOTGUN'))
+		TriggerClientEvent('esx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_PUMPSHOTGUN'))
 	end
 	if combatpdw then
 		xPlayer.removeWeapon("WEAPON_COMBATPDW")
 		if xPlayer.hasWeaponComponent("WEAPON_COMBATPDW", lamp) then
 			xPlayer.removeWeaponComponent('WEAPON_COMBATPDW', lamp)
 		end
-		TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_COMBATPDW'))
+		TriggerClientEvent('esx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_COMBATPDW'))
 	end
 	if carabinerifle then
 		xPlayer.removeWeapon('WEAPON_CARBINERIFLE')
 		if xPlayer.hasWeaponComponent("WEAPON_CARBINERIFLE", lamp) then
 			xPlayer.removeWeaponComponent('WEAPON_CARBINERIFLE', lamp)
 		end
-		TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_CARBINERIFLE'))
+		TriggerClientEvent('esx:showNotification', _source, "Vous avez rendu une arme : ~b~"..ESX.GetWeaponLabel('WEAPON_CARBINERIFLE'))
 	end
 end)
 RegisterServerEvent('sPolice:addHerse')
@@ -144,9 +144,9 @@ AddEventHandler('sPolice:addHerse', function()
 	if authorizeJob[xPlayer.job.name] == nil then print("Le joueur : "..GetPlayerName(xPlayer.source).." vient de se faire détecter") return DropPlayer(xPlayer.source, tokenMessage) end
 	if xPlayer.getInventoryItem("spike").count < 1 then
 		xPlayer.addInventoryItem("spike", 1)
-		TriggerClientEvent('Sneakyesx:showNotification', source, "Vous venez de récuperer une ~b~herse~s~.")
+		TriggerClientEvent('esx:showNotification', source, "Vous venez de récuperer une ~b~herse~s~.")
 	else
-		TriggerClientEvent('Sneakyesx:showNotification', source, "~r~Vous ne pouvez prendre deux herses sur vous.")
+		TriggerClientEvent('esx:showNotification', source, "~r~Vous ne pouvez prendre deux herses sur vous.")
 	end
 end)
 

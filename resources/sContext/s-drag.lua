@@ -7,5 +7,5 @@ end)
 
 RegisterServerEvent('sContext:GetServerIdPersonnage')
 AddEventHandler('sContext:GetServerIdPersonnage', function(playerserverid)
-	TriggerClientEvent('Sneakyesx:showNotification', source, "ID du personnage : ~b~"..playerserverid.."~s~")
+	TriggerClientEvent('esx:showNotification', source, "ID du personnage : ~b~"..playerserverid.."~s~")
 end)

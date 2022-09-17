@@ -7,7 +7,7 @@ local MenuOpen = false
 ESX = nil
 Citizen.CreateThread(function()
 	while ESX == nil do
-    	TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+    	TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     	Citizen.Wait(0)
 	end
 end)
@@ -588,7 +588,7 @@ function braquo(data)
         TriggerServerEvent("sMission:ChangeState",true)
         ESX.TriggerServerCallback('Sneakyesx_skin:getPlayerSkin', function(skin)
             TriggerEvent('Sneakyskinchanger:loadSkin', skin)
-            TriggerEvent('Sneakyesx:restoreLoadout')
+            TriggerEvent('esx:restoreLoadout')
         end)
         StartMusicEvent("MP_MC_ASSAULT_ADV_START")
         StartMusicEvent("MP_MC_ASSAULT_ADV_SUSPENSE")
@@ -860,7 +860,7 @@ function braquo(data)
         Wait(2000)
         ESX.TriggerServerCallback('Sneakyesx_skin:getPlayerSkin', function(skin)
             TriggerEvent('Sneakyskinchanger:loadSkin', skin)
-            TriggerEvent('Sneakyesx:restoreLoadout')
+            TriggerEvent('esx:restoreLoadout')
         end)
     else
         ShowAboveRadarMessage("~r~Un braquage à déjà eu lieu recemment.")

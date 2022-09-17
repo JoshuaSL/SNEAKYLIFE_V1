@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject',function(obj)
+TriggerEvent('esx:getSharedObject',function(obj)
     ESX = obj
 end)
 

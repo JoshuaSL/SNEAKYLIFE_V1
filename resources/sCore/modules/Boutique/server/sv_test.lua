@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ---@class sBoutique
 sBoutique = sBoutique or {};
@@ -643,10 +643,10 @@ AddEventHandler('playerSpawned', function()
         if (fivem) then
             local license = Server:GetIdentifiers(source)['license'];
             if (license) then
-                TriggerClientEvent("Sneakyesx:showNotification",source,'~g~Vous pouvez faire des achats dans notre boutique pour nous soutenir. Votre compte FiveM attaché à votre jeux a été mis à jour.')
+                TriggerClientEvent("esx:showNotification",source,'~g~Vous pouvez faire des achats dans notre boutique pour nous soutenir. Votre compte FiveM attaché à votre jeux a été mis à jour.')
             end
         else
-            TriggerClientEvent("Sneakyesx:showNotification",source,'~r~Vous n\'avez pas d\'identifiant FiveM associé à votre compte, reliez votre profil à partir de votre jeux pour recevoir vos achats potentiel sur notre boutique.')
+            TriggerClientEvent("esx:showNotification",source,'~r~Vous n\'avez pas d\'identifiant FiveM associé à votre compte, reliez votre profil à partir de votre jeux pour recevoir vos achats potentiel sur notre boutique.')
         end
     end 
 end)

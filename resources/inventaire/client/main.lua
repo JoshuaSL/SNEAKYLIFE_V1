@@ -32,7 +32,7 @@ end
 
 Citizen.CreateThread(function() 
     while ESX == nil do 
-        TriggerEvent("Sneakyesx:getSharedObject", function(obj) ESX = obj end) 
+        TriggerEvent("esx:getSharedObject", function(obj) ESX = obj end) 
         Citizen.Wait(0) 
     end 
     while ESX.GetPlayerData().job == nil do
@@ -177,7 +177,7 @@ local notifItem = false
 RegisterNUICallback("UseItem", function(data, cb)
   
     if data.item.type == "item_standard" then 
-        TriggerServerEvent("Sneakyesx:useItem", data.item.name)
+        TriggerServerEvent("esx:useItem", data.item.name)
     elseif data.item.type == "item_tenue" then 
         TriggerEvent('Sneakyskinchanger:getSkin', function(skin)
             if tenue then 
@@ -289,7 +289,7 @@ RegisterNUICallback("DropItem", function(data, cb)
                 SetCurrentPedWeapon(PlayerPedId(),"WEAPON_UNARMED", true)
                 ResetWeaponSlots()
             end
-            TriggerServerEvent('Sneakyesx:dropInventoryItem', data.item.type, data.item.name, data.number)
+            TriggerServerEvent('esx:dropInventoryItem', data.item.type, data.item.name, data.number)
         end
     else
         TriggerServerEvent('Neo:deleteitem', data.item.id) 
@@ -335,7 +335,7 @@ RegisterNUICallback("GiveItem", function(data, cb)
             if data.item.label == "Argent sale" then
                 data.item.name = "dirtycash"
             end
-            TriggerServerEvent("Sneakyesx:giveInventoryItem", data.player, data.item.type, data.item.name, count)
+            TriggerServerEvent("esx:giveInventoryItem", data.player, data.item.type, data.item.name, count)
             Wait(250)
             loadPlayerInventory(currentMenu)
         end
@@ -367,7 +367,7 @@ end)
 
 function GetCurrentWeight()
     
-    TriggerEvent("Sneakyesx:getSharedObject", function(obj) ESX = obj end) 
+    TriggerEvent("esx:getSharedObject", function(obj) ESX = obj end) 
 
     local currentWeight = 0
     for i = 1, #ESX.PlayerData.inventory, 1 do

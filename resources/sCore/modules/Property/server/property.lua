@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(SneakyESX) ESX = SneakyESX end)
+TriggerEvent("esx:getSharedObject", function(SneakyESX) ESX = SneakyESX end)
 
 sPropertyManager = {}
 sPropertyManager.instanceRange = 1000
@@ -79,7 +79,7 @@ local function createProperty(data, author, street)
         }, function()
             local insertId = MySQL.Sync.fetchScalar("SELECT MAX(id) FROM property")
             addProperty({ id = insertId, owner = "none", infos = data, ownerInfo = "none", inventory = {}, keys = {}, street = street }, false)
-            TriggerClientEvent("Sneakyesx:showNotification", author, "~g~Création de la propriété effectuée !")
+            TriggerClientEvent("esx:showNotification", author, "~g~Création de la propriété effectuée !")
             TriggerClientEvent("sProperty:returnProperty", -1, sPropertyManager.list)
 
             local xPlayers = ESX.GetPlayers()
@@ -185,23 +185,23 @@ AddEventHandler("sProperty:addItems", function(propertyId, type, name, count, am
 
         if type == "item" then
             local limitCount = xPlayer.getInventoryItem(name).count
-            if count > limitCount then return TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Vous n'avez pas cela sur vous !") end
+            if count > limitCount then return TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Vous n'avez pas cela sur vous !") end
             if exist then
                 xPlayer.removeInventoryItem(name, count)
                 exports.sCore:SendLogs(1752220,"Déposer coffre item (propriété)",""..GetPlayerName(source).." vient de déposer "..type.." de "..name.." : "..count.." dans la propriété avec l'ID : "..propertyId.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878551131322736660/oZtXJHEbfIthun_croBx91DZ7HGZo4SlRSiGv9QJLNkdJMGKkE6M8yEGGZn_ZZUvg7Rn")
                 sPropertyManager.list[propertyId].inventory[lastKle].count = lastCount+count
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez ajouté ~b~x"..count.." de "..ESX.GetItemLabel(name).."~s~ qui vous fais au total (~b~x"..lastCount+count.." "..ESX.GetItemLabel(name).."~s~) !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez ajouté ~b~x"..count.." de "..ESX.GetItemLabel(name).."~s~ qui vous fais au total (~b~x"..lastCount+count.." "..ESX.GetItemLabel(name).."~s~) !")
                 lastCount = 0
                 exist = false
             else
                 xPlayer.removeInventoryItem(name, count)
                 exports.sCore:SendLogs(1752220,"Déposer coffre item (propriété)",""..GetPlayerName(source).." vient de déposer "..type.." de "..name.." : "..count.." dans la propriété avec l'ID : "..propertyId.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878551131322736660/oZtXJHEbfIthun_croBx91DZ7HGZo4SlRSiGv9QJLNkdJMGKkE6M8yEGGZn_ZZUvg7Rn")
                 table.insert(sPropertyManager.list[propertyId].inventory, {type = type, label = ESX.GetItemLabel(name), name = name, count = count})
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez ajouté ~b~x"..count.." de "..ESX.GetItemLabel(name).."~s~ !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez ajouté ~b~x"..count.." de "..ESX.GetItemLabel(name).."~s~ !")
             end
         elseif type == "money" then
             local limitCount = xPlayer.getAccount(name).money
-            if count > limitCount then return TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Vous n'avez pas cela sur vous !") end
+            if count > limitCount then return TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Vous n'avez pas cela sur vous !") end
                 if name == "cash" then
                     labelmoney = "Argent liquide"
                 else
@@ -214,7 +214,7 @@ AddEventHandler("sProperty:addItems", function(propertyId, type, name, count, am
                     table.insert(sPropertyManager.list[propertyId].inventory, {type = type, label = labelmoney, name = name, count = count})
                 end
                 exports.sCore:SendLogs(1752220,"Déposer coffre argent (propriété)",""..GetPlayerName(source).." vient de déposer "..type.." de "..name.." : "..count.." dans la propriété avec l'ID : "..propertyId.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878551131322736660/oZtXJHEbfIthun_croBx91DZ7HGZo4SlRSiGv9QJLNkdJMGKkE6M8yEGGZn_ZZUvg7Rn")
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez ajouté "..count.."~g~$~s~ de "..labelmoney.."~s~.")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez ajouté "..count.."~g~$~s~ de "..labelmoney.."~s~.")
                 exist = false
         elseif type == "weapon" then
             local infoLoadout, infoWeapon = xPlayer.getWeapon(name)
@@ -223,7 +223,7 @@ AddEventHandler("sProperty:addItems", function(propertyId, type, name, count, am
             end
             exports.sCore:SendLogs(1752220,"Déposer coffre weapon (propriété)",""..GetPlayerName(source).." vient de déposer "..type.." de "..infoWeapon.label.." : "..count.." dans la propriété avec l'ID : "..propertyId.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878551131322736660/oZtXJHEbfIthun_croBx91DZ7HGZo4SlRSiGv9QJLNkdJMGKkE6M8yEGGZn_ZZUvg7Rn")
             table.insert(sPropertyManager.list[propertyId].inventory, {type = type, label = infoWeapon.label, name = name, count = count, ammo = ammo})
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez déposé ~b~un(e) "..infoWeapon.label.."~s~ avec ~o~"..ammo.."munition(s)~s~ !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez déposé ~b~un(e) "..infoWeapon.label.."~s~ avec ~o~"..ammo.."munition(s)~s~ !")
         end
         TriggerClientEvent("sProperty:returnInventory", xPlayer.source, sPropertyManager.list[propertyId].inventory)
     end
@@ -254,7 +254,7 @@ AddEventHandler("sProperty:removeItems", function(propertyId, type, name, count,
 
         if niceCount == nil then niceCount = 1 end
         if count > niceCount then
-            return TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Il n'y a pas tout sa dans le coffre !")
+            return TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Il n'y a pas tout sa dans le coffre !")
         else
             if type == "money" then
                 if name == "cash" then
@@ -268,7 +268,7 @@ AddEventHandler("sProperty:removeItems", function(propertyId, type, name, count,
                         sPropertyManager.list[propertyId].inventory[niceKle].count = total
                     end
                     exports.sCore:SendLogs(1752220,"Retirer coffre argent (propriété)",""..GetPlayerName(source).." vient de retirer "..type.." de "..name.." : "..count.." dans la propriété avec l'ID : "..propertyId.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878551131322736660/oZtXJHEbfIthun_croBx91DZ7HGZo4SlRSiGv9QJLNkdJMGKkE6M8yEGGZn_ZZUvg7Rn")
-                    TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez retirer "..count.."~g~$~s~ de "..labelmoney.." !")
+                    TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez retirer "..count.."~g~$~s~ de "..labelmoney.." !")
                     TriggerClientEvent("sProperty:returnInventory", xPlayer.source, sPropertyManager.list[propertyId].inventory)
                     niceCount = 0
                     niceKle = 0
@@ -284,7 +284,7 @@ AddEventHandler("sProperty:removeItems", function(propertyId, type, name, count,
                         sPropertyManager.list[propertyId].inventory[niceKle].count = total
                     end
                     exports.sCore:SendLogs(1752220,"Retirer coffre argent sale (propriété)",""..GetPlayerName(source).." vient de retirer "..type.." de "..name.." : "..count.." dans la propriété avec l'ID : "..propertyId.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878551131322736660/oZtXJHEbfIthun_croBx91DZ7HGZo4SlRSiGv9QJLNkdJMGKkE6M8yEGGZn_ZZUvg7Rn")
-                    TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez retirer "..count.."~g~$~s~ de "..labelmoney.." !")
+                    TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez retirer "..count.."~g~$~s~ de "..labelmoney.." !")
                     TriggerClientEvent("sProperty:returnInventory", xPlayer.source, sPropertyManager.list[propertyId].inventory)
                     niceCount = 0
                     niceKle = 0
@@ -300,7 +300,7 @@ AddEventHandler("sProperty:removeItems", function(propertyId, type, name, count,
                     sPropertyManager.list[propertyId].inventory[niceKle].count = total
                 end
                 exports.sCore:SendLogs(1752220,"Retirer coffre item (propriété)",""..GetPlayerName(source).." vient de retirer "..type.." de "..name.." : "..count.." dans la propriété avec l'ID : "..propertyId.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878551131322736660/oZtXJHEbfIthun_croBx91DZ7HGZo4SlRSiGv9QJLNkdJMGKkE6M8yEGGZn_ZZUvg7Rn")
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez retirer ~b~x"..count.." de "..ESX.GetItemLabel(name).."~s~ !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez retirer ~b~x"..count.." de "..ESX.GetItemLabel(name).."~s~ !")
                 TriggerClientEvent("sProperty:returnInventory", xPlayer.source, sPropertyManager.list[propertyId].inventory)
                 niceCount = 0
                 niceKle = 0
@@ -309,12 +309,12 @@ AddEventHandler("sProperty:removeItems", function(propertyId, type, name, count,
                 itemName = string.upper(name)
 
 			    if xPlayer.hasWeapon(itemName) then
-                    TriggerClientEvent("Sneakyesx:showNotification",source,"Vous ne pouvez pas prendre deux fois la même ~r~arme~s~.")
+                    TriggerClientEvent("esx:showNotification",source,"Vous ne pouvez pas prendre deux fois la même ~r~arme~s~.")
                 else
                     xPlayer.addWeapon(name, ammo)
                     table.remove(sPropertyManager.list[propertyId].inventory, niceKle)
                     exports.sCore:SendLogs(1752220,"Retirer coffre weapon (propriété)",""..GetPlayerName(source).." vient de retirer "..type.." de "..ESX.GetWeaponLabel(name).." avec "..ammo.." munition(s) : "..count.." dans la propriété avec l'ID : "..propertyId.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878551131322736660/oZtXJHEbfIthun_croBx91DZ7HGZo4SlRSiGv9QJLNkdJMGKkE6M8yEGGZn_ZZUvg7Rn")
-                    TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez retirer ~b~x"..count.." de "..ESX.GetWeaponLabel(name).."~s~ avec ~o~"..ammo.."munition(s)~s~ !")
+                    TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez retirer ~b~x"..count.." de "..ESX.GetWeaponLabel(name).."~s~ avec ~o~"..ammo.."munition(s)~s~ !")
                     TriggerClientEvent("sProperty:returnInventory", xPlayer.source, sPropertyManager.list[propertyId].inventory)
                     niceCount = 0
                     niceKle = 0
@@ -364,16 +364,16 @@ AddEventHandler("sProperty:addKeysAccess", function(propertyId, type, label, nam
 
     if type == "jobList" then
         if sPropertyManager.Keys.jobList[name] == nil then return end
-        if sPropertyManager.list[propertyId].keys[name] ~= nil then return TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Erreur~s~~n~Le métier à déjà une clé !") end 
-        TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez donné les clé au métier ~b~"..label.."~s~ !")
+        if sPropertyManager.list[propertyId].keys[name] ~= nil then return TriggerClientEvent("esx:showNotification", source, "~r~Erreur~s~~n~Le métier à déjà une clé !") end 
+        TriggerClientEvent("esx:showNotification", source, "Vous avez donné les clé au métier ~b~"..label.."~s~ !")
         TriggerClientEvent("sProperty:returnCallBackKeys", -1, sPropertyManager.list[propertyId].keys)
         TriggerClientEvent("sProperty:returnPlayerAcces", -1, propertyId, nil)
         onRequest = false
         nice = true
     elseif type == "groupList" then
         if sPropertyManager.Keys.groupList[name] == nil then return end
-        if sPropertyManager.list[propertyId].keys[name] ~= nil then return TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Erreur~s~~n~Le groupe à déjà une clé !") end 
-        TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez donné les clé au groupe ~b~"..label.."~s~ !")
+        if sPropertyManager.list[propertyId].keys[name] ~= nil then return TriggerClientEvent("esx:showNotification", source, "~r~Erreur~s~~n~Le groupe à déjà une clé !") end 
+        TriggerClientEvent("esx:showNotification", source, "Vous avez donné les clé au groupe ~b~"..label.."~s~ !")
         TriggerClientEvent("sProperty:returnCallBackKeys", -1, sPropertyManager.list[propertyId].keys)
         TriggerClientEvent("sProperty:returnPlayerAcces", -1, propertyId, nil)
         onRequest = false
@@ -383,8 +383,8 @@ AddEventHandler("sProperty:addKeysAccess", function(propertyId, type, label, nam
             local player = ESX.GetPlayerFromId(name)
             if player then
                 name = player.identifier
-                if sPropertyManager.list[propertyId].keys[name] ~= nil then return TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Erreur~s~~n~Le joueur à déjà une clé !") end 
-                TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez donné les clé à ~b~"..player.name.."~s~ !")
+                if sPropertyManager.list[propertyId].keys[name] ~= nil then return TriggerClientEvent("esx:showNotification", source, "~r~Erreur~s~~n~Le joueur à déjà une clé !") end 
+                TriggerClientEvent("esx:showNotification", source, "Vous avez donné les clé à ~b~"..player.name.."~s~ !")
                 TriggerClientEvent("sProperty:returnCallBackKeys", -1, sPropertyManager.list[propertyId].keys)
                 TriggerClientEvent("sProperty:returnPlayerAcces", player.source, propertyId, true)
                 MySQL.Async.execute("UPDATE property SET `keys` = @keys WHERE `id` = @propertyId", {
@@ -426,13 +426,13 @@ AddEventHandler("sProperty:removeKeysAccess", function(propertyId, type, label, 
 
     if type == "jobList" then
         if sPropertyManager.Keys.jobList[name] == nil then return end
-        TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez retiré les clé au métier ~b~"..label.."~s~ !")
+        TriggerClientEvent("esx:showNotification", source, "Vous avez retiré les clé au métier ~b~"..label.."~s~ !")
         TriggerClientEvent("sProperty:returnPlayerAcces", -1, propertyId, nil)
         onRequest = false
         nice = true
     elseif type == "groupList" then
         if sPropertyManager.Keys.groupList[name] == nil then return end
-        TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez retiré les clé au groupe ~b~"..label.."~s~ !")
+        TriggerClientEvent("esx:showNotification", source, "Vous avez retiré les clé au groupe ~b~"..label.."~s~ !")
         TriggerClientEvent("sProperty:returnPlayerAcces", -1, propertyId, nil)
         onRequest = false
         nice = true
@@ -440,7 +440,7 @@ AddEventHandler("sProperty:removeKeysAccess", function(propertyId, type, label, 
         if name then
             local player = ESX.GetPlayerFromIdentifier(name)
             if player then
-                TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez retiré les clé à ~b~"..label.."~s~ !")
+                TriggerClientEvent("esx:showNotification", source, "Vous avez retiré les clé à ~b~"..label.."~s~ !")
                 TriggerClientEvent("sProperty:returnPlayerAcces", player.source, propertyId, false)
                 MySQL.Async.execute("UPDATE property SET `keys` = @keys WHERE `id` = @propertyId", {
                     ["@propertyId"] = propertyId,
@@ -549,9 +549,9 @@ AddEventHandler("sProperty:requestInvitePlayer", function(propertyId, owner)
         local online = ESX.GetPlayerFromIdentifier(ownerLicense)
         lastRequest = math.random(1,100)
 
-        if online == nil then return TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Erreur~s~~n~La personne n'est pas disponible !") end
+        if online == nil then return TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Erreur~s~~n~La personne n'est pas disponible !") end
         
-        TriggerClientEvent("Sneakyesx:showNotification", source, "~b~Sonnette~s~~n~Vous avez envoyer une demande !")
+        TriggerClientEvent("esx:showNotification", source, "~b~Sonnette~s~~n~Vous avez envoyer une demande !")
 
         TriggerClientEvent("sProperty:returnInvitePlayer", online.source, name, lastRequest)
 
@@ -561,9 +561,9 @@ AddEventHandler("sProperty:requestInvitePlayer", function(propertyId, owner)
 
         if cbRequest == true then
             Property:enter(xPlayer.source, propertyId, owner)
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Inviation~n~Le ~b~propriétaire~s~ à accepté votre invitation !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "Inviation~n~Le ~b~propriétaire~s~ à accepté votre invitation !")
         else
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Inviation~n~Le ~b~propriétaire~s~ à refusé votre invitation !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "Inviation~n~Le ~b~propriétaire~s~ à refusé votre invitation !")
         end
 
     end

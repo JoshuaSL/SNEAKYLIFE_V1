@@ -1,4 +1,4 @@
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterUsableItem('oxygen_mask', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
@@ -55,7 +55,7 @@ AddEventHandler('Sneakyesx_repairkit:removeKit', function()
 
 	if not InfiniteRepairs then
 		xPlayer.removeInventoryItem('fixkit', 1)
-		TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez utilisé un ~b~kit de réparation")
+		TriggerClientEvent('esx:showNotification', _source, "Vous avez utilisé un ~b~kit de réparation")
 	end
 end)
 
@@ -106,10 +106,10 @@ AddEventHandler('sCore:diableSystem', function(item_name)
 			local itemdiable = xPlayer.getInventoryItem("diable").count
 			if itemdiable == 0 then
 				xPlayer.addInventoryItem("diable", 1)
-				TriggerClientEvent("Sneakyesx:showNotification",source,"Vous venez de plier le ~b~<C>diable</C>~s~.")
+				TriggerClientEvent("esx:showNotification",source,"Vous venez de plier le ~b~<C>diable</C>~s~.")
 			end
 		else
-			TriggerClientEvent("Sneakyesx:showNotification",source,"~r~Vous ne pouvez pas prendre ça sur vous.")
+			TriggerClientEvent("esx:showNotification",source,"~r~Vous ne pouvez pas prendre ça sur vous.")
 		end
 	end	
 end)
@@ -134,5 +134,5 @@ RegisterNetEvent('SneakyLife:UseItemFinish')
 AddEventHandler('SneakyLife:UseItemFinish', function(item_name)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeInventoryItem(item_name, 1)
-	TriggerClientEvent("Sneakyesx:showNotification",source,"Vous venez d'utiliser un(e) ~b~"..ESX.GetItemLabel(item_name).."~s~.")
+	TriggerClientEvent("esx:showNotification",source,"Vous venez d'utiliser un(e) ~b~"..ESX.GetItemLabel(item_name).."~s~.")
 end)

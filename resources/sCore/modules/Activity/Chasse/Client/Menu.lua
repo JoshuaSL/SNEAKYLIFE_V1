@@ -5,7 +5,7 @@ ESX = nil
 SneakyEvent = TriggerServerEvent
 Citizen.CreateThread(function()
     while ESX == nil do
-        TriggerEvent('Sneakyesx:getSharedObject', function(obj)
+        TriggerEvent('esx:getSharedObject', function(obj)
             ESX = obj
         end)
         ESX.PlayerData = ESX.GetPlayerData()
@@ -19,12 +19,12 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('Sneakyesx:playerLoaded')
-AddEventHandler('Sneakyesx:playerLoaded', function(xPlayer)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
     ESX.PlayerData = xPlayer
 end)
-RegisterNetEvent('Sneakyesx:setJob')
-AddEventHandler('Sneakyesx:setJob', function(job)
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
     ESX.PlayerData.job = job
 end)
 

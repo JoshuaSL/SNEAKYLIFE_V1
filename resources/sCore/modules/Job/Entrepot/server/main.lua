@@ -1,7 +1,7 @@
 -- Debut de ESX
 
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 -- Debut du Config
 
@@ -237,12 +237,12 @@ ESX.RegisterServerCallback("kEntrepot:buyItems", function(source, cb, item, pric
         end
         if xPlayer.getAccount("cash").money >= price then
             cb("money")
-            TriggerClientEvent("Sneakyesx:showNotification", source, "Vous venez d'acheter ~b~<C>1x "..ESX.GetItemLabel(item).."~s~ pour "..price.."~g~$<C>~s~ !")
+            TriggerClientEvent("esx:showNotification", source, "Vous venez d'acheter ~b~<C>1x "..ESX.GetItemLabel(item).."~s~ pour "..price.."~g~$<C>~s~ !")
             xPlayer.removeAccountMoney("cash", price)
             xPlayer.addInventoryItem(item, 1)
             exports.sCore:SendLogs(1752220,"Achat d'item (entrepôt)",""..GetPlayerName(source).." vient d'acheter "..count.." de "..ESX.GetItemLabel(item).." avec l'entreprise : "..job.." \n License de la source : "..xPlayer.identifier,"https://discord.com/api/webhooks/878607410447663114/LKTG2QJJNKZB7X87kT_HE0My15V1BsOBsBb4A0seDOM_LB0hPvgUARAYKi0KxtgdxesG")
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas assez d'argent !")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas assez d'argent !")
             cb("pasmoney")
         end
     end

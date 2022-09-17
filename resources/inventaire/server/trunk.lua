@@ -4,7 +4,7 @@ local DataStoresIndex = {}
 local DataStores = {}
 local SharedDataStores = {}
 
-TriggerEvent("Sneakyesx:getSharedObject",function(obj)
+TriggerEvent("esx:getSharedObject",function(obj)
     ESX = obj
 end)
 

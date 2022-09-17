@@ -4,7 +4,7 @@
 -- 
 
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
 
 -- Commands ↓
 
@@ -21,7 +21,7 @@ RegisterCommand("createLab", function(source)
         if accesCreateLab[xPlayer.identifier] then
             TriggerClientEvent("sLaboratoire:openCreateMenu", source)
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas la permission de créer un laboratoire !")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas la permission de créer un laboratoire !")
         end
     end
 end)
@@ -32,7 +32,7 @@ RegisterCommand("refreshLabo", function(source)
         if accesCreateLab[xPlayer.identifier] then
             TriggerClientEvent("sLaboratoire:refreshLab", -1)
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas la permission de créer un laboratoire !")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas la permission de créer un laboratoire !")
         end
     end
 end)
@@ -70,7 +70,7 @@ AddEventHandler("sLaboratoire:createLab", function(type, name, price, pos)
             ["@pos"] = json.encode(pos),
             ["@time"] = expiration,
        }, function()
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous venez de créer un ~y~"..name.."~s~ à "..price.."~g~$~s~ !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous venez de créer un ~y~"..name.."~s~ à "..price.."~g~$~s~ !")
             TriggerClientEvent("sLaboratoire:refreshLab", -1)
        end) 
     end
@@ -97,11 +97,11 @@ AddEventHandler("sLaboratoire:deleteLab", function(type, name, id)
                     ["@type"] = type,
                     ["@id"] = id        
                 }, function()
-                    TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Le laboratoire n°~y~"..id.."~s~ viens d'être ~r~supprimé~s~ !")
+                    TriggerClientEvent("esx:showNotification", xPlayer.source, "Le laboratoire n°~y~"..id.."~s~ viens d'être ~r~supprimé~s~ !")
                     TriggerClientEvent("sLaboratoire:refreshLab", -1)
                 end)
             else
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Le laboratoire n°~y~"..id.."~s~ n'existe pas !")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Le laboratoire n°~y~"..id.."~s~ n'existe pas !")
             end
        end)
     end
@@ -133,12 +133,12 @@ AddEventHandler("sLaboratoire:buyLab", function(table, owner, ownerName)
                 ["@time"] = expiration
             },function()
                 xPlayer.removeAccountMoney("cash", table.price)     
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous venez de acheter un ~y~"..table.name.."~s~ pour "..table.price.."~g~$~s~")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous venez de acheter un ~y~"..table.name.."~s~ pour "..table.price.."~g~$~s~")
                 TriggerClientEvent("sLaboratoire:returnBuyLab", xPlayer.source)
                 TriggerClientEvent("sLaboratoire:refreshLab", -1)               
             end)
         else
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Vous n'avez pas assez d'argent !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Vous n'avez pas assez d'argent !")
         end
 
     end
@@ -163,7 +163,7 @@ AddEventHandler("sLaboratoire:removeOwner", function(table, owner, ownerName)
             ["@ownerName"] = nil,
             ["@id"] = table.id
         },function()
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous venez de dissocier le ~y~"..table.name.."~s~ des ~b~"..ownerName.."~s~ !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous venez de dissocier le ~y~"..table.name.."~s~ des ~b~"..ownerName.."~s~ !")
             TriggerClientEvent("sLaboratoire:returnBuyLab", xPlayer.source)
             TriggerClientEvent("sLaboratoire:refreshLab", -1)               
         end)
@@ -294,11 +294,11 @@ AddEventHandler("sLaboratoire:NotifyAttack", function(owner, ownerName, zone)
             local xPlayer = ESX.GetPlayerFromId(source)
             local xPlayers = ESX.GetPlayerFromId(xPlayers[i])
             if xPlayers.job2.name == xPlayer.job2.name then
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayers.source, "Vous êtes en train ~r~d'attaquer~s~ le laboratoire appartenant au ~b~"..ownerName.."~s~.")
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous êtes en train ~r~d'attaquer~s~ le laboratoire appartenant au ~b~"..ownerName.."~s~.")
+                TriggerClientEvent("esx:showNotification", xPlayers.source, "Vous êtes en train ~r~d'attaquer~s~ le laboratoire appartenant au ~b~"..ownerName.."~s~.")
+                TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous êtes en train ~r~d'attaquer~s~ le laboratoire appartenant au ~b~"..ownerName.."~s~.")
             end
             if xPlayers.job2.name == owner then
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayers.source, "Votre laboratoire situé à ~b~"..zone.."~s~ est actuellement en train de se faire ~r~attaquer~s~ aller le défendre au plus vite.")
+                TriggerClientEvent("esx:showNotification", xPlayers.source, "Votre laboratoire situé à ~b~"..zone.."~s~ est actuellement en train de se faire ~r~attaquer~s~ aller le défendre au plus vite.")
             end
         end
     end
@@ -326,8 +326,8 @@ AddEventHandler("sLaboratoire:updateAttack", function(id, name, owner, ownerName
             local xPlayer = ESX.GetPlayerFromId(source)
             local xPlayers = ESX.GetPlayerFromId(xPlayers[i])
             if xPlayers.job2.name == xPlayer.job2.name then
-                TriggerClientEvent("Sneakyesx:showNotification", xPlayers, "Vous venez de capturer le laboratoire de ~b~"..name.."~s~.")
-                TriggerClientEvent("Sneakyesx:showNotification", source, "Vous venez de capturer le laboratoire de ~b~"..name.."~s~.")
+                TriggerClientEvent("esx:showNotification", xPlayers, "Vous venez de capturer le laboratoire de ~b~"..name.."~s~.")
+                TriggerClientEvent("esx:showNotification", source, "Vous venez de capturer le laboratoire de ~b~"..name.."~s~.")
             end
         end
         TriggerClientEvent("sLaboratoire:refreshLab", -1)     
@@ -349,17 +349,17 @@ AddEventHandler("sCore:FarmLabo", function(labocolor, itemwin, itemcountwin, ite
                             xPlayer.removeInventoryItem(itemrequired, itemcountrequired)
                             xPlayer.removeInventoryItem(itemrequired2, itemcountrequired2)
                             xPlayer.addInventoryItem(itemwin, itemcountwin)
-                            TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez récupéré "..labocolor.."<C>x"..itemcountwin.." "..ESX.GetItemLabel(itemwin).."~s~.")
+                            TriggerClientEvent("esx:showNotification", source, "Vous avez récupéré "..labocolor.."<C>x"..itemcountwin.." "..ESX.GetItemLabel(itemwin).."~s~.")
                         else
-                            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez plus assez de place pour stocker ces objets.")
+                            TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez plus assez de place pour stocker ces objets.")
                         end
                     else
-                        TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez plus assez de "..labocolor..ESX.GetItemLabel(itemrequired).."~r~.")
+                        TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez plus assez de "..labocolor..ESX.GetItemLabel(itemrequired).."~r~.")
                     end
                 end
             else
                 if ESX.GetItemLabel(itemcountrequired2) ~= nil then
-                    TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez plus assez de "..labocolor..ESX.GetItemLabel(itemcountrequired2).."~r~.")
+                    TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez plus assez de "..labocolor..ESX.GetItemLabel(itemcountrequired2).."~r~.")
                 end
             end
         elseif itemrequired and Required then 
@@ -367,19 +367,19 @@ AddEventHandler("sCore:FarmLabo", function(labocolor, itemwin, itemcountwin, ite
                 if xPlayer.canCarryItem(itemwin, itemcountwin) then 
                     xPlayer.removeInventoryItem(itemrequired, itemcountrequired)
                     xPlayer.addInventoryItem(itemwin, itemcountwin)
-                    TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez récupéré "..labocolor.."<C>x"..itemcountwin.." "..ESX.GetItemLabel(itemwin).."~s~.")
+                    TriggerClientEvent("esx:showNotification", source, "Vous avez récupéré "..labocolor.."<C>x"..itemcountwin.." "..ESX.GetItemLabel(itemwin).."~s~.")
                 else
-                    TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez plus assez de place pour stocker ces objets.")
+                    TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez plus assez de place pour stocker ces objets.")
                 end
             else
-                TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez plus assez de "..labocolor..ESX.GetItemLabel(itemrequired).."~r~.")
+                TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez plus assez de "..labocolor..ESX.GetItemLabel(itemrequired).."~r~.")
             end
         else
             if xPlayer.canCarryItem(itemwin, itemcountwin) then 
                 xPlayer.addInventoryItem(itemwin, itemcountwin)
-                TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez récupéré "..labocolor.."<C>x"..itemcountwin.." "..ESX.GetItemLabel(itemwin).."~s~.")
+                TriggerClientEvent("esx:showNotification", source, "Vous avez récupéré "..labocolor.."<C>x"..itemcountwin.." "..ESX.GetItemLabel(itemwin).."~s~.")
             else
-                TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez plus assez de place pour stocker ces objets.")
+                TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez plus assez de place pour stocker ces objets.")
             end
         end
     end

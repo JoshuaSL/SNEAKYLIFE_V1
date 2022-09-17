@@ -1,6 +1,6 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterServerEvent('SneakyLife:solde')
 AddEventHandler('SneakyLife:solde', function(action , amount)
@@ -23,9 +23,9 @@ AddEventHandler('SneakyLife:deposit', function(money)
         xPlayer.addAccountMoney('bank',money)
         SendLogs(3066993,"Banque - Dépot","**"..GetPlayerName(_source).."** vient de déposer ***"..money.."$ ***\n **License** : "..xPlayer.identifier,"https://canary.discord.com/api/webhooks/841152095448858694/EUA1uMvwM0AiCP-I7bbWxcN-4xXVYbp_DaVNKi6JxEh5y8MbSbFoAMfGKbYNK8hTW7XG")
         xPlayer.removeAccountMoney('cash', money)
-        TriggerClientEvent('Sneakyesx:showAdvancedNotification', source, 'Banque', '~g~Compte bancaire', "Vous avez deposé ~g~"..money.."$~s~ sur votre compte", 'CHAR_BANK_FLEECA', 9)
+        TriggerClientEvent('esx:showAdvancedNotification', source, 'Banque', '~g~Compte bancaire', "Vous avez deposé ~g~"..money.."$~s~ sur votre compte", 'CHAR_BANK_FLEECA', 9)
     else
-        TriggerClientEvent('Sneakyesx:showNotification', source, "Vous n'avez pas assez d\'argent~s~ !")
+        TriggerClientEvent('esx:showNotification', source, "Vous n'avez pas assez d\'argent~s~ !")
     end
 end)
 
@@ -40,7 +40,7 @@ AddEventHandler('SneakyLife:withdraw', function(money)
         xPlayer.removeAccountMoney('bank', money)
         xPlayer.addAccountMoney('cash',money)
         SendLogs(3066993,"Banque - Retrait","**"..GetPlayerName(_source).."** vient de retirer ***"..money.."$ ***\n **License** : "..xPlayer.identifier,"https://canary.discord.com/api/webhooks/841152095448858694/EUA1uMvwM0AiCP-I7bbWxcN-4xXVYbp_DaVNKi6JxEh5y8MbSbFoAMfGKbYNK8hTW7XG")
-        TriggerClientEvent('Sneakyesx:showAdvancedNotification', source, 'Banque', '~g~Compte bancaire', "Vous avez retiré ~g~"..money.."$~s~ de votre compte", 'CHAR_BANK_FLEECA', 9)
+        TriggerClientEvent('esx:showAdvancedNotification', source, 'Banque', '~g~Compte bancaire', "Vous avez retiré ~g~"..money.."$~s~ de votre compte", 'CHAR_BANK_FLEECA', 9)
     else
         TriggerClientEvent('esx:showNotification', source, "Vous n'avez pas assez d\'argent~s~ !")
     end

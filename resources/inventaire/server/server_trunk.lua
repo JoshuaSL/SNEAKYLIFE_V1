@@ -117,7 +117,7 @@ local arrayWeight = {
 }
 
 TriggerEvent(
-    "Sneakyesx:getSharedObject",
+    "esx:getSharedObject",
     function(obj)
         ESX = obj
     end
@@ -216,7 +216,7 @@ AddEventHandler("esx_inventoryhud_trunk:getItem",function(plate, type, item, cou
                     if (coffre[i].count >= count and count > 0) then
                         if (xPlayer.getWeight()+(getItemWeight(item)*count)) > ESX.GetConfig().MaxWeight then 
                             return 
-                            TriggerClientEvent("Sneakyesx:showNotification", _source, "~r~Vous n'avez pas assez de place sur vous !") 
+                            TriggerClientEvent("esx:showNotification", _source, "~r~Vous n'avez pas assez de place sur vous !") 
                         end
                         if coffre[i].canMove == nil or coffre[i].canMove then
                             xPlayer.addInventoryItem(item, count)
@@ -229,7 +229,7 @@ AddEventHandler("esx_inventoryhud_trunk:getItem",function(plate, type, item, cou
                         end
                         break
                     else
-                        TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Quantité invalide.")
+                        TriggerClientEvent("esx:showNotification", source, "~r~Quantité invalide.")
                     end
                 end
             end
@@ -300,12 +300,12 @@ AddEventHandler("esx_inventoryhud_trunk:getItem",function(plate, type, item, cou
                 data = {plate = plate, max = max, myVeh = owned, text = text}
                 TriggerClientEvent("esx_inventoryhud:refreshTrunkInventory", _source, data, blackMoney, items, weapons)
             else
-                TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Quantité invalide.")
+                TriggerClientEvent("esx:showNotification", source, "~r~Quantité invalide.")
             end
         end)
     elseif type == "item_weapon" then
         if xPlayer.hasWeapon(item) then
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous avez déjà cette arme avec vous.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Vous avez déjà cette arme avec vous.")
         else
             TriggerEvent("esx_inventoryhud_trunk:getSharedDataStore",plate,function(store)
                 local storeWeapons = store.get("weapons")
@@ -402,7 +402,7 @@ AddEventHandler("esx_inventoryhud_trunk:putItem",function(plate, type, item, cou
                     )
                 end
                 if (getTotalInventoryWeight(plate) + (getItemWeight(item) * count)) > max then
-                    TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Espace insuffisant.")
+                    TriggerClientEvent("esx:showNotification", source, "~r~Espace insuffisant.")
                 else
                     store.set("coffre", coffre)
                     xPlayer.removeInventoryItem(item, count)
@@ -417,7 +417,7 @@ AddEventHandler("esx_inventoryhud_trunk:putItem",function(plate, type, item, cou
                 end
             end)
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Quantité invalide.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Quantité invalide.")
         end
     end
 
@@ -448,7 +448,7 @@ AddEventHandler("esx_inventoryhud_trunk:putItem",function(plate, type, item, cou
              
             end)
         else
-            TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Quantité invalide.")
+            TriggerClientEvent("esx:showNotification", source, "~r~Quantité invalide.")
         end
     end
 
@@ -478,7 +478,7 @@ AddEventHandler("esx_inventoryhud_trunk:putItem",function(plate, type, item, cou
             )
 
             if (getTotalInventoryWeight(plate) + (getItemWeight(item))) > max then
-                TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Quantité invalide.")
+                TriggerClientEvent("esx:showNotification", source, "~r~Quantité invalide.")
             else
                 if xPlayer.hasWeapon(item) then
                     store.set("weapons", storeWeapons)

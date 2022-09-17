@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent("Sneakyesx:getSharedObject", function(niceESX) ESX = niceESX end)
+TriggerEvent("esx:getSharedObject", function(niceESX) ESX = niceESX end)
 
 -- Farming
 
@@ -48,9 +48,9 @@ AddEventHandler("sDrugs:addItem", function(itemName)
         if Allow.Items[itemName] == nil then return end
         if xPlayer.canCarryItem(itemName, Allow.Items[itemName].count) then
             xPlayer.addInventoryItem(itemName, Allow.Items[itemName].count)
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez récolté ~b~x"..Allow.Items[itemName].count.." "..ESX.GetItemLabel(itemName).."~s~ !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez récolté ~b~x"..Allow.Items[itemName].count.." "..ESX.GetItemLabel(itemName).."~s~ !")
         else
-            TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Vous n'avez pas assez de place sur vous !")
+            TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Vous n'avez pas assez de place sur vous !")
         end
     end
 end)
@@ -67,7 +67,7 @@ AddEventHandler("sDrugs:transformItem", function(lastItem, itemName)
         xPlayer.removeInventoryItem(lastItem[1], Allow.Items[lastItem[1]].count)
         xPlayer.removeInventoryItem(lastItem[2], Allow.Items[lastItem[2]].count)
         xPlayer.addInventoryItem(itemName, Allow.Items[itemName].count)
-        TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous avez transformé ~b~x"..Allow.Items[lastItem[1]].count.." "..ESX.GetItemLabel(lastItem[1]).."~s~ et ~b~x"..Allow.Items[lastItem[2]].count.." "..ESX.GetItemLabel(lastItem[2]).."~s~ !")
+        TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous avez transformé ~b~x"..Allow.Items[lastItem[1]].count.." "..ESX.GetItemLabel(lastItem[1]).."~s~ et ~b~x"..Allow.Items[lastItem[2]].count.." "..ESX.GetItemLabel(lastItem[2]).."~s~ !")
     end
 end)
 
@@ -81,7 +81,7 @@ AddEventHandler("sDrugs:pochonItem", function(lastItem, itemName)
         if Allow.Items[itemName] == nil then return end
         xPlayer.removeInventoryItem(lastItem, Allow.Items[lastItem].count)
         xPlayer.addInventoryItem(itemName, Allow.Items[itemName].count)
-        TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "Vous mis en pochon ~b~x"..Allow.Items[lastItem].count.." "..ESX.GetItemLabel(lastItem).."~s~ !")
+        TriggerClientEvent("esx:showNotification", xPlayer.source, "Vous mis en pochon ~b~x"..Allow.Items[lastItem].count.." "..ESX.GetItemLabel(lastItem).."~s~ !")
     end
 end)
 
@@ -97,8 +97,8 @@ AddEventHandler("sDrugs:Removeitem",function()
     if xPlayer.canCarryItem(itemName, count) then
         xPlayer.removeInventoryItem(itemRemove, countRemove)
         xPlayer.addInventoryItem(itemName, count)
-        TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous avez transformer ~b~x"..countRemove.." "..ESX.GetItemLabel(itemRemove).."~s~.")
+        TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous avez transformer ~b~x"..countRemove.." "..ESX.GetItemLabel(itemRemove).."~s~.")
     else
-        TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "~r~Vous n'avez pas assez de place.")
+        TriggerClientEvent('esx:showNotification', xPlayer.source, "~r~Vous n'avez pas assez de place.")
     end
 end)

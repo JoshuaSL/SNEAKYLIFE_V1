@@ -1,4 +1,4 @@
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 TriggerEvent('Sneakyesx_phone:registerNumber', 'ambulance', 'Alerte Ambulance', true, true)
 TriggerEvent('Sneakyesx_society:registerSociety', 'ambulance', 'ambulance', 'society_ambulance', 'society_ambulance', 'society_ambulance', {type = 'public'})
@@ -84,7 +84,7 @@ AddEventHandler('Sneakyesx_ambulancejob:giveItem', function(itemName)
 		if xPlayer.canCarryItem(itemName, 1) then
 			xPlayer.addInventoryItem(itemName, 1)
 		else
-			TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, 'vous en portez déjà assez sur vous.')
+			TriggerClientEvent('esx:showNotification', xPlayer.source, 'vous en portez déjà assez sur vous.')
 		end
 	end
 end)
@@ -94,7 +94,7 @@ ESX.RegisterUsableItem('medikit', function(source)
 	xPlayer.removeInventoryItem('medikit', 1)
 
 	TriggerClientEvent('Sneakyesx_ambulancejob:heal', xPlayer.source, 'big')
-	TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, 'vous avez utilisé 1x kit de soin')
+	TriggerClientEvent('esx:showNotification', xPlayer.source, 'vous avez utilisé 1x kit de soin')
 end)
 
 ESX.RegisterUsableItem('bandage', function(source)
@@ -102,7 +102,7 @@ ESX.RegisterUsableItem('bandage', function(source)
 	xPlayer.removeInventoryItem('bandage', 1)
 
 	TriggerClientEvent('Sneakyesx_ambulancejob:heal', xPlayer.source, 'small')
-	TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, 'vous avez utilisé 1x bandage')
+	TriggerClientEvent('esx:showNotification', xPlayer.source, 'vous avez utilisé 1x bandage')
 end)
 RegisterNetEvent("sComa:RequestDeadStatut")
 AddEventHandler('sComa:RequestDeadStatut', function()
@@ -167,13 +167,13 @@ end)
 
 RegisterCommand("revive", function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
-    if xPlayer.getGroup() == "user" then return TriggerClientEvent("Sneakyesx:showNotification", xPlayer.source, "~r~Vous n'avez pas accès à cette commande !") end 
+    if xPlayer.getGroup() == "user" then return TriggerClientEvent("esx:showNotification", xPlayer.source, "~r~Vous n'avez pas accès à cette commande !") end 
     if args[1] ~= nil then
             TriggerClientEvent('SneakyLife:RevivePlayerStaff', tonumber(args[1]))
         else
             TriggerClientEvent('SneakyLife:RevivePlayerStaff', source)
         end
-		TriggerEvent('Sneakyesx:restoreLoadout')
+		TriggerEvent('esx:restoreLoadout')
 end, false)
 
 RegisterServerEvent('EMS:RevivePLayer')
@@ -231,7 +231,7 @@ AddEventHandler('sCore:wheelchair', function(item_name)
 					xPlayer.addInventoryItem("wheelchair", 1)
 				end
 			else
-				TriggerClientEvent("Sneakyesx:showNotification",source,"~r~Vous ne pouvez pas prendre ça sur vous.")
+				TriggerClientEvent("esx:showNotification",source,"~r~Vous ne pouvez pas prendre ça sur vous.")
 			end
 		end	
 	end
@@ -260,7 +260,7 @@ AddEventHandler('sCore:bedSystem', function(item_name)
 					xPlayer.addInventoryItem("bed", 1)
 				end
 			else
-				TriggerClientEvent("Sneakyesx:showNotification",source,"~r~Vous ne pouvez pas prendre ça sur vous.")
+				TriggerClientEvent("esx:showNotification",source,"~r~Vous ne pouvez pas prendre ça sur vous.")
 			end
 		end	
 	end

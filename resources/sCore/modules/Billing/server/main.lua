@@ -1,12 +1,12 @@
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterServerEvent("sBill:SendBill")
 AddEventHandler("sBill:SendBill", function(bill)
     local xPlayer = ESX.GetPlayerFromId(source)
     bill.source = source
-    TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "~b~Vous avez bien envoyé la demande.")
+    TriggerClientEvent('esx:showNotification', xPlayer.source, "~b~Vous avez bien envoyé la demande.")
     TriggerClientEvent("sBill:GetBill", bill.playerId, bill)
 end)
 
@@ -28,7 +28,7 @@ AddEventHandler("sBill:PayBills",function(bill)
                 account.addMoney(bill.price)
             end)
         end
-        TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez payé la facture de: "..bill.price.."~g~$~s~.")
+        TriggerClientEvent('esx:showNotification', _source, "Vous avez payé la facture de: "..bill.price.."~g~$~s~.")
     else 
         if bMoney >= bill.price then
             TriggerClientEvent("sBill:AlertBill", bill.source, 1)
@@ -40,10 +40,10 @@ AddEventHandler("sBill:PayBills",function(bill)
                     account.addMoney(bill.price)
                 end)
             end
-            TriggerClientEvent('Sneakyesx:showNotification', _source, "Vous avez payé la facture de: "..bill.price.."~g~$~s~.")
+            TriggerClientEvent('esx:showNotification', _source, "Vous avez payé la facture de: "..bill.price.."~g~$~s~.")
         else
-            TriggerClientEvent('Sneakyesx:showNotification', _source, "~r~Vous n'avez pas assez d'argent.")
-            TriggerClientEvent("Sneakyesx:showNotification", bill.source, "~r~La personne n'est pas solvable.")
+            TriggerClientEvent('esx:showNotification', _source, "~r~Vous n'avez pas assez d'argent.")
+            TriggerClientEvent("esx:showNotification", bill.source, "~r~La personne n'est pas solvable.")
             MySQL.Async.execute('INSERT INTO billing (identifier, sender, target_type, target, label, amount) VALUES (@identifier, @sender, @target_type, @target, @label, @amount)', {
                 ['@identifier'] = xPlayer.identifier,
                 ['@sender'] = rPlayer.identifier,
@@ -52,8 +52,8 @@ AddEventHandler("sBill:PayBills",function(bill)
                 ['@label'] = bill.title,
                 ['@amount'] = bill.price
             }, function(rowsChanged)
-                TriggerClientEvent('Sneakyesx:showNotification', _source, "~r~Vous venez de recevoir une facture de force.")
-                TriggerClientEvent('Sneakyesx:showNotification', bill.source, "~r~Vous venez de mettre une facture de force.")
+                TriggerClientEvent('esx:showNotification', _source, "~r~Vous venez de recevoir une facture de force.")
+                TriggerClientEvent('esx:showNotification', bill.source, "~r~Vous venez de mettre une facture de force.")
             end)
         end
     end
@@ -95,9 +95,9 @@ ESX.RegisterServerCallback('Sneakyesx_billing:payBill', function(source, cb, bil
                         if rowsChanged == 1 then
                             xPlayer.removeAccountMoney('cash', amount)
                             account.addMoney(amount)
-                            TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous venez de payer la facture d'un montant de "..ESX.Math.GroupDigits(amount).."~g~$~s~.")
+                            TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous venez de payer la facture d'un montant de "..ESX.Math.GroupDigits(amount).."~g~$~s~.")
                             if xTarget then
-                                TriggerClientEvent('Sneakyesx:showNotification', xTarget.source, "Vous venez de recevoir un paiement de "..ESX.Math.GroupDigits(amount).."~g~$~s~.")
+                                TriggerClientEvent('esx:showNotification', xTarget.source, "Vous venez de recevoir un paiement de "..ESX.Math.GroupDigits(amount).."~g~$~s~.")
                             end
                         end
 
@@ -110,10 +110,10 @@ ESX.RegisterServerCallback('Sneakyesx_billing:payBill', function(source, cb, bil
                         if rowsChanged == 1 then
                             xPlayer.removeAccountMoney('bank', amount)
                             account.addMoney(amount)
-                            TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous venez de payer la facture d'un montant de "..ESX.Math.GroupDigits(amount).."~g~$~s~.")
+                            TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous venez de payer la facture d'un montant de "..ESX.Math.GroupDigits(amount).."~g~$~s~.")
 
                             if xTarget then
-                                TriggerClientEvent('Sneakyesx:showNotification', xTarget.source, "Vous venez de recevoir un paiement de "..ESX.Math.GroupDigits(amount).."~g~$~s~.")
+                                TriggerClientEvent('esx:showNotification', xTarget.source, "Vous venez de recevoir un paiement de "..ESX.Math.GroupDigits(amount).."~g~$~s~.")
                             end
                         end
 
@@ -121,9 +121,9 @@ ESX.RegisterServerCallback('Sneakyesx_billing:payBill', function(source, cb, bil
                     end)
                 else
                     if xTarget then
-                        TriggerClientEvent('Sneakyesx:showNotification', xTarget.source, "~r~La personne n'a pas assez d'argent pour payer sa facture.")
+                        TriggerClientEvent('esx:showNotification', xTarget.source, "~r~La personne n'a pas assez d'argent pour payer sa facture.")
                     end
-                    TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "~r~Vous n'avez pas assez d'argent.")
+                    TriggerClientEvent('esx:showNotification', xPlayer.source, "~r~Vous n'avez pas assez d'argent.")
                     cb()
                 end
             end)

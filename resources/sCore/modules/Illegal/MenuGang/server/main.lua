@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback('sF7:getOtherPlayerData', function(source, cb, target, notify)
     local xPlayer = ESX.GetPlayerFromId(target)
@@ -37,15 +37,15 @@ AddEventHandler('Sneaky:PromotePlayer', function(target)
 	local targetXPlayer = ESX.GetPlayerFromId(target)
 
 	if (targetXPlayer.job2.grade == tonumber(getMaximumGrade(sourceXPlayer.job2.name)) - 1) then
-		TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, '~r~Vous ne pouvez faire ça.')
+		TriggerClientEvent('esx:showNotification', sourceXPlayer.source, '~r~Vous ne pouvez faire ça.')
 	else
 		if sourceXPlayer.job2.grade_name == 'boss' and sourceXPlayer.job2.name == targetXPlayer.job2.name then
 			targetXPlayer.setJob2(targetXPlayer.job2.name, tonumber(targetXPlayer.job2.grade) + 1)
 
-			TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, 'Vous avez ~g~promu ' .. targetXPlayer.name .. '~w~.')
-			TriggerClientEvent('Sneakyesx:showNotification', target, 'Vous avez été ~g~promu par ' .. sourceXPlayer.name .. '~w~.')
+			TriggerClientEvent('esx:showNotification', sourceXPlayer.source, 'Vous avez ~g~promu ' .. targetXPlayer.name .. '~w~.')
+			TriggerClientEvent('esx:showNotification', target, 'Vous avez été ~g~promu par ' .. sourceXPlayer.name .. '~w~.')
 		else
-			TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+			TriggerClientEvent('esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
 		end
 	end
 end)
@@ -56,15 +56,15 @@ AddEventHandler('Sneaky:RetrogradePlayer', function(target)
 	local targetXPlayer = ESX.GetPlayerFromId(target)
 
 	if (targetXPlayer.job2.grade == 0) then
-		TriggerClientEvent('Sneakyesx:showNotification', _source, 'Vous ne pouvez pas ~r~rétrograder~w~ davantage.')
+		TriggerClientEvent('esx:showNotification', _source, 'Vous ne pouvez pas ~r~rétrograder~w~ davantage.')
 	else
 		if sourceXPlayer.job2.grade_name == 'boss' and sourceXPlayer.job2.name == targetXPlayer.job2.name then
 			targetXPlayer.setJob2(targetXPlayer.job2.name, tonumber(targetXPlayer.job2.grade) - 1)
 
-			TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, 'Vous avez ~r~rétrogradé ' .. targetXPlayer.name .. '~w~.')
-			TriggerClientEvent('Sneakyesx:showNotification', target, 'Vous avez été ~r~rétrogradé par ' .. sourceXPlayer.name .. '~w~.')
+			TriggerClientEvent('esx:showNotification', sourceXPlayer.source, 'Vous avez ~r~rétrogradé ' .. targetXPlayer.name .. '~w~.')
+			TriggerClientEvent('esx:showNotification', target, 'Vous avez été ~r~rétrogradé par ' .. sourceXPlayer.name .. '~w~.')
 		else
-			TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+			TriggerClientEvent('esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
 		end
 	end
 end)
@@ -76,8 +76,8 @@ AddEventHandler('Sneaky:RecruitPlayer', function(target, job2, grade2)
 
 	if sourceXPlayer.job2.grade_name == 'boss' then
 		targetXPlayer.setJob2(job2, grade2)
-		TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, 'Vous avez ~g~recruté ' .. targetXPlayer.name .. '~w~.')
-		TriggerClientEvent('Sneakyesx:showNotification', target, 'Vous avez été ~g~embauché par ' .. sourceXPlayer.name .. '~w~.')
+		TriggerClientEvent('esx:showNotification', sourceXPlayer.source, 'Vous avez ~g~recruté ' .. targetXPlayer.name .. '~w~.')
+		TriggerClientEvent('esx:showNotification', target, 'Vous avez été ~g~embauché par ' .. sourceXPlayer.name .. '~w~.')
 	end
 end)
 
@@ -88,9 +88,9 @@ AddEventHandler('Sneaky:VirerPlayer', function(target)
 
 	if sourceXPlayer.job2.grade_name == 'boss' and sourceXPlayer.job2.name == targetXPlayer.job2.name then
 		targetXPlayer.setJob2('unemployed2', 0)
-		TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, 'Vous avez ~r~viré ' .. targetXPlayer.name .. '~w~.')
-		TriggerClientEvent('Sneakyesx:showNotification', target, 'Vous avez été ~g~viré par ' .. sourceXPlayer.name .. '~w~.')
+		TriggerClientEvent('esx:showNotification', sourceXPlayer.source, 'Vous avez ~r~viré ' .. targetXPlayer.name .. '~w~.')
+		TriggerClientEvent('esx:showNotification', target, 'Vous avez été ~g~viré par ' .. sourceXPlayer.name .. '~w~.')
 	else
-		TriggerClientEvent('Sneakyesx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+		TriggerClientEvent('esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
 	end
 end)

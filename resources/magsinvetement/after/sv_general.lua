@@ -1,7 +1,7 @@
 
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
 RegisterServerEvent('Neo:insertlunettes')
@@ -52,9 +52,9 @@ ESX.RegisterServerCallback('Checkmoney', function(source, cb, price)
 	if xPlayer.getAccount('cash').money >= price then
 		cb(true)
 		xPlayer.removeAccountMoney('cash', tonumber(price))
-		TriggerClientEvent('Sneakyesx:showNotification', source, "~g~Vous avez effectuer un payement de ~s~(~b~~h~$"..tonumber(price).."~h~~s~)")  
+		TriggerClientEvent('esx:showNotification', source, "~g~Vous avez effectuer un payement de ~s~(~b~~h~$"..tonumber(price).."~h~~s~)")  
 	else 
-		TriggerClientEvent('Sneakyesx:showNotification', source, "~r~Vous n'avez pas assez d'argent.")  
+		TriggerClientEvent('esx:showNotification', source, "~r~Vous n'avez pas assez d'argent.")  
 		cb(false)
 	end
 end)

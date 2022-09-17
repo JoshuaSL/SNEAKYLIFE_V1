@@ -61,7 +61,7 @@ end
 
 function ESX.TriggerServerCallback(name, cb, ...)
 	ESX.ServerCallbacks[ESX.CurrentRequestId] = cb
-	SneakyEvent('Sneakyesx:triggerServerCallback', name, ESX.CurrentRequestId, ...)
+	SneakyEvent('esx:triggerServerCallback', name, ESX.CurrentRequestId, ...)
 
 	if ESX.CurrentRequestId < 65535 then
 		ESX.CurrentRequestId = ESX.CurrentRequestId + 1
@@ -294,7 +294,7 @@ end
 function ESX.Game.GetAllPlayers()
 	local clientPlayers = false
 
-	ESX.TriggerServerCallback('Sneakyesx:getActivePlayers', function(players)
+	ESX.TriggerServerCallback('esx:getActivePlayers', function(players)
 		clientPlayers = players
 	end)
 
@@ -1032,20 +1032,20 @@ function ESX.Game.Utils.DrawText3D(coords, text, size, font)
 	ClearDrawOrigin()
 end
 
-RegisterNetEvent('Sneakyesx:serverCallback')
-AddEventHandler('Sneakyesx:serverCallback', function(requestId, ...)
+RegisterNetEvent('esx:serverCallback')
+AddEventHandler('esx:serverCallback', function(requestId, ...)
 	ESX.ServerCallbacks[requestId](...)
 	ESX.ServerCallbacks[requestId] = nil
 end)
 
-RegisterNetEvent('Sneakyesx:showNotification')
-AddEventHandler('Sneakyesx:showNotification', ESX.ShowNotification)
+RegisterNetEvent('esx:showNotification')
+AddEventHandler('esx:showNotification', ESX.ShowNotification)
 
-RegisterNetEvent('Sneakyesx:showAdvancedNotification')
-AddEventHandler('Sneakyesx:showAdvancedNotification', ESX.ShowAdvancedNotification)
+RegisterNetEvent('esx:showAdvancedNotification')
+AddEventHandler('esx:showAdvancedNotification', ESX.ShowAdvancedNotification)
 
-RegisterNetEvent('Sneakyesx:showHelpNotification')
-AddEventHandler('Sneakyesx:showHelpNotification', ESX.ShowHelpNotification)
+RegisterNetEvent('esx:showHelpNotification')
+AddEventHandler('esx:showHelpNotification', ESX.ShowHelpNotification)
 
 -- SetTimeout
 Citizen.CreateThread(function()

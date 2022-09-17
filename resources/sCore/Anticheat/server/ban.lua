@@ -3,7 +3,7 @@ local BanInfo = {}
 
 ESX = nil
 
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 Citizen.CreateThread(function()
     ReloadBans()
@@ -64,7 +64,7 @@ AddEventHandler('Initiate:BanSql', function(license, id, reason, name, time, per
         ['@moderator'] = name,
         ['@date'] = os.time() 
     })
-    TriggerClientEvent("Sneakyesx:showNotification",source, "Le joueur à bien été ~b~ban~s~~n~License : "..license)
+    TriggerClientEvent("esx:showNotification",source, "Le joueur à bien été ~b~ban~s~~n~License : "..license)
 end)
 
 AddEventHandler('TargetPlayerIsOffline', function(license, reason, name, time, perma)
@@ -99,12 +99,12 @@ AddEventHandler('TargetPlayerIsOffline', function(license, reason, name, time, p
                 ReloadBans()
             end)
             if source ~= 0 then
-                TriggerClientEvent("Sneakyesx:showNotification",source, "Le joueur à bien été ~b~ban~s~~n~License : "..license)
+                TriggerClientEvent("esx:showNotification",source, "Le joueur à bien été ~b~ban~s~~n~License : "..license)
             else
                 print("Le joueur à bien été ~b~ban~s~~n~License : "..license)
             end
         else
-            TriggerClientEvent("Sneakyesx:showNotification",source, "~r~License incorrect.")
+            TriggerClientEvent("esx:showNotification",source, "~r~License incorrect.")
         end
     end)
 end)
@@ -1038,7 +1038,7 @@ RegisterCommand('ban', function(source, args)
                             TriggerEvent('Initiate:BanSql', license, tonumber(target), reason, GetPlayerName(source), tonumber(args[2]), 1)
                         end
                     else
-                        TriggerClientEvent("Sneakyesx:showNotification",source, "~r~Player non connecté(e).")
+                        TriggerClientEvent("esx:showNotification",source, "~r~Player non connecté(e).")
                     end
                 else
                     if string.find(args[1], "license:") ~= nil then
@@ -1048,17 +1048,17 @@ RegisterCommand('ban', function(source, args)
                             TriggerEvent('TargetPlayerIsOffline', args[1], reason, GetPlayerName(source), tonumber(args[2]),1)
                         end
                     else
-                        TriggerClientEvent("Sneakyesx:showNotification",source, "~r~License non correct.")
+                        TriggerClientEvent("esx:showNotification",source, "~r~License non correct.")
                     end
                 end
             else
-                TriggerClientEvent("Sneakyesx:showNotification",source, "~r~Raison non correct.")
+                TriggerClientEvent("esx:showNotification",source, "~r~Raison non correct.")
             end
         else
-            TriggerClientEvent("Sneakyesx:showNotification",source, "~r~Temps non correct.")
+            TriggerClientEvent("esx:showNotification",source, "~r~Temps non correct.")
         end
     else
-        TriggerClientEvent("Sneakyesx:showNotification",source, "~r~ID non correct.")
+        TriggerClientEvent("esx:showNotification",source, "~r~ID non correct.")
     end
 end)
 
@@ -1084,13 +1084,13 @@ RegisterCommand('unban', function(source, args)
                         ['@moderatorName'] = "Aucun"
                     })
                     ReloadBans()
-                    TriggerClientEvent('Sneakyesx:showNotification', source, "La license à bien été ~b~unban~s~.") 
+                    TriggerClientEvent('esx:showNotification', source, "La license à bien été ~b~unban~s~.") 
                 else
-                    TriggerClientEvent('Sneakyesx:showNotification', source, "~r~La license est incorrect.") 
+                    TriggerClientEvent('esx:showNotification', source, "~r~La license est incorrect.") 
                 end
             end)
         else
-            TriggerClientEvent('Sneakyesx:showNotification', source, "~r~La license est incorrect.") 
+            TriggerClientEvent('esx:showNotification', source, "~r~La license est incorrect.") 
         end
     else
         if tonumber(args[1]) then
@@ -1178,17 +1178,17 @@ function kickPlayer(source, target, reason)
         return
     end
     if targetName == nil then 
-        return TriggerClientEvent('Sneakyesx:showNotification', source, "~r~Joueur non existant.") 
+        return TriggerClientEvent('esx:showNotification', source, "~r~Joueur non existant.") 
     end
     sendLogs("https://canary.discord.com/api/webhooks/828722803989020682/CkX1DKB_UHaL9ty9ZYlxlPoR8IDTEr0sx9sq7o7wvIEZhwf5_EIh_ZIuylC054KOKDE6", "Kick d'un joueur", " Le joueur : "..targetName..", "..playerLicense.." à été kick avec comme raison : "..reason.." par le modérateur :  "..moderatorName)
     DropPlayer(target, "\nRaison : "..reason.."\nAuteur : "..moderatorName)
-    TriggerClientEvent("Sneakyesx:showNotification", source, "Vous avez ~r~kick~s~ le joueur ~b~"..targetName.."~s~ !")
+    TriggerClientEvent("esx:showNotification", source, "Vous avez ~r~kick~s~ le joueur ~b~"..targetName.."~s~ !")
 end
 
 RegisterCommand("kick",function(source,args)
     local xPlayer = ESX.GetPlayerFromId(source)
     if xPlayer.getGroup() == "user" then
-        TriggerClientEvent("Sneakyesx:showNotification", source, "~r~Vous n'avez pas accès à cette commande.")
+        TriggerClientEvent("esx:showNotification", source, "~r~Vous n'avez pas accès à cette commande.")
         return
     end
     local target = tonumber(args[1])

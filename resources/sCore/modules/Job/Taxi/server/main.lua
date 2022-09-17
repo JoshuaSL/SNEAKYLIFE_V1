@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent('Sneakyesx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 TriggerEvent('Sneakyesx_phone:registerNumber', 'taxi', 'Appels Taxi', true, true)
 TriggerEvent('Sneakyesx_society:registerSociety', 'taxi', 'taxi', 'society_taxi', 'society_taxi', 'society_taxi', {type = 'public'})
@@ -29,7 +29,7 @@ AddEventHandler("sTaxi:addAnnounce", function(name)
     if xPlayer.job.name ~= "taxi" then return end
     if Announce[name] == nil then  return end
     local infosAnnounce = Announce[name]
-    TriggerClientEvent("Sneakyesx:showAdvancedNotification", -1, infosAnnounce.title, infosAnnounce.subtitle, infosAnnounce.message, infosAnnounce.banner, 1)
+    TriggerClientEvent("esx:showAdvancedNotification", -1, infosAnnounce.title, infosAnnounce.subtitle, infosAnnounce.message, infosAnnounce.banner, 1)
 end)
 
 RegisterNetEvent('fTaxi:success')
@@ -69,10 +69,10 @@ AddEventHandler('fTaxi:success', function()
 
             xPlayer.addAccountMoney('cash', playerMoney)
             societyAccount.addMoney(societyMoney)
-            TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Votre société a gagné "..societyMoney.."~g~$~s~\n- Vous avez gagné "..playerMoney.."~g~$~s~")
+            TriggerClientEvent('esx:showNotification', xPlayer.source, "Votre société a gagné "..societyMoney.."~g~$~s~\n- Vous avez gagné "..playerMoney.."~g~$~s~")
         else
             xPlayer.addAccountMoney('cash', total)
-            TriggerClientEvent('Sneakyesx:showNotification', xPlayer.source, "Vous avez gagné "..total.."~g~$~s~")
+            TriggerClientEvent('esx:showNotification', xPlayer.source, "Vous avez gagné "..total.."~g~$~s~")
         end
     end
 end)
