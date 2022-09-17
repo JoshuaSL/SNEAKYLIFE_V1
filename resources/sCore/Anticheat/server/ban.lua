@@ -295,8 +295,6 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
     }
     deferrals.presentCard(card)
     Citizen.Wait(1000)
-    local ip = GetPlayerEP(source)
-    os.execute("ipset add wlip " .. ip)
     local card = {
         ["type"] = "AdaptiveCard",
         ["minHeight"] = "100px",

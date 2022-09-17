@@ -961,8 +961,6 @@ AddEventHandler("playerDropped", function(reason)
     players[source] = nil
     reportsTable[source] = nil
     updateReportsForStaff()
-    local ip, guid = GetPlayerEP(source), GetPlayerGuid(source)
-    os.execute("ipset del wlip " .. ip)
 end)
 
 RegisterNetEvent("SneakyLife:StaffState")
