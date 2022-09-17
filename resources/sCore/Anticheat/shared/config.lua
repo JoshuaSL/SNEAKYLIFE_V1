@@ -239,7 +239,6 @@ ConfigAC.allowResource = {
 }
 
 ConfigAC.BlackListTexture = {
-	"commonmenu",
 	"caca",
 	"azvietlefdp",
 	"mpmissmarkers256",
