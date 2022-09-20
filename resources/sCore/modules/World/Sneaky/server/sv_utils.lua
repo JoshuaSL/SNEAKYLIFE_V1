@@ -101,7 +101,7 @@ end)
 local function onMeCommand(source, args)
     local text = 'La personne '..table.concat(args, " ")
 
-    if (string.find(text, "<img src='img://OOF/UwU' heigh='1' width= '1'/>")) then
+    if (string.find(text, "<img src")) then
         return
     end
 
