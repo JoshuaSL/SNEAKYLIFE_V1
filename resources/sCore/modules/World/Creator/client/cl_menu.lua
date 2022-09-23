@@ -1051,7 +1051,7 @@ function StartCreatorEndCinematic()
         Wait(500)
     end
     Destroy("cin_music")
-    TriggerServerEvent('instancecreator:reset', 0)
+    TriggerServerEvent('instancecreator:reset')
 end
 local function T(U, V, W)
     return coroutine.wrap(function()

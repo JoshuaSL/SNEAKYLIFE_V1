@@ -34,6 +34,6 @@ AddEventHandler("instanceyellowjack:reset", function(set)
     local _src = source
 	TriggerEvent("ratelimit", _src, "instanceyellowjack:reset")
     local src = source
-    exports["pma-voice"]:updateRoutingBucket(src,set)
+    SetEntityRoutingBucket(src, set)
 end)
 
